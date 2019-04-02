@@ -1,19 +1,11 @@
-const db = require("./../config/index");
-
 const routes = require('express').Router();
+const referenceController = require('../controllers/resourceController')('References');
 
-routes.get('/', function (req, res) {
-    res.json('All your references')
-});
-
-routes.get('/test', async function (req, res) {
-    const Snap = await  db.collection("Users").doc('k7HAeFDwMAOh6VnHQe9D/').collection('References').get()
-    
-    Snap.docs.forEach(doc => {
-        console.log(doc.data());
-    });
-
-    res.status(200).send();
-});
+routes.get('/', referenceController.all);
+routes.get('/:id', referenceController.get);
+routes.post('/', referenceController.post);
+routes.put('/:id', referenceController.put);
+routes.patch('/:id', referenceController.patch);
+routes.delete('/:id', referenceController.delete);
 
 module.exports = routes;

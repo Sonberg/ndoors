@@ -1,17 +1,17 @@
 const db = require("./../config/index");
-
 const routes = require('express').Router();
+const userController = require('../controllers/resourceController')('Users');
 
-routes.get('/', async function (req, res) {
-    let snap = await db.collection("Users").get();
-    res.json(snap.docs.map(doc =>  doc.data()));
+routes.get('/', userController.all);
+routes.get('/:id', userController.get);
 
-    Promise.all(docs).then(values => res.status(200).json(values));
+routes.post('/', async function (req, res) {
+    await db.collection(collection).doc(req.body.email).set(req.body);
+    res.status(200).send();
 });
 
-routes.get('/:id', async function (req, res) {
-    let snap = await db.collection("Users").doc(req.params.id).get();
-    res.json(snap.data());
-});
+routes.put('/:id', userController.put);
+routes.patch('/:id', userController.patch);
+routes.delete('/:id', userController.delete);
 
 module.exports = routes;

@@ -6,6 +6,7 @@
     FacebookId
     LinkedInId
     Lösenord
+    Image
 
 - - References
         Skapad av

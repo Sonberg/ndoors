@@ -1,6 +1,7 @@
 const db = require("./../config/index");
 const routes = require('express').Router();
-const userController = require('../controllers/resourceController')('Users');
+const collection = 'Users';
+const userController = require('../controllers/resourceController')(collection);
 
 routes.get('/', userController.all);
 routes.get('/:id', userController.get);

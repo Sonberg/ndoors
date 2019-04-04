@@ -17,8 +17,7 @@ export default class AddReferences extends Component {
       case 1:
         referencePage = (
           <div>
-            <Box>ads</Box>
-            <button onClick={() => this.onContinue()}>step 1</button>
+            <Box onContinue={() => this.onContinue()}>ads</Box>
           </div>
         )
         break

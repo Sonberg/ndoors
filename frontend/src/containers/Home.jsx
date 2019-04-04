@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import Navigation from '../components/Navigation'
-import Box from '../components/Box'
-import AutoComplete from '../components/AutoComplete';
 import styled from "styled-components"
 
 const Title = styled.h1`

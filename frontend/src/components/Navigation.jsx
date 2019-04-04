@@ -1,26 +1,42 @@
 import React, { Component } from 'react'
-import { Navbar, NavDropdown, Nav } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 
 export default class Navigation extends Component {
-    render() {
-        return (
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Ndoors</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        );
+  render() {
+    const navBarStyling = {
+      backgroundColor: '#6C9F9B'
     }
+    const navStyle = {
+      fontStyle: '',
+      color: 'white'
+    }
+    const brandStyle = {
+      fontStyle: '',
+      color: 'white'
+    }
+    return (
+      <Navbar style={navBarStyling} expand="md">
+        <Navbar.Brand style={brandStyle} href="/">
+          Ndoors
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link style={navStyle} href="/">
+              Översikt
+            </Nav.Link>
+            <Nav.Link style={navStyle} href="/">
+              Mina ansökningar
+            </Nav.Link>
+            <Nav.Link style={navStyle} href="/">
+              Mina referensr
+            </Nav.Link>
+            <Nav.Link style={navStyle} href="/">
+              Personer jag refererat
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )
+  }
 }

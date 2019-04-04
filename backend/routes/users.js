@@ -1,4 +1,4 @@
-const db = require("./../config/index");
+const firestore = require("./../config/index");
 const routes = require('express').Router();
 const validate = require('../middleware/validate');
 const collection = 'Users';
@@ -15,7 +15,7 @@ routes.post('/', [
 ],
     validate,
     async function (req, res) {
-        await db.collection(collection).doc(req.body.email).set(req.body);
+        await firestore.collection(collection).doc(req.body.email).set(req.body);
         res.status(200).send();
     });
 

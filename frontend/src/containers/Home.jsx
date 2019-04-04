@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Container } from 'react-bootstrap'
 import Navigation from '../components/Navigation'
 import Box from '../components/Box'
+import AutoComplete from '../components/AutoComplete';
 
 export default class Home extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class Home extends Component {
         <Navigation />
         <Container className="pt-3">
           <Box />
+          <AutoComplete url="api/csv/abilities" />
         </Container>
       </Fragment >
     )

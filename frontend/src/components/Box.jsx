@@ -6,9 +6,9 @@ export default class Box extends Component {
         this.state = {}
     }
     render() {
-        const styling = {borderTop: 'none'};
+        const styling = {borderTop: 'none', display: `${(this.props.onBackward || this.props.onContinue) ? 'block' : 'none'}`};
         return (
-            <div className="container">
+            <div className="container" style={{marginTop: '100px'}}>
                 <div className="row card medium">
                     <div className="col s11 offset-s1">
                         <h4>{this.props.title}</h4>
@@ -18,6 +18,7 @@ export default class Box extends Component {
                         <a
                             className="col s3 offset-s1 waves-effect waves-light btn backButton"
                             onClick={() => this.props.onBackward()}
+                            style={{display: `${(this.props.onBackward) ? 'block' : 'none'}`}}
                         >
                             {this.props.back || "Back"}
                         </a>

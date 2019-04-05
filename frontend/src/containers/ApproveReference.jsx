@@ -16,7 +16,7 @@ export default class ApproveReference extends Component {
         this.getReferenceData(values.key).then(result => {
             this.setState(result);
             (this.state.status === "Found") ?
-                this.setState({ pageStep: (this.state.verified) ? 5 : 3 }) :
+                this.setState({ pageStep: (this.state.verified) ? 6 : 0 }) :
                 this.setState({ pageStep: 55 });
         });
     }
@@ -119,7 +119,6 @@ export default class ApproveReference extends Component {
                                 </div>
                             </div>
                         }
-                        onBackward={() => { }}
                         onContinue={() => this.onNext()}
                     />
                 )
@@ -322,8 +321,6 @@ export default class ApproveReference extends Component {
                                 </div>
                             </div>
                         }
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onNext()}
                     />
                 )
                 break;
@@ -338,7 +335,14 @@ export default class ApproveReference extends Component {
         }
         return (
             <React.Fragment>
-                <div className="approveForm">{page}</div>
+                <div className="approveForm" style={{
+                    height: '100vh',
+                    backgroundColor: '#fff8f7',
+                    position: 'absolute',
+                    width: '100%',
+                    backgroundImage: `url(${require('./../assets/BGK_invert.svg')})`
+                }}
+                >{page}</div>
                 <button onClick={() => {
                     this.updateVerifyField(false);
                 }}>Reset</button>

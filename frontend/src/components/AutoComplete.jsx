@@ -26,7 +26,7 @@ export default class AutoComplete extends Component {
     this.onClick = this.onClick.bind(this)
 
     this.state = {
-      value: props.value,
+      value: props.value || '',
       result: []
     }
     this.onSearch$ = new Subject()
@@ -36,10 +36,11 @@ export default class AutoComplete extends Component {
     return (
       <div className="input-field">
         <input
+          autoComplete="off"
           type="text"
           value={this.state.value}
           onChange={this.onChange}
-          id={this.props.label}
+          id={this.props.name}
         />
         <label
           style={{ textTransform: 'capitalize' }}
@@ -69,15 +70,21 @@ export default class AutoComplete extends Component {
   }
 
   onClick(hit) {
-    this.setState({ value: hit, result: [] })
-    this.props.onChange({ target: { value: hit, id: this.props.label } })
+    let event1 = { target: { value: hit, id: this.props.name } }
+    if (this.props.onSelect) {
+      this.setState({ value: '', result: [] })
+      this.props.onSelect(event1)
+    } else {
+      this.props.onChange && this.props.onChange(event1)
+      this.setState({ value: hit, result: [] })
+    }
   }
 
   onChange = ({ target }) => {
     this.setState({ value: target.value }, () =>
       this.onSearch$.next(target.value)
     )
-    this.props.onChange({ target })
+    this.props.onChange && this.props.onChange({ target })
   }
 
   async search(query) {

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import OverviewUser from './components/Overview.User'
 import OverviewSkills from './components/Overview.Skills'
-import ReferenceRequest from '../../components/ReferenceRequest'
+import OverviewSuggestions from './components/Overview.Suggestions'
+import ReferenceRequest from './components/ReferenceRequest'
 import Button from '../../components/Button';
 
 const sectionHeader = {
-    fontWeight: '500',
+    fontWeight: '600',
     color: '#333'
 }
 
@@ -14,12 +15,11 @@ export default class Overview extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col s12" style={{ marginBottom: '1em' }}>
+                    <div className="col s12" style={{ marginBottom: '2em' }}>
                         <OverviewUser />
                     </div>
                     <div className="col s12 m6">
 
-                        <h5 children="Profile completion" style={sectionHeader} />
                         <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'start' }}>
                             <Button children="Share references" style={{ marginRight: '1em' }} />
                             <Button as="a" href="/add-reference">Add references</Button>
@@ -27,15 +27,18 @@ export default class Overview extends Component {
 
 
                         <h5 children="Requested references" style={sectionHeader} />
-                        <ReferenceRequest />
-                        <ReferenceRequest verified />
-                        <ReferenceRequest verified />
-                        <ReferenceRequest verified />
+                        <ReferenceRequest skills={["Blockchain"]} />
+                        <ReferenceRequest verified skills={["React", "AWS", "Machine learning"]} />
+                        <ReferenceRequest verified skills={["jQuery"]} />
+                        <ReferenceRequest verified skills={["Linux", "Git", "React"]} />
 
 
                     </div>
-                    <div className="col s12 m6">
+                    <div className="col s12 m6" style={{ paddingLeft: '1.5em' }}>
                         <OverviewSkills />
+                        <div style={{ marginLeft: '0.75em' }}>
+                            <OverviewSuggestions />
+                        </div>
                     </div>
                 </div>
             </div>

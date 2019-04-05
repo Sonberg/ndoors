@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import BoxFirst from '../components/BoxFirst'
 import BoxSecond from '../components/BoxSecond'
 import BoxThird from '../components/BoxThird'
+import BoxFourth from '../components/BoxFourth'
 
 import AutomComplete from '../components/AutoComplete'
 
@@ -45,9 +46,6 @@ export default class AddReferences extends Component {
     })
   }
   saveToArray({ target }) {
-    console.log(this.state)
-    console.log(this.state.referenceDetails[target.id])
-    console.log(target.value)
     this.setState({
       referenceDetails: {
         ...this.state.referenceDetails,
@@ -70,7 +68,6 @@ export default class AddReferences extends Component {
               onContinue={() => this.onContinue()}
               onChange={this.onChange}
               details={this.state.referenceDetails}
-              {...this.state.referenceDetails}
             />
           </div>
         )
@@ -82,7 +79,6 @@ export default class AddReferences extends Component {
             onContinue={() => this.onContinue()}
             onChange={this.onChange}
             details={this.state.referenceDetails}
-            {...this.state.referenceDetails}
           />
         )
         break
@@ -93,7 +89,15 @@ export default class AddReferences extends Component {
             onContinue={() => this.onContinue()}
             onSelect={this.saveToArray}
             details={this.state.referenceDetails}
-            {...this.state.referenceDetails}
+          />
+        )
+        break
+      case 4:
+        referencePage = (
+          <BoxFourth
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            details={this.state.referenceDetails}
           />
         )
         break

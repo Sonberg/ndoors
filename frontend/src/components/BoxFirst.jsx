@@ -12,7 +12,7 @@ export default class BoxFirst extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3>Who's your reference?</h3>
+            <h3 style={{ fontSize: '32spx' }}>Who's your reference?</h3>
           </div>
           <form>
             <div>
@@ -48,6 +48,7 @@ export default class BoxFirst extends Component {
               </div>
               <div className="col s5" style={{}}>
                 <Input
+                  type="number"
                   name="phoneNumber"
                   label="Phone number"
                   value={this.props.phoneNumber}
@@ -58,13 +59,7 @@ export default class BoxFirst extends Component {
           </form>
           <div className="row">
             <a
-              className="col s2 offset-s1 waves-effect waves-light btn"
-              onClick={() => this.props.onBackward()}
-            >
-              Back
-            </a>
-            <a
-              className="col s2 offset-s6 waves-effect waves-light btn center-align"
+              className="col s2 offset-s9 waves-effect waves-light btn center-align"
               onClick={() => this.props.onContinue()}
             >
               Continue

@@ -12,7 +12,7 @@ export default class BoxSecond extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3>Describe your relation</h3>
+            <h3 style={{ fontSize: '32spx' }}>Describe your relation</h3>
           </div>
           <form>
             <div className="row">
@@ -53,6 +53,7 @@ export default class BoxSecond extends Component {
                 <Input
                   name="dateFrom"
                   label="YY-MM-DD"
+                  type="number"
                   value={this.props.dateFrom}
                   onChange={this.props.onChange}
                 />
@@ -63,6 +64,7 @@ export default class BoxSecond extends Component {
               <div className="col ">
                 <Input
                   name="dateTo"
+                  type="number"
                   label="YY-MM-DD"
                   value={this.props.dateTo}
                   onChange={this.props.onChange}

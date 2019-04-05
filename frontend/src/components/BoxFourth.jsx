@@ -11,7 +11,7 @@ export default class BoxFourth extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32spx' }}>Leave a personal note</h3>
+            <h3 style={{ fontSize: '32px' }}>Leave a personal note</h3>
           </div>
           <form>
             <div className="row">
@@ -19,7 +19,7 @@ export default class BoxFourth extends Component {
                 <Input
                   name="note"
                   label="Hi, [name] would you like to be my reference..."
-                  value={this.props.note}
+                  value={this.props.details.note}
                   onChange={this.props.onChange}
                 />
               </div>

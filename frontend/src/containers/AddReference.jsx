@@ -3,7 +3,7 @@ import BoxFirst from '../components/BoxFirst'
 import BoxSecond from '../components/BoxSecond'
 import BoxThird from '../components/BoxThird'
 import BoxFourth from '../components/BoxFourth'
-
+import BoxFifth from '../components/BoxFifth'
 import AutomComplete from '../components/AutoComplete'
 
 export default class AddReferences extends Component {
@@ -14,28 +14,31 @@ export default class AddReferences extends Component {
     this.state = {
       referenceState: 1,
       referenceDetails: {
-        name: '',
+        referentName: '',
         referentRole: '',
-        phoneNumber: '',
-        email: '',
+        referentPhoneNumber: '',
+        referentEmail: '',
         skills: [],
         abilities: [],
-        myRole: '',
+        role: '',
         responsibility: '',
         workplace: '',
         dateFrom: '',
-        dateTo: ''
+        dateTo: '',
+        note: '',
+        name: '',
+        email: '',
+        currentRole: ''
       }
     }
   }
   onContinue() {
     this.setState({ referenceState: this.state.referenceState + 1 })
+    console.log(this.state)
   }
   onBackward() {
     this.setState({ referenceState: this.state.referenceState - 1 })
-  }
-  addName(name) {
-    this.state.referenceDetails.name = name
+    console.log(this.state)
   }
   onChange({ target }) {
     this.setState({
@@ -44,7 +47,9 @@ export default class AddReferences extends Component {
         [target.id]: target.value
       }
     })
+    console.log(this.state.referenceDetails)
   }
+
   saveToArray({ target }) {
     this.setState({
       referenceDetails: {
@@ -97,6 +102,17 @@ export default class AddReferences extends Component {
           <BoxFourth
             onBackward={() => this.onBackward()}
             onContinue={() => this.onContinue()}
+            onChange={this.onChange}
+            details={this.state.referenceDetails}
+          />
+        )
+        break
+      case 5:
+        referencePage = (
+          <BoxFifth
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            onChange={this.onChange}
             details={this.state.referenceDetails}
           />
         )
@@ -104,7 +120,6 @@ export default class AddReferences extends Component {
       default:
         referencePage = <h1>END</h1>
     }
-
     return <div style={{ marginTop: '100px' }}>{referencePage}</div>
   }
 }

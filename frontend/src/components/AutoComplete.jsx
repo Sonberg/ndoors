@@ -43,6 +43,7 @@ export default class AutoComplete extends Component {
           id={this.props.name}
         />
         <label
+          class="active"
           style={{ textTransform: 'capitalize' }}
           htmlFor={this.props.label}
         >

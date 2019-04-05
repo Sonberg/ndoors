@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import Navigation from '../components/Navigation'
 import styled from 'styled-components'
 
 const Title = styled.h1`
@@ -88,8 +87,8 @@ export default class Home extends Component {
             <Title> nDoors </Title>
             <SubTitle> welcome </SubTitle>
             <ButtonContainer>
-              <Button> Add Reference </Button>
-              <Button onClick={this.logIn}> Logga in </Button>
+              <Button>Add Reference</Button>
+              <Button onClick={this.logIn}>Logga in</Button>
             </ButtonContainer>
           </BoxContainer>
         </BodyWrapper>

@@ -29,13 +29,13 @@ class Navigation extends Component {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               {localStorage.getItem('loggedIn') ? (
                 <React.Fragment>
-                  <li><a>Overview</a></li>
-                  <li><a>My refrences</a></li>
-                  <li><a>Shared refrences</a></li>
-                  <li><a>People i've referenced</a></li>
+                  <li><a href="/">Overview</a></li>
+                  <li><a href="/my-references">My references</a></li>
+                  <li><a href="/shared-references">Shared references</a></li>
+                  <li><a href="/">People i've referenced</a></li>
                 </React.Fragment>
               ) : null}
-              <li><a onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
+              <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
             </ul>
           </div>
         </div>

@@ -4,6 +4,8 @@ import { Route, BrowserRouter as Router } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Home from './containers/Home.jsx'
 import AddReference from './containers/AddReference'
+import MyReferences from './containers/MyReferences'
+import SharedReferences from './containers/SharedReferences'
 import Overview from './containers/Overview'
 import * as serviceWorker from './serviceWorker'
 
@@ -16,7 +18,9 @@ const routing = (
     <Navigation />
     <Route exact path="/" component={Home} />
     <Route exact path="/overview" component={Overview} />
-    <Route path="/addReference" component={AddReference} />
+    <Route path="/add-reference" component={AddReference} />
+    <Route path="/my-reference" component={MyReferences} />
+    <Route path="/shared-reference" component={SharedReferences} />
   </Router>
 )
 

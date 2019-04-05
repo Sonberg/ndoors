@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import Navigation from '../components/Navigation'
 import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
 import { BigButton, Title } from './../styles/styledComponents'
@@ -53,13 +52,23 @@ export default class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+        this.logIn = this.logIn.bind(this)
+    }
+    componentDidMount() {
+        if (localStorage.getItem('loggedIn')) {
+            this.props.history.push('/overview');
+        }
+    }
+
+    logIn() {
+        localStorage.setItem('loggedIn', true);
+        localStorage.setItem('user', 'Kalle Karlsson');
+        this.props.history.push('/overview')
     }
 
     render() {
-
         return (
             <Fragment>
-                <Navigation />
                 <HomeWrapper>
                     <TopHeader>
                         <div class="row" style={{ height: '100px', margin: 'auto' }}>

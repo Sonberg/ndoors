@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Input from './InputField'
-import { withRouter } from 'react-router'
 
 export default class BoxSeventh extends Component {
   constructor(props) {
@@ -60,11 +59,7 @@ export default class BoxSeventh extends Component {
           <div className="row">
             <button
               className="col s2 offset-s9 waves-effect waves-light btn center-align"
-              onClick={
-               // export default withRouter(Navigation)
-
-
-              }
+              onClick={() => this.props.onContinue()}
             >
               ENTER NDOORS
             </button>

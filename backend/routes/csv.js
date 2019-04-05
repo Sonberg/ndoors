@@ -24,6 +24,6 @@ loadCsv('./static/skills.csv').then(res => (skills = res))
 loadCsv('./static/professions.csv').then(res => (professions = res))
 
 // Search for string
-const search = query => str => str && str.indexOf(query) > -1
+const search = query => str => str && str.startsWith(query)
 
 module.exports = routes

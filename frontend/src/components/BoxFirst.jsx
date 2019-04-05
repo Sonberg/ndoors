@@ -21,7 +21,7 @@ export default class BoxFirst extends Component {
                 <div className="col s6 offset-s1">
                   <Input
                     name="referentName"
-                    label="Name"
+                    label="Referent name"
                     value={this.props.details.referentName}
                     onChange={this.props.onChange}
                   />
@@ -33,7 +33,7 @@ export default class BoxFirst extends Component {
                     value={this.props.details.referentRole}
                     onChange={this.props.onChange}
                     url="api/csv/professions"
-                    label="Role"
+                    label="Their role"
                   />
                 </div>
               </div>

@@ -25,9 +25,7 @@ export default class BoxFifth extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32px' }}>
-              First, tell us something about you
-            </h3>
+            <h3 style={{ fontSize: '32px' }}>First, tell us about you</h3>
           </div>
           <div className="col s11 offset-s1">
             <p style={{ fontSize: '18px' }}>

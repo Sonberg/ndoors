@@ -39,7 +39,7 @@ export default class BoxFourth extends Component {
               className="col s2 offset-s6 btn-large"
               onClick={() => this.props.onContinue()}
             >
-              Continue
+              Submit
             </Button>
           </div>
         </div>

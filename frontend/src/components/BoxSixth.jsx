@@ -11,11 +11,15 @@ export default class BoxSixth extends Component {
       <div className="container">
         <div className="row card ">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32px' }}>One last thing</h3>
+            <h3 style={{ fontSize: '32px', fontWeight: 'bolder' }}>
+              One last thing...
+            </h3>
           </div>
           <div className="col s11 offset-s1">
-            <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '0px' }}>
-              We need to know you are you.
+            <p
+              style={{ fontSize: '18px', fontWeight: 'bolder', margin: '0px' }}
+            >
+              We need to know you're you.
             </p>
           </div>
           <div className="col s11 offset-s1">

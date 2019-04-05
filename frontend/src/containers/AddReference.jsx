@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import BoxFirst from '../components/BoxFirst'
+import BoxSecond from '../components/BoxSecond'
 import AutomComplete from '../components/AutoComplete'
 
 export default class AddReferences extends Component {
@@ -7,13 +8,18 @@ export default class AddReferences extends Component {
     super(props)
     this.onChange = this.onChange.bind(this)
     this.state = {
-      referenceState: 1,
+      referenceState: 2,
       referenceDetails: {
         name: '',
-        role: '',
+        referentRole: '',
         phoneNumber: '',
         email: '',
-        competence: []
+        competence: [],
+        myRole: '',
+        responsibility: '',
+        workplace: '',
+        dateFrom: '',
+        dateTo: ''
       }
     }
   }
@@ -53,13 +59,19 @@ export default class AddReferences extends Component {
         break
       case 2:
         referencePage = (
-          <button onClick={() => this.onContinue()}>step 2</button>
+          <BoxSecond
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            onChange={this.onChange}
+            details={this.state.referenceDetails}
+            {...this.state.referenceDetails}
+          />
         )
         break
       default:
         referencePage = <h1>END</h1>
     }
 
-    return <div>{referencePage}</div>
+    return <div style={{ marginTop: '100px' }}>{referencePage}</div>
   }
 }

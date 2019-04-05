@@ -11,7 +11,7 @@ export default class BoxFirst extends Component {
     return (
       <div className="container">
         <div className="row card">
-          <div className="card-content text-center">
+          <div className="col s11 offset-s1">
             <h3>Who's your reference?</h3>
           </div>
           <form>
@@ -29,7 +29,7 @@ export default class BoxFirst extends Component {
               <div className="row">
                 <div className="col s6 offset-s1">
                   <AutoComplete
-                    value={this.props.role}
+                    value={this.props.referentRole}
                     onChange={this.props.onChange}
                     url="api/csv/professions"
                     label="role"

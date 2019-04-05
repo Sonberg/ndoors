@@ -25,18 +25,18 @@ const LogoWrapper = {
 }
 
 const LogoImage = styled.img`
-    width: 220px;   
+    width: 60%;   
     height: auto;
 `;
 
 const IconImage = styled.img`
-    width: 100px;   
+    width: 60%;   
     height: auto;
     margin: 0;
 `;
 
 const IconText = styled.p`
-    width: 14ch;   
+    max-width: 14ch;   
     height: auto;
     padding-top: 10px; 
     margin: auto;
@@ -82,7 +82,7 @@ export default class Home extends Component {
                                 </Link>
                             </div>
                             <div class="col s6">
-                                <img style={{ width: '400px' }} src={require('./../assets/saturn.svg')} />
+                                <img style={{ width: '90%', height: 'auto' }} src={require('./../assets/saturn.svg')} />
                             </div>
                         </div>
                     </TopHeader>
@@ -127,13 +127,13 @@ export default class Home extends Component {
                                 <Title>
                                     We need to fix the human chain of <PinkHighligt>endorsement.</PinkHighligt>
                                 </Title>
-                                <p style={{ fontSize: '18px', fontWeight: 'lighter' }}>
+                                <p style={{ fontSize: '1.12rem', fontWeight: 'lighter' }}>
                                     A key ingredient to solving the problem of integration is trust. In a multicultural society,
                                     referencing needs to be trustworthy and frictionless. Regardless where on earth it’s coming from.
                                 </p>
                             </div>
                             <div class="col s4" style={{ textAlign: 'left' }}>
-                                <img style={{ width: '250px' }} src={require('./../assets/team.svg')} />
+                                <img style={{ width: '90%' }} src={require('./../assets/team.svg')} />
                             </div>
                         </div>
                         <div class="row" style={{ height: '20vh', margin: '5% auto 0', textAlign: 'center' }}>

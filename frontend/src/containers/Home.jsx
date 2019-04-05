@@ -1,63 +1,64 @@
 import React, { Component, Fragment } from 'react'
-import styled from "styled-components"
+import Navigation from '../components/Navigation'
+import styled from 'styled-components'
 
 const Title = styled.h1`
-    font-size: 70px;
-    color: #6C9F9B;
-    font-weight: bold;
-`;
+  font-size: 70px;
+  color: #6c9f9b;
+  font-weight: bold;
+`
 
 const Button = styled.button`
-    color: #fff;
-    background-color: #6C9F9B;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    height: 80px;
-    margin: 20px;
+  color: #fff;
+  background-color: #6c9f9b;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  height: 80px;
+  margin: 20px;
+  outline: none;
+  text-transform: uppercase;
+  text-align: center;
+  width: 200px;
+
+  :focus. :active {
     outline: none;
-    text-transform: uppercase;
-    text-align: center;
-    width: 200px;
+  }
 
-    :focus. :active {
-        outline: none;
-    }
-
-    :hover {
-        transition: background-color 0.5s ease;
-        background-color: #4a7a76;
-    }
-`;
+  :hover {
+    transition: background-color 0.5s ease;
+    background-color: #4a7a76;
+  }
+`
 
 const ButtonContainer = styled.div`
-    display: inline-block;
-    height: 3rem;
-    justify-content: space-between;
-`;
+  display: inline-block;
+  height: 3rem;
+  justify-content: space-between;
+`
 
 const BoxContainer = styled.div`
-    width: 600px;
-    height: 350px;
-    top: -10%;
-    margin: auto;
-    position: relative;
-    text-align: center;
-    padding: 30px;
-`;
+  width: 600px;
+  height: 350px;
+  top: -10%;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  padding: 30px;
+`
 
 const BodyWrapper = styled.section`
-    height: 100%;
-    margin: auto;
-    display: flex;
-`;
+  height: 100%;
+  margin: auto;
+  display: flex;
+`
 
 const SubTitle = styled.p`
-    font-weight: bold;
-    font-size: 30px;
-    padding: 10px 0;
-    color: #6C9F9B;
-`;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #6c9f9b;
+`
 
 export default class Home extends Component {
   constructor(props) {
@@ -92,7 +93,7 @@ export default class Home extends Component {
             </ButtonContainer>
           </BoxContainer>
         </BodyWrapper>
-      </Fragment >
+      </Fragment>
     )
   }
 }

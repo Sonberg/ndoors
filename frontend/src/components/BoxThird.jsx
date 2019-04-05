@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AutoComplete from './AutoComplete'
-import Input from './InputField'
 
 export default class BoxSecond extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ export default class BoxSecond extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32spx' }}>List your competencies</h3>
+            <h3 style={{ fontSize: '32px' }}>List your competencies</h3>
           </div>
           <form>
             <div className="row">

@@ -12,7 +12,7 @@ export default class BoxSecond extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32spx' }}>Describe your relation</h3>
+            <h3 style={{ fontSize: '32px' }}>Describe your relation</h3>
           </div>
           <form>
             <div className="row">
@@ -20,7 +20,7 @@ export default class BoxSecond extends Component {
                 <Input
                   name="workplace"
                   label="We worked together at"
-                  value={this.props.workplace}
+                  value={this.props.details.workplace}
                   onChange={this.props.onChange}
                 />
               </div>
@@ -28,7 +28,7 @@ export default class BoxSecond extends Component {
                 <Input
                   name="responsibility"
                   label="My main responsibility was"
-                  value={this.props.responsibility}
+                  value={this.props.details.responsibility}
                   onChange={this.props.onChange}
                 />
               </div>
@@ -36,7 +36,7 @@ export default class BoxSecond extends Component {
             <div className="row">
               <div className="col s5 offset-s1">
                 <AutoComplete
-                  value={this.props.myRole}
+                  value={this.props.details.role}
                   onChange={this.props.onChange}
                   url="api/csv/professions"
                   label="my role was"
@@ -54,7 +54,7 @@ export default class BoxSecond extends Component {
                   name="dateFrom"
                   label="YY-MM-DD"
                   type="number"
-                  value={this.props.dateFrom}
+                  value={this.props.details.dateFrom}
                   onChange={this.props.onChange}
                 />
               </div>
@@ -66,25 +66,25 @@ export default class BoxSecond extends Component {
                   name="dateTo"
                   type="number"
                   label="YY-MM-DD"
-                  value={this.props.dateTo}
+                  value={this.props.details.dateTo}
                   onChange={this.props.onChange}
                 />
               </div>
             </div>
           </form>
           <div className="row">
-            <a
+            <button
               className="col s2 offset-s1 waves-effect waves-light btn"
               onClick={() => this.props.onBackward()}
             >
               Back
-            </a>
-            <a
+            </button>
+            <button
               className="col s2 offset-s6 waves-effect waves-light btn center-align"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </a>
+            </button>
           </div>
         </div>
       </div>

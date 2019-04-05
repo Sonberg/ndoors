@@ -12,16 +12,16 @@ export default class BoxFirst extends Component {
       <div className="container">
         <div className="row card">
           <div className="col s11 offset-s1">
-            <h3 style={{ fontSize: '32spx' }}>Who's your reference?</h3>
+            <h3 style={{ fontSize: '32px' }}>Who's your reference?</h3>
           </div>
           <form>
             <div>
               <div className="row">
                 <div className="col s6 offset-s1">
                   <Input
-                    name="name"
+                    name="referentName"
                     label="Name"
-                    value={this.props.name}
+                    value={this.props.details.referentName}
                     onChange={this.props.onChange}
                   />
                 </div>
@@ -29,7 +29,7 @@ export default class BoxFirst extends Component {
               <div className="row">
                 <div className="col s6 offset-s1">
                   <AutoComplete
-                    value={this.props.referentRole}
+                    value={this.props.details.referentRole}
                     onChange={this.props.onChange}
                     url="api/csv/professions"
                     label="role"
@@ -40,30 +40,30 @@ export default class BoxFirst extends Component {
             <div className="row">
               <div className="col s5 offset-s1 " style={{}}>
                 <Input
-                  name="email"
+                  name="referentEmail"
                   label="E-mail"
-                  value={this.props.email}
+                  value={this.props.details.referentEmail}
                   onChange={this.props.onChange}
                 />
               </div>
               <div className="col s5" style={{}}>
                 <Input
                   type="number"
-                  name="phoneNumber"
+                  name="referentPhoneNumber"
                   label="Phone number"
-                  value={this.props.phoneNumber}
+                  value={this.props.details.referentPhoneNumber}
                   onChange={this.props.onChange}
                 />
               </div>
             </div>
           </form>
           <div className="row">
-            <a
+            <button
               className="col s2 offset-s9 waves-effect waves-light btn center-align"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </a>
+            </button>
           </div>
         </div>
       </div>

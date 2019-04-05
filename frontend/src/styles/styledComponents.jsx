@@ -34,3 +34,23 @@ export const PinkUnderline = styled.span`
     border-bottom: 2px solid #FEA097;
     padding-bottom: 5px;
 `;
+
+export const SmallPinkButton = styled.button`
+    color: #000;
+    background-color: #FFF8F7;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    height: 40px;
+    margin-top: 32px;
+    margin-right: 30px;
+    outline: none;
+    text-align: center;
+    width: 90%;
+    box-shadow: 0px 3px 5px rgba(88, 88, 88, 0.25);
+    
+    :visited, :active {
+        color: #000;
+        background-color: #FFF8F7 !important;
+    }
+`;

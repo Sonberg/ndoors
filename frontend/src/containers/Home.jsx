@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
 import { BigButton, Title, PinkHighligt, PinkUnderline } from './../styles/styledComponents'
@@ -76,7 +77,9 @@ export default class Home extends Component {
                                 <Title style={{ color: '#fff' }}>
                                     Get social proof < br /> on your <PinkHighligt>abilities.</PinkHighligt>
                                 </Title>
-                                <BigButton color={'#000'} bgColor={'#F2F6F6'}> Add Reference </BigButton>
+                                <Link to='/add-reference'>
+                                    <BigButton color={'#000'} bgColor={'#F2F6F6'}> Add Reference </BigButton>
+                                </Link>
                             </div>
                             <div class="col s6">
                                 <img style={{ width: '400px' }} src={require('./../assets/saturn.svg')} />
@@ -135,7 +138,9 @@ export default class Home extends Component {
                         </div>
                         <div class="row" style={{ height: '20vh', margin: '5% auto 0', textAlign: 'center' }}>
                             <div class="col s12">
-                                <BigButton> Add Reference </BigButton>
+                                <Link to='/add-reference'>
+                                    <BigButton> Add Reference </BigButton>
+                                </Link>
                                 <BigButton onClick={this.logIn}> Log in </BigButton>
                             </div>
                         </div>

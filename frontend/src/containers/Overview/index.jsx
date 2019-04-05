@@ -7,9 +7,10 @@ export default class Overview extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col s8">
+                    <div className="col s12">
                         <OverviewUser />
-                        <div className="divider" />
+                    </div>
+                    <div className="col s8">
 
                         <div style={{ padding: '2em 0', display: 'flex', justifyContent: 'start' }}>
                             <button className="waves-effect waves-light btn-large" style={{ marginRight: '1em' }}>Share references</button>

@@ -31,6 +31,6 @@ export const PinkHighligt = styled.span`
 `;
 
 export const PinkUnderline = styled.span`
-    borderBottom: 2px solid #FEA097;
-    paddingBottom: 5px;
+    border-bottom: 2px solid #FEA097;
+    padding-bottom: 5px;
 `;

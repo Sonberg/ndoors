@@ -85,10 +85,9 @@ export default class Home extends Component {
                     </TopHeader>
 
                     <ColoredRow bgColor={'fff'} flip={true}>
-                        <div class="row" style={{ height: '100px', maxWidth: '65ch', margin: 'auto 25%', textAlign: 'center' }}>
+                        <div class="row" style={{ height: '100px', maxWidth: '70ch', textAlign: 'center' }}>
                             <Title>
-                                we help job seekers gather and share <PinkHighligt>references.</PinkHighligt>
-                                Crowdsourcing social proof <PinkHighligt>globally.</PinkHighligt>
+                                we help job seekers gather and share <PinkHighligt>references.</PinkHighligt> Crowdsourcing social proof <PinkHighligt>globally.</PinkHighligt>
                             </Title>
                         </div>
                     </ColoredRow>
@@ -120,8 +119,8 @@ export default class Home extends Component {
                     </ColoredRow>
 
                     <ColoredRow bgColor={'fff'} flip={true} >
-                        <div class="row" style={{ margin: 'auto', textAlign: 'center' }}>
-                            <div class="col s9" style={{ textAlign: 'left', padding: '0 10% 0 15%', maxWidth: '80ch' }}>
+                        <div class="row" style={{ margin: 'auto', textAlign: 'center', display: 'flex', justifyContent: 'space-between' }}>
+                            <div class="col s4" style={{ textAlign: 'left', maxWidth: '80ch' }}>
                                 <Title>
                                     We need to fix the human chain of <PinkHighligt>endorsement.</PinkHighligt>
                                 </Title>
@@ -130,7 +129,7 @@ export default class Home extends Component {
                                     referencing needs to be trustworthy and frictionless. Regardless where on earth it’s coming from.
                                 </p>
                             </div>
-                            <div class="col s4">
+                            <div class="col s4" style={{ textAlign: 'left' }}>
                                 <img style={{ width: '250px' }} src={require('./../assets/team.svg')} />
                             </div>
                         </div>

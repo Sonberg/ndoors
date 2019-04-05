@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
-import { BigButton, Title } from './../styles/styledComponents'
+import { BigButton, Title, PinkHighligt, PinkUnderline } from './../styles/styledComponents'
 
 const HomeWrapper = styled.section`
     background-color: #F2F6F6;
@@ -74,7 +74,7 @@ export default class Home extends Component {
                         <div class="row" style={{ height: '100px', margin: 'auto' }}>
                             <div class="col s6" style={{ textAlign: 'left', padding: '10% 0' }}>
                                 <Title style={{ color: '#fff' }}>
-                                    Get social proof < br /> on your <span style={{ color: '#FEA097' }}>abilities.</span>
+                                    Get social proof < br /> on your <PinkHighligt>abilities.</PinkHighligt>
                                 </Title>
                                 <BigButton color={'#000'} bgColor={'#F2F6F6'}> Add Reference </BigButton>
                             </div>
@@ -87,8 +87,8 @@ export default class Home extends Component {
                     <ColoredRow bgColor={'fff'} flip={true}>
                         <div class="row" style={{ height: '100px', maxWidth: '65ch', margin: 'auto 25%', textAlign: 'center' }}>
                             <Title>
-                                we help job seekers gather and share <span style={{ color: '#FEA097' }}>references.</span>
-                                Crowdsourcing social proof <span style={{ color: '#FEA097' }}>globally.</span>
+                                we help job seekers gather and share <PinkHighligt>references.</PinkHighligt>
+                                Crowdsourcing social proof <PinkHighligt>globally.</PinkHighligt>
                             </Title>
                         </div>
                     </ColoredRow>
@@ -96,7 +96,7 @@ export default class Home extends Component {
                     <ColoredRow bgColor={'F2F6F6'}>
                         <div class="row" style={{ margin: '0 auto 50px', textAlign: 'center' }}>
                             <Title style={{ fontWeight: '500', letterSpacing: '5px' }}>
-                                how <span style={{ borderBottom: '2px solid #FEA097', paddingBottom: '5px' }}>it works</span>
+                                how <PinkUnderline>it works</PinkUnderline>
                             </Title>
                         </ div>
                         <div class="row" style={{ textAlign: 'center', margin: '70px 10%' }}>
@@ -123,7 +123,7 @@ export default class Home extends Component {
                         <div class="row" style={{ margin: 'auto', textAlign: 'center' }}>
                             <div class="col s9" style={{ textAlign: 'left', padding: '0 10% 0 15%', maxWidth: '80ch' }}>
                                 <Title>
-                                    We need to fix the human chain of <span style={{ color: '#FEA097' }}>endorsement.</span>
+                                    We need to fix the human chain of <PinkHighligt>endorsement.</PinkHighligt>
                                 </Title>
                                 <p style={{ fontSize: '18px', fontWeight: 'lighter' }}>
                                     A key ingredient to solving the problem of integration is trust. In a multicultural society,
@@ -137,7 +137,7 @@ export default class Home extends Component {
                         <div class="row" style={{ height: '20vh', margin: '5% auto 0', textAlign: 'center' }}>
                             <div class="col s12">
                                 <BigButton> Add Reference </BigButton>
-                                <BigButton> Add Reference </BigButton>
+                                <BigButton onClick={this.logIn}> Log in </BigButton>
                             </div>
                         </div>
                     </ColoredRow>
@@ -145,7 +145,7 @@ export default class Home extends Component {
                     <ColoredRow bgColor={'F2F6F6'}>
                         <div class="row" style={{ margin: '0 15% 50px', textAlign: 'left' }}>
                             <p style={{ fontWeight: '500', letterSpacing: '5px' }}>
-                                <span style={{ borderBottom: '2px solid #FEA097', paddingBottom: '5px' }}>empowered by</span>
+                                <PinkUnderline>empowered by</PinkUnderline>
                             </p>
                         </ div>
                         <div class="row" style={LogoWrapper}>

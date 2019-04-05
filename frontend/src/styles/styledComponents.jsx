@@ -25,3 +25,12 @@ export const Title = styled.h1`
     font-weight: bold;
     margin: 0;
 `;
+
+export const PinkHighligt = styled.span`
+    color: #FEA097;
+`;
+
+export const PinkUnderline = styled.span`
+    borderBottom: 2px solid #FEA097;
+    paddingBottom: 5px;
+`;

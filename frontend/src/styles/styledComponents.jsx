@@ -5,7 +5,7 @@ export const BigButton = styled.button`
     background-color: ${props => props.bgColor ? props.bgColor : '#6C9F9B'};
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1rem;
     height: 60px;
     margin-top: 32px;
     margin-right: 30px;
@@ -20,7 +20,7 @@ export const BigButton = styled.button`
 `;
 
 export const Title = styled.h1`
-    font-size: 38px;
+    font-size: 2.38rem;
     color: #000;
     font-weight: bold;
     margin: 0;

@@ -30,7 +30,7 @@ export default class ReferenceRequest extends Component {
                     <div className="col s10">
                         <strong children="Namn Namnsson" />
                         <p>
-                            Hej, kan du skapa vara referens åt mig?
+                            Hej, kan du vara referens åt mig?
                   </p>
                         <div className="divider" />
                         <div style={{ display: 'flex', paddingTop: '1em', justifyContent: 'space-between', alignItems: 'center' }}>

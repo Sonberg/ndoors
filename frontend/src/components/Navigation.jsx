@@ -6,6 +6,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props)
 
+    this.logIn = this.logIn.bind(this)
     this.logOut = this.logOut.bind(this);
   }
 
@@ -13,6 +14,18 @@ class Navigation extends Component {
     localStorage.removeItem('user');
     localStorage.removeItem('loggedIn');
     this.props.history.push('/')
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('loggedIn')) {
+      this.props.history.push('/overview');
+    }
+  }
+
+  logIn() {
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('user', 'Kalle Karlsson');
+    this.props.history.push('/overview')
   }
 
   render() {
@@ -38,7 +51,7 @@ class Navigation extends Component {
                     <li><a href="/shared-references">Shared references</a></li>
                     <li><a href="/">People i've referenced</a></li>
                   </React.Fragment>
-                ) : null}
+                ) : <li><a onClick={this.logIn}>Login</a></li>}
                 <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
               </ul>
             </div>

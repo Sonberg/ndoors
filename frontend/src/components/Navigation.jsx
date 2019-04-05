@@ -19,6 +19,8 @@ class Navigation extends Component {
     const navBarStyling = {
       backgroundColor: '#6C9F9B'
     }
+    console.log(process.env);
+    
 
     return (
       <nav style={navBarStyling}>
@@ -30,6 +32,7 @@ class Navigation extends Component {
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {localStorage.getItem('loggedIn') ? (
                   <React.Fragment>
+                    {process.env.API_URL}
                     <li><a href="/">Overview</a></li>
                     <li><a href="/my-references">My references</a></li>
                     <li><a href="/shared-references">Shared references</a></li>

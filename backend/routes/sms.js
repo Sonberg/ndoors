@@ -8,29 +8,18 @@ routes.get('/:phone', async (req, res) => {
     res.send('hello')
 })
 
-routes.post('/:phone', async function (req, res) {
-    console.log("hello path, ", req.params.phone, url);
-    res.status(200).send("sent to phone: " + req.params.phone)
+routes.post('/:phone/:message', async function (req, res) {
+    const phone = req.params.phone.replace("0", "+46");
+    sendSms(phone, req.params.message, (response)=>{
+        res.status((response.status === 'created') ? 200 : 400).end();
+    });
 });
 
-async function sendSms(phoneNumber, message) {
+async function sendSms(phoneNumber, message, callback) {
     const auth = await getCredentials();
     console.log("get auth", auth)
     let headers = new Headers();
     headers.set('Authorization', 'Basic ' + base64.encode(auth.user + ":" + auth.pass));
-    // fetch(url, {
-    //     method: 'POST',
-    //     headers: headers,
-    //     body: {
-    //         from: auth.phone,
-    //         to: phoneNumber,
-    //         message: message,
-    //     }
-    // })
-    // .then(response => {
-    //     console.log(response.statusText);
-    // })
-
     request.post({
         url: url,
         form: {
@@ -44,6 +33,7 @@ async function sendSms(phoneNumber, message) {
         }
     }, (error, response, body) => {
         console.log(JSON.parse(body).status);
+        callback(JSON.parse(body));
     })
 }
 

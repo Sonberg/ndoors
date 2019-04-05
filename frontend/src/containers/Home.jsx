@@ -1,97 +1,167 @@
 import React, { Component, Fragment } from 'react'
+import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
+import { BigButton, Title, PinkHighligt, PinkUnderline } from './../styles/styledComponents'
 
-const Title = styled.h1`
-  font-size: 70px;
-  color: #6c9f9b;
-  font-weight: bold;
-`
+const HomeWrapper = styled.section`
+    background-color: #F2F6F6;
+`;
 
-const Button = styled.button`
-  color: #fff;
-  background-color: #6c9f9b;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  height: 80px;
-  margin: 20px;
-  outline: none;
-  text-transform: uppercase;
-  text-align: center;
-  width: 200px;
+const TopHeader = styled.div`
+    background-color: #6C9F9B;
+    height: 70vh;
+    padding: 5% 15% 0;
+    width: 100%;
+    margin: 0;
+`;
 
-  :focus. :active {
-    outline: none;
-  }
+const LogoWrapper = {
+    textAlign: 'center',
+    margin: '70px 10% 0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
 
-  :hover {
-    transition: background-color 0.5s ease;
-    background-color: #4a7a76;
-  }
-`
+const LogoImage = styled.img`
+    width: 220px;   
+    height: auto;
+`;
 
-const ButtonContainer = styled.div`
-  display: inline-block;
-  height: 3rem;
-  justify-content: space-between;
-`
+const IconImage = styled.img`
+    width: 100px;   
+    height: auto;
+    margin: 0;
+`;
 
-const BoxContainer = styled.div`
-  width: 600px;
-  height: 350px;
-  top: -10%;
-  margin: auto;
-  position: relative;
-  text-align: center;
-  padding: 30px;
-`
+const IconText = styled.p`
+    width: 14ch;   
+    height: auto;
+    padding-top: 10px; 
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+`;
 
-const BodyWrapper = styled.section`
-  height: 100%;
-  margin: auto;
-  display: flex;
-`
-
-const SubTitle = styled.p`
-  font-weight: bold;
-  font-size: 30px;
-  padding: 10px 0;
-  color: #6c9f9b;
-`
+const Footer = styled.div`
+    min-height: 25vh;
+    background-color: #6C9F9B;
+`;
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    this.logIn = this.logIn.bind(this)
-  }
-  componentDidMount() {
-    if (localStorage.getItem('loggedIn')) {
-      this.props.history.push('/overview');
+    constructor(props) {
+        super(props)
+        this.state = {}
+        this.logIn = this.logIn.bind(this)
     }
-  }
+    componentDidMount() {
+        if (localStorage.getItem('loggedIn')) {
+            this.props.history.push('/overview');
+        }
+    }
 
-  logIn() {
-    localStorage.setItem('loggedIn', true);
-    localStorage.setItem('user', 'Kalle Karlsson');
-    this.props.history.push('/overview')
-  }
+    logIn() {
+        localStorage.setItem('loggedIn', true);
+        localStorage.setItem('user', 'Kalle Karlsson');
+        this.props.history.push('/overview')
+    }
 
-  render() {
+    render() {
+        return (
+            <Fragment>
+                <HomeWrapper>
+                    <TopHeader>
+                        <div class="row" style={{ height: '100px', margin: 'auto' }}>
+                            <div class="col s6" style={{ textAlign: 'left', padding: '10% 0' }}>
+                                <Title style={{ color: '#fff' }}>
+                                    Get social proof < br /> on your <PinkHighligt>abilities.</PinkHighligt>
+                                </Title>
+                                <BigButton color={'#000'} bgColor={'#F2F6F6'}> Add Reference </BigButton>
+                            </div>
+                            <div class="col s6">
+                                <img style={{ width: '400px' }} src={require('./../assets/saturn.svg')} />
+                            </div>
+                        </div>
+                    </TopHeader>
 
-    return (
-      <Fragment>
-        <BodyWrapper>
-          <BoxContainer>
-            <Title> nDoors </Title>
-            <SubTitle> welcome </SubTitle>
-            <ButtonContainer>
-              <Button>Add Reference</Button>
-              <Button onClick={this.logIn}>Logga in</Button>
-            </ButtonContainer>
-          </BoxContainer>
-        </BodyWrapper>
-      </Fragment>
-    )
-  }
+                    <ColoredRow bgColor={'fff'} flip={true}>
+                        <div class="row" style={{ height: '100px', maxWidth: '70ch', textAlign: 'center' }}>
+                            <Title>
+                                we help job seekers gather and share <PinkHighligt>references.</PinkHighligt> Crowdsourcing social proof <PinkHighligt>globally.</PinkHighligt>
+                            </Title>
+                        </div>
+                    </ColoredRow>
+
+                    <ColoredRow bgColor={'F2F6F6'}>
+                        <div class="row" style={{ margin: '0 auto 50px', textAlign: 'center' }}>
+                            <Title style={{ fontWeight: '500', letterSpacing: '5px' }}>
+                                how <PinkUnderline>it works</PinkUnderline>
+                            </Title>
+                        </ div>
+                        <div class="row" style={{ textAlign: 'center', margin: '70px 10%' }}>
+                            <div class="col s3">
+                                <IconImage src={require('./../assets/icon-work.svg')} />
+                                <IconText>Add your references</IconText>
+                            </div>
+                            <div class="col s3">
+                                <IconImage src={require('./../assets/icon-phone.svg')} />
+                                <IconText>Wait for referent to verify</IconText>
+                            </div>
+                            <div class="col s3">
+                                <IconImage src={require('./../assets/icon-letter.svg')} />
+                                <IconText>Share references with employers</IconText>
+                            </div>
+                            <div class="col s3">
+                                <IconImage src={require('./../assets/icon-handshake.svg')} />
+                                <IconText>Land your dreamjob</IconText>
+                            </div>
+                        </div>
+                    </ColoredRow>
+
+                    <ColoredRow bgColor={'fff'} flip={true} >
+                        <div class="row" style={{ margin: 'auto', textAlign: 'center', display: 'flex', justifyContent: 'space-between' }}>
+                            <div class="col s4" style={{ textAlign: 'left', maxWidth: '80ch' }}>
+                                <Title>
+                                    We need to fix the human chain of <PinkHighligt>endorsement.</PinkHighligt>
+                                </Title>
+                                <p style={{ fontSize: '18px', fontWeight: 'lighter' }}>
+                                    A key ingredient to solving the problem of integration is trust. In a multicultural society,
+                                    referencing needs to be trustworthy and frictionless. Regardless where on earth it’s coming from.
+                                </p>
+                            </div>
+                            <div class="col s4" style={{ textAlign: 'left' }}>
+                                <img style={{ width: '250px' }} src={require('./../assets/team.svg')} />
+                            </div>
+                        </div>
+                        <div class="row" style={{ height: '20vh', margin: '5% auto 0', textAlign: 'center' }}>
+                            <div class="col s12">
+                                <BigButton> Add Reference </BigButton>
+                                <BigButton onClick={this.logIn}> Log in </BigButton>
+                            </div>
+                        </div>
+                    </ColoredRow>
+
+                    <ColoredRow bgColor={'F2F6F6'}>
+                        <div class="row" style={{ margin: '0 15% 50px', textAlign: 'left' }}>
+                            <p style={{ fontWeight: '500', letterSpacing: '5px' }}>
+                                <PinkUnderline>empowered by</PinkUnderline>
+                            </p>
+                        </ div>
+                        <div class="row" style={LogoWrapper}>
+                            <div class="col s4">
+                                <LogoImage src={require('./../assets/logo_AF.png')} />
+                            </div>
+                            <div class="col s4">
+                                <LogoImage src={require('./../assets/logo_jobtech.png')} />
+                            </div>
+                            <div class="col s4">
+                                <LogoImage src={require('./../assets/logo_46elks.png')} />
+                            </div>
+                        </div>
+                    </ColoredRow>
+                </HomeWrapper>
+                <Footer />
+            </Fragment >
+        )
+    }
 }

@@ -20,7 +20,7 @@ class Navigation extends Component {
       backgroundColor: '#6C9F9B'
     }
     console.log(process.env);
-    
+
 
     return (
       <nav style={navBarStyling}>

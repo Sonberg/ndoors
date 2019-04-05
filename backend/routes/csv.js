@@ -20,6 +20,6 @@ loadCsv('./static/abilities.csv').then(res => abilities = res);
 loadCsv('./static/skills.csv').then(res => skills = res);
 
 // Search for string
-const search = query => str => str && str.startsWith(query);
+const search = query => str => str && str.toLowerCase().startsWith(query && query.toLowerCase());
 
 module.exports = routes;

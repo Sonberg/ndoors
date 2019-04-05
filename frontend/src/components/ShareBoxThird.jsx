@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AutoComplete from './AutoComplete'
 import Input from './InputField'
 
 export default class SharedBoxThird extends Component {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AutoComplete from './AutoComplete'
 import Input from './InputField'
 import { SmallPinkButton } from './../styles/styledComponents'
 
@@ -58,7 +57,7 @@ export default class SharedBoxFirst extends Component {
                         </div>
                         <div className="row">
                             <div className="col s3 offset-s1">
-                                <SmallPinkButton style={{ backgroundColor: this.state.setButtonColor }}>{localStorage.getItem('email')}Shift Leader</SmallPinkButton>
+                                <SmallPinkButton style={{ backgroundColor: this.state.setButtonColor }}>Shift Leader</SmallPinkButton>
                             </div>
                             {this.state.showNewGroup && <div className="col s3 ">
                                 <SmallPinkButton style={{ backgroundColor: this.state.setButtonColor }}>{this.props.details.newGroupName}</SmallPinkButton>

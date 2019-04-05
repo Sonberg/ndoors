@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AutoComplete from './AutoComplete'
 import Input from './InputField'
 
 export default class SharedBoxSecond extends Component {
@@ -8,7 +7,9 @@ export default class SharedBoxSecond extends Component {
         this.state = {}
     }
 
+
     render() {
+        console.log(this.props.details);
         return (
             <div className="container">
                 <div className="row card">

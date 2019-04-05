@@ -11,38 +11,25 @@ export default class SharedReferences extends Component {
         this.state = {
             referenceState: 1,
             referenceDetails: {
-                newGroupName: '',
-                referentRole: '',
-                referentPhoneNumber: '',
-                referentEmail: '',
-                skills: [],
-                abilities: [],
-                role: '',
-                responsibility: '',
-                workplace: '',
-                dateFrom: '',
-                dateTo: '',
-                note: '',
-                name: '',
-                email: '',
-                currentRole: ''
+                newGroupName: ''
             },
-            id: ''
+            userReferenceList: [],
         };
-        // this.getReferenceData(values.key).then(result => {
-        //     this.setState(result);
-        //     this.setState({ pageStep: (this.state.verified) ? 4 : 1 });
-        //     console.log("hello: ", this.state)
-        // });
+
+        const userEmail = localStorage.getItem('email')
+
+        this.getReferenceData(userEmail).then(async result => {
+            await this.setState({ userReferenceList: result });
+        });
     }
 
-    // async getReferenceData(key) {
-    //     return fetch(`http://localhost:3001/api/shared-references/${key}`)
-    //         .then(response => response.json())
-    //         .then(response => {
-    //             return response;
-    //         })
-    // }
+    async getReferenceData(key) {
+        return fetch(`http://localhost:3001/api/shared-references/${key}`)
+            .then(response => response.json())
+            .then(response => {
+                return response;
+            })
+    }
 
     onContinue() {
         this.setState({ referenceState: this.state.referenceState + 1 })
@@ -71,6 +58,7 @@ export default class SharedReferences extends Component {
         })
     }
     render() {
+        console.log(this.state.userReferenceList)
         let referencePage
         switch (this.state.referenceState) {
             case 1:
@@ -91,7 +79,7 @@ export default class SharedReferences extends Component {
                         onBackward={() => this.onBackward()}
                         onContinue={() => this.onContinue()}
                         onChange={this.onChange}
-                        details={this.state.referenceDetails}
+                        details={this.state.userReferenceList}
                     />
                 )
                 break

@@ -63,7 +63,7 @@ export default class Home extends Component {
 
     logIn() {
         localStorage.setItem('loggedIn', true);
-        localStorage.setItem('user', 'Namn Namnsson');
+        localStorage.setItem('user', 'evaterry');
         localStorage.setItem('email', 'email@email.com');
         this.props.history.push('/overview')
     }

@@ -59,8 +59,10 @@ export default class ReferenceRequest extends Component {
                     </div>
                     <div className="card-action">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <Button className="btn-small" onClick={this.sendReminder} disabled={verified}>Påminn</Button>
-                            <Button className="btn-small" onClick={this.remove} disabled={verified}>Ta bort</Button>
+                            <div>
+                                <Button className="btn-small" onClick={this.sendReminder} disabled={verified} style={{ marginRight: '1em' }}>Påminn</Button>
+                                <Button className="btn-small" onClick={this.remove} invert disabled={verified}>Ta bort</Button>
+                            </div>
                             {verified ? (<Badge children="Verifierad" />) : null}
                         </div>
                     </div>

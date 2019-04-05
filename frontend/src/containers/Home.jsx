@@ -133,7 +133,7 @@ export default class Home extends Component {
                                 </p>
                             </div>
                             <div class="col s4" style={{ textAlign: 'left' }}>
-                                <img style={{ width: '90%' }} src={require('./../assets/team.svg')} />
+                                <img style={{ width: '50%' }} src={require('./../assets/team.svg')} />
                             </div>
                         </div>
                         <div class="row" style={{ height: '20vh', margin: '5% auto 0', textAlign: 'center' }}>

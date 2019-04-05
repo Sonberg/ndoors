@@ -105,6 +105,6 @@ export default class AddReferences extends Component {
         referencePage = <h1>END</h1>
     }
 
-    return <div style={{ marginTop: '100px' }}>{referencePage}</div>
+    return <div style={{ marginTop: '100px', height: '100vh', backgroundImage: `url(${require('./../assets/BGK.svg')})` }}>{referencePage}</div>
   }
 }

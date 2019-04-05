@@ -3,6 +3,20 @@ import React, { Component } from 'react'
 import { Subject } from 'rxjs'
 import { debounceTime } from 'rxjs/operators';
 
+import styled from "styled-components"
+
+const Container = styled.div`
+width: 10rem;
+position: relative;
+`;
+
+const ResultContainer = styled.div`
+position: absolut;
+top: 0;
+left: 0,
+right: 0;
+`;
+
 export default class AutoComplete extends Component {
 
     constructor(props) {
@@ -20,12 +34,17 @@ export default class AutoComplete extends Component {
     }
 
     render() {
-        return (<div>
-            <input value={this.state.value} onChange={this.onChange} />
-            <div>
-                {this.state.result.map(this.renderHit)}
+        return (<Container>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input value={this.state.value} onChange={this.onChange} id="auto-complete" type="text" />
+                    <label class="active" for="auto-complete" children={this.props.label} />
+                </div>
             </div>
-        </div>);
+            <ResultContainer>
+                {this.state.result.map(this.renderHit)}
+            </ResultContainer>
+        </Container >);
     }
 
     renderHit(hit) {

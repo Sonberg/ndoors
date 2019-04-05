@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import Navigation from '../components/Navigation'
-
 import styled from "styled-components"
 
 const Title = styled.h1`
@@ -62,27 +60,39 @@ const SubTitle = styled.p`
 `;
 
 export default class Home extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.logIn = this.logIn.bind(this)
+  }
+  componentDidMount() {
+    if (localStorage.getItem('loggedIn')) {
+      this.props.history.push('/overview');
     }
+  }
 
-    render() {
+  logIn() {
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('user', 'Kalle Karlsson');
+    this.props.history.push('/overview')
+  }
 
-        return (
-            <Fragment>
-                <Navigation />
-                <BodyWrapper>
-                    <BoxContainer>
-                        <Title> nDoors </Title>
-                        <SubTitle> welcome </SubTitle>
-                        <ButtonContainer>
-                            <Button> Add Reference </Button>
-                            <Button> Logga in </Button>
-                        </ButtonContainer>
-                    </BoxContainer>
-                </BodyWrapper>
-            </Fragment >
-        )
-    }
+  render() {
+
+    return (
+      <Fragment>
+
+        <BodyWrapper>
+          <BoxContainer>
+            <Title> nDoors </Title>
+            <SubTitle> welcome </SubTitle>
+            <ButtonContainer>
+              <Button> Add Reference </Button>
+              <Button onClick={this.logIn}> Logga in </Button>
+            </ButtonContainer>
+          </BoxContainer>
+        </BodyWrapper>
+      </Fragment >
+    )
+  }
 }

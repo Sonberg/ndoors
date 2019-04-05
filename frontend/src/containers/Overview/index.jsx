@@ -4,6 +4,7 @@ import OverviewSkills from './components/Overview.Skills'
 import OverviewSuggestions from './components/Overview.Suggestions'
 import ReferenceRequest from './components/ReferenceRequest'
 import Button from '../../components/Button';
+import { get } from '../../api';
 
 const sectionHeader = {
     fontWeight: '600',
@@ -11,6 +12,21 @@ const sectionHeader = {
 }
 
 export default class Overview extends Component {
+    state = {
+        result: []
+    }
+
+    async componentDidMount() {
+        try {
+            const response = await get(`api/references?userEmail=${localStorage.getItem('email')}`);
+            const json = await response.json();
+
+            this.setState({ result: json });
+        } catch {
+
+        }
+    }
+
     render() {
         return (
             <div className="container">
@@ -27,11 +43,7 @@ export default class Overview extends Component {
 
 
                         <h5 children="Requested references" style={sectionHeader} />
-                        <ReferenceRequest skills={["Blockchain"]} />
-                        <ReferenceRequest verified skills={["React", "AWS", "Machine learning"]} />
-                        <ReferenceRequest verified skills={["jQuery"]} />
-                        <ReferenceRequest verified skills={["Linux", "Git", "React"]} />
-
+                        {this.state.result.map(x => <ReferenceRequest {...x} />)}
 
                     </div>
                     <div className="col s12 m6" style={{ paddingLeft: '1.5em' }}>

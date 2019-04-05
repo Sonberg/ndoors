@@ -19,11 +19,10 @@ export default class OverviewSkills extends Component {
                     <EmpowerAF />
                 </div>
                 <div className="row">
-                    <SkillBadge text="Python" number="5" />
-                    <SkillBadge text="Python" number="5" />
-                    <SkillBadge text="Python" number="5" />
-                    <SkillBadge text="Python" number="5" />
-                    <SkillBadge text="Python" number="5" />
+                    <SkillBadge text="Tryckförare" number="5" />
+                    <SkillBadge text="Ledarskap" number="1" />
+                    <SkillBadge text="Motviktstruck" number="2" />
+                    <SkillBadge text="Organiserad" number="1" />
                 </div>
             </div>
         );
@@ -43,13 +42,13 @@ const badgeStyle = {
     justifyContent: 'space-between'
 }
 
-export const SkillBadge = ({ text, number, style }) => (
-    <div className="col" style={style}>
+export const SkillBadge = ({ text, number, style, verified = true }) => (
+    <div className="col" style={{ ...style, opacity: verified ? 1 : 0.4 }}>
         <div style={badgeStyle}>
             <div children={text} style={{ marginRight: '1em' }} />
             <div>
                 {number ? number : (<i className="tiny material-icons" style={{ marginTop: 4 }}>check</i>)}
             </div>
         </div>
-    </div>
+    </div >
 )

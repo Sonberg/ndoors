@@ -14,20 +14,10 @@ const styles = {
     opacity: '0.7'
 }
 
-const borderLeft = {
-    borderLeft: '1px solid #99bcb9',
-}
 
 const smallText = {
     fontSize: 12,
     fontWeight: 500
-}
-
-const icon = {
-    height: 44,
-    width: 44,
-    borderRadius: 100,
-    margin: '0.25em 0'
 }
 
 export default () => (
@@ -45,8 +35,8 @@ export default () => (
                                 <i className="tiny material-icons">check</i>
                             </span>
                         </h5>
-                        <p style={{ margin: '0 0 0.5em', color: '#9d9d9e' }} children="UX-Designer" />
-                        <p style={{ margin: '0 0 0em', fontSize: 13 }} children="namn.namnsson@hotmail.se" />
+                        <p style={{ margin: '0 0 0.5em', color: '#9d9d9e' }} children="Lagerarbetare" />
+                        <p style={{ margin: '0 0 0em', fontSize: 13 }} children={localStorage.getItem('email')} />
                         <p style={{ margin: '0 0 0.5em', fontSize: 13 }} children="070-165 45 22" />
                     </div>
                 </div>

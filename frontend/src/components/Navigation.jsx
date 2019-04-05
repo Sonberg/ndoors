@@ -23,20 +23,22 @@ class Navigation extends Component {
     return (
       <nav style={navBarStyling}>
         <div className="nav-wrapper">
-          <div className="col s12">
-            <a href="/" className="brand-logo">Ndoors</a>
+          <div className="row">
+            <div className="col s12">
+              <a href="/" className="brand-logo">ndoors</a>
 
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              {localStorage.getItem('loggedIn') ? (
-                <React.Fragment>
-                  <li><a href="/">Overview</a></li>
-                  <li><a href="/my-references">My references</a></li>
-                  <li><a href="/shared-references">Shared references</a></li>
-                  <li><a href="/">People i've referenced</a></li>
-                </React.Fragment>
-              ) : null}
-              <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
-            </ul>
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                {localStorage.getItem('loggedIn') ? (
+                  <React.Fragment>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="/my-references">My references</a></li>
+                    <li><a href="/shared-references">Shared references</a></li>
+                    <li><a href="/">People i've referenced</a></li>
+                  </React.Fragment>
+                ) : null}
+                <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

@@ -6,7 +6,7 @@ import Home from './containers/Home.jsx'
 import AddReference from './containers/AddReference'
 import MyReferences from './containers/MyReferences'
 import SharedReferences from './containers/SharedReferences'
-import Overview from './containers/Overview'
+import Overview from './containers/Overview/index'
 import * as serviceWorker from './serviceWorker'
 
 import './index.scss'

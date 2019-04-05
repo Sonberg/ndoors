@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Input from './InputField'
+import { SmallPinkButton } from './../styles/styledComponents'
 
 export default class SharedBoxSecond extends Component {
     constructor(props) {
@@ -9,7 +9,6 @@ export default class SharedBoxSecond extends Component {
 
 
     render() {
-        console.log(this.props.details);
         return (
             <div className="container">
                 <div className="row card">
@@ -18,56 +17,25 @@ export default class SharedBoxSecond extends Component {
                         <p>Choose the references you want to share with the employer. <br />You can add or remove them as you want.</p>
                     </div>
                     <div>
-                        <div className="row">
-                            <div className="col s3 offset-s1">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col s3 offset-s1">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col s3 offset-s1">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                            <div className="col s3 ">
-                                <button>Group</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col s5 offset-s1 ">
-                            <Input
-                                name="referentName"
-                                label="Create Group"
-                                value={this.props.details.referentName}
-                                onChange={this.props.onChange}
-                            />
-                        </div>
-                        <div className="col s2 offset-s1 ">
-                            <button style={{ borderRadius: '50%', width: '30px', height: '30px', marginTop: '25%' }}>+</button>
+                        <div className="row" style={{ padding: '0 10%' }}>
+                            {this.props.details.map((ref, index) =>
+                                <div key={index} className="col s4" style={{ padding: '0' }}>
+                                    <SmallPinkButton style={{ display: 'inline-flex' }}>
+                                        <div className="col s11" style={{ padding: '0', paddingTop: '0.5rem' }}>
+                                            {ref.referenceName}
+                                        </div>
+                                        <div className="col s0">
+                                            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">add</i></a>
+                                        </div>
+                                    </SmallPinkButton>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="row" style={{ padding: '20px 10px' }}>
                         <button
                             className="col s2 offset-s1 waves-effect waves-light btn"
+                            style={{ backgroundColor: "#97b2b0" }}
                             onClick={() => this.props.onBackward()}
                         >
                             Back
@@ -80,7 +48,7 @@ export default class SharedBoxSecond extends Component {
                         </button>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

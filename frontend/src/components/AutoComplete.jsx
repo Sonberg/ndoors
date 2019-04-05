@@ -38,7 +38,7 @@ export default class AutoComplete extends Component {
             <div class="row">
                 <div class="input-field col s6">
                     <input value={this.state.value} onChange={this.onChange} id="auto-complete" type="text" />
-                    <label class="active" for="auto-complete" children={this.props.label} />
+                    <label className="active" for="auto-complete" children={this.props.label} />
                 </div>
             </div>
             <ResultContainer>

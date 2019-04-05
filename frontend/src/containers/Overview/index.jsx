@@ -12,7 +12,7 @@ export default class Overview extends Component {
                         <div className="divider" />
 
                         <div style={{ padding: '2em 0', display: 'flex', justifyContent: 'start' }}>
-                            <a className="waves-effect waves-light btn-large" style={{ marginRight: '1em' }}>Share references</a>
+                            <button className="waves-effect waves-light btn-large" style={{ marginRight: '1em' }}>Share references</button>
                             <a href="/add-reference" className="waves-effect waves-light btn-large">Add references</a>
                         </div>
 

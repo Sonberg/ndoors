@@ -81,7 +81,6 @@ export default class Home extends Component {
 
     return (
       <Fragment>
-
         <BodyWrapper>
           <BoxContainer>
             <Title> nDoors </Title>

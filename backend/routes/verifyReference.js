@@ -20,4 +20,16 @@ routes.post('/:id/verified/:value', async (req, res) => {
     })
 })
 
+routes.post('/:id/skills', async (req, res) => {
+    referenceLinksDb.doc(req.params.id).update({'skills': req.body})
+})
+routes.post('/:id/abilities', async (req, res) => {
+    referenceLinksDb.doc(req.params.id).update({'abilities': req.body})
+})
+
+routes.post('/:id/note', async (req, res) => {
+    console.log("hello ", req.body)
+    referenceLinksDb.doc(req.params.id).update({'referenceNote': req.body.note})
+})
+
 module.exports = routes;

@@ -39,6 +39,6 @@ export default class Overview extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }

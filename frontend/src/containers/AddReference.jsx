@@ -1,36 +1,110 @@
 import React, { Component } from 'react'
-import Box from '../components/Box'
+import BoxFirst from '../components/BoxFirst'
+import BoxSecond from '../components/BoxSecond'
+import BoxThird from '../components/BoxThird'
+import BoxFourth from '../components/BoxFourth'
+
+import AutomComplete from '../components/AutoComplete'
 
 export default class AddReferences extends Component {
   constructor(props) {
     super(props)
+    this.onChange = this.onChange.bind(this)
+    this.saveToArray = this.saveToArray.bind(this)
     this.state = {
-      referenceState: 1
+      referenceState: 1,
+      referenceDetails: {
+        name: '',
+        referentRole: '',
+        phoneNumber: '',
+        email: '',
+        skills: [],
+        abilities: [],
+        myRole: '',
+        responsibility: '',
+        workplace: '',
+        dateFrom: '',
+        dateTo: ''
+      }
     }
   }
   onContinue() {
     this.setState({ referenceState: this.state.referenceState + 1 })
   }
+  onBackward() {
+    this.setState({ referenceState: this.state.referenceState - 1 })
+  }
+  addName(name) {
+    this.state.referenceDetails.name = name
+  }
+  onChange({ target }) {
+    this.setState({
+      referenceDetails: {
+        ...this.state.referenceDetails,
+        [target.id]: target.value
+      }
+    })
+  }
+  saveToArray({ target }) {
+    this.setState({
+      referenceDetails: {
+        ...this.state.referenceDetails,
+        [target.id]: [
+          ...(this.state.referenceDetails[target.id] || []),
+          target.value
+        ]
+      }
+    })
+  }
+
   render() {
     let referencePage
     switch (this.state.referenceState) {
       case 1:
         referencePage = (
           <div>
-            <Box>ads</Box>
-            <button onClick={() => this.onContinue()}>step 1</button>
+            <BoxFirst
+              onBackward={() => this.onBackward()}
+              onContinue={() => this.onContinue()}
+              onChange={this.onChange}
+              details={this.state.referenceDetails}
+            />
           </div>
         )
         break
       case 2:
         referencePage = (
-          <button onClick={() => this.onContinue()}>step 2</button>
+          <BoxSecond
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            onChange={this.onChange}
+            details={this.state.referenceDetails}
+          />
+        )
+        break
+      case 3:
+        referencePage = (
+          <BoxThird
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            onSelect={this.saveToArray}
+            details={this.state.referenceDetails}
+          />
+        )
+        break
+      case 4:
+        referencePage = (
+          <BoxFourth
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            details={this.state.referenceDetails}
+          />
         )
         break
       default:
         referencePage = <h1>END</h1>
     }
 
-    return <div>{referencePage}</div>
+    return <div style={{ marginTop: '100px', height: '100vh', backgroundImage: `url(${require('./../assets/BGK.svg')})` }}>{referencePage}</div>
   }
 }

@@ -7,7 +7,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props)
 
-    this.logOut = this.logOut.bind(this);
+    this.logOut = this.logOut.bind(this)
   }
 
   logOut() {
@@ -29,8 +29,6 @@ class Navigation extends Component {
       backgroundColor: '#6C9F9B'
     }
 
-    console.log(process.env);
-
     return (
       <React.Fragment>
         <nav style={navBarStyling}>
@@ -38,7 +36,7 @@ class Navigation extends Component {
             <div className="row">
               <div className="col s12">
                 <a href="/" className="brand-logo">ndoors</a>
-                <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                <a  data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                   {localStorage.getItem('loggedIn') ? (
                     <Links />

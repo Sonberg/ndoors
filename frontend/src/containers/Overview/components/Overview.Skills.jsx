@@ -13,7 +13,3 @@ export default class OverviewSkills extends Component {
         );
     }
 }
-
-const Badge = ({ text, number }) => {
-
-}

@@ -22,9 +22,10 @@ export default () => (
                 </div>
                 <p style={{ color: 'rgb(157, 157, 158)' }}>Based on your skills</p>
                 <div className="row">
-                    <Job title="Front-end ninja" place="Klarna" date="Today" location="Stockholm" />
-                    <Job title="UX-designer" place="Cloud9" date="Yesterday" location="Uppsala" />
-                    <Job title="Designer" place="Tetra Pak" date="4 dagar sen" location="Västerås" />
+                    <Job title="Truckförare" place="Volvo" date="Today" location="Göteborg" />
+                    <Job title="Transportledare" place="PoG" date="Today" location="Göteborg" />
+                    <Job title="Lastbilschaufför" place="Postnord" date="Yesterday" location="Uppsala" />
+                    <Job title="Truckförare" place="Tetra Pak" date="4 dagar sen" location="Västerås" />
                 </div>
             </div>
         </div>

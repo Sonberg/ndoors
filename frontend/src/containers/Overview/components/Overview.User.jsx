@@ -35,7 +35,7 @@ export default () => (
                                 <i className="tiny material-icons">check</i>
                             </span>
                         </h5>
-                        <p style={{ margin: '0 0 0.5em', color: '#9d9d9e' }} children="UX-Designer" />
+                        <p style={{ margin: '0 0 0.5em', color: '#9d9d9e' }} children="Lagerarbetare" />
                         <p style={{ margin: '0 0 0em', fontSize: 13 }} children={localStorage.getItem('email')} />
                         <p style={{ margin: '0 0 0.5em', fontSize: 13 }} children="070-165 45 22" />
                     </div>

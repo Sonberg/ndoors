@@ -14,7 +14,7 @@ export default class Overview extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col s12">
+                    <div className="col s12" style={{ marginBottom: '1em' }}>
                         <OverviewUser />
                     </div>
                     <div className="col s12 m6">

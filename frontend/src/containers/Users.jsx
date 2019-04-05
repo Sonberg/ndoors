@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container } from 'react-bootstrap'
 import Navigation from '../components/Navigation'
 
 export default class Users extends Component {
@@ -12,7 +11,7 @@ export default class Users extends Component {
         return (
             <React.Fragment>
                 <Navigation />
-                <Container className="pt-3">Users!</Container>
+                <div className="pt-3">Users!</div>
             </React.Fragment>
         )
     }

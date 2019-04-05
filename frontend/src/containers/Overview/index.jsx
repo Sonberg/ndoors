@@ -17,8 +17,11 @@ export default class Overview extends Component {
                         </div>
 
 
-                        <h4 children="Requested references" style={{ fontWeight: '500', marginTop: 0 }} />
+                        <h4 children="Requested references" style={{ fontWeight: '500', marginTop: 0, color: '#888' }} />
                         <ReferenceRequest />
+                        <ReferenceRequest verified />
+                        <ReferenceRequest verified />
+                        <ReferenceRequest verified />
 
 
                     </div>

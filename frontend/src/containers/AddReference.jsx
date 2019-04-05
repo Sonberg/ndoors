@@ -12,7 +12,7 @@ export default class AddReferences extends Component {
     this.onChange = this.onChange.bind(this)
     this.saveToArray = this.saveToArray.bind(this)
     this.state = {
-      referenceState: 3,
+      referenceState: 1,
       referenceDetails: {
         name: '',
         referentRole: '',

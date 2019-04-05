@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.js"
+    "publishheroku": "cd ../ && git subtree push --prefix backend ndoors-api master || true",
+    "start": "node main.js"
   },
   "author": "",
   "license": "ISC",

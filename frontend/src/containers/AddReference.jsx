@@ -4,7 +4,6 @@ import BoxSecond from '../components/BoxSecond'
 import BoxThird from '../components/BoxThird'
 import BoxFourth from '../components/BoxFourth'
 import BoxFifth from '../components/BoxFifth'
-import AutomComplete from '../components/AutoComplete'
 
 export default class AddReferences extends Component {
   constructor(props) {
@@ -34,11 +33,9 @@ export default class AddReferences extends Component {
   }
   onContinue() {
     this.setState({ referenceState: this.state.referenceState + 1 })
-    console.log(this.state)
   }
   onBackward() {
     this.setState({ referenceState: this.state.referenceState - 1 })
-    console.log(this.state)
   }
   onChange({ target }) {
     this.setState({
@@ -47,7 +44,6 @@ export default class AddReferences extends Component {
         [target.id]: target.value
       }
     })
-    console.log(this.state.referenceDetails)
   }
 
   saveToArray({ target }) {

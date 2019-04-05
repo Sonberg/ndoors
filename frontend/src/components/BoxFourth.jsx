@@ -26,18 +26,18 @@ export default class BoxFourth extends Component {
             </div>
           </form>
           <div className="row">
-            <a
+            <button
               className="col s2 offset-s1 waves-effect waves-light btn"
               onClick={() => this.props.onBackward()}
             >
               Back
-            </a>
-            <a
+            </button>
+            <button
               className="col s2 offset-s6 waves-effect waves-light btn center-align"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </a>
+            </button>
           </div>
         </div>
       </div>

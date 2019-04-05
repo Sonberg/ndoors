@@ -58,12 +58,12 @@ export default class BoxFirst extends Component {
             </div>
           </form>
           <div className="row">
-            <a
+            <button
               className="col s2 offset-s9 waves-effect waves-light btn center-align"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </a>
+            </button>
           </div>
         </div>
       </div>

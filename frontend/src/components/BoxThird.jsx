@@ -8,7 +8,11 @@ export default class BoxSecond extends Component {
   }
   renderChip(value) {
     return (
-      <div style={{ textTransform: 'capitalize' }} key={value} className="chip">
+      <div
+        style={{ textTransform: 'capitalize', backgroundColor: '#F2F6F6' }}
+        key={value}
+        className="chip"
+      >
         {value}
         <i className="close material-icons">close</i>
       </div>

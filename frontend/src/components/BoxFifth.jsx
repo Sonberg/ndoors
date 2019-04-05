@@ -6,7 +6,20 @@ export default class BoxFifth extends Component {
     super(props)
     this.state = {}
   }
+
   render() {
+    const icon = {
+      height: 44,
+      width: 44,
+      borderRadius: 100,
+      margin: '0.25em 0'
+    }
+    const bankIcon = {
+      height: 44,
+      width: 44,
+      margin: '0.25em 0'
+    }
+
     return (
       <div className="container">
         <div className="row card">
@@ -30,6 +43,15 @@ export default class BoxFifth extends Component {
                   value={this.props.details.name}
                   onChange={this.props.onChange}
                 />
+              </div>
+              <div className="col">
+                <img src="/assets/images/linkedin.png" style={icon} />
+              </div>
+              <div className="col">
+                <img src="/assets/images/github.png" style={icon} />
+              </div>
+              <div className="col">
+                <img src="/assets/images/logo_bankid.png" style={bankIcon} />
               </div>
             </div>
             <div className="row">

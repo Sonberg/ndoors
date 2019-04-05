@@ -48,7 +48,6 @@ export default class BoxFirst extends Component {
               </div>
               <div className="col s5" style={{}}>
                 <Input
-                  type="number"
                   name="referentPhoneNumber"
                   label="Phone number"
                   value={this.props.details.referentPhoneNumber}

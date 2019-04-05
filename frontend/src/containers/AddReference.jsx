@@ -4,6 +4,9 @@ import BoxSecond from '../components/BoxSecond'
 import BoxThird from '../components/BoxThird'
 import BoxFourth from '../components/BoxFourth'
 import BoxFifth from '../components/BoxFifth'
+import BoxSixth from '../components/BoxSixth'
+import BoxSeventh from '../components/BoxSeventh'
+import { post } from '../api'
 
 export default class AddReferences extends Component {
   constructor(props) {
@@ -11,23 +14,25 @@ export default class AddReferences extends Component {
     this.onChange = this.onChange.bind(this)
     this.saveToArray = this.saveToArray.bind(this)
     this.state = {
-      referenceState: 1,
+      referenceState: 5,
       referenceDetails: {
-        referentName: '',
-        referentRole: '',
-        referentPhoneNumber: '',
-        referentEmail: '',
-        skills: [],
-        abilities: [],
-        role: '',
-        responsibility: '',
-        workplace: '',
-        dateFrom: '',
-        dateTo: '',
-        note: '',
-        name: '',
-        email: '',
-        currentRole: ''
+        referentName: 'john',
+        referentRole: 'kin',
+        referentPhoneNumber: '123',
+        referentEmail: 'jo@as.se',
+        skills: ['asd', 'bo', 'greta'],
+        abilities: ['as', 'asd'],
+        role: 'bygg',
+        responsibility: 'as',
+        workplace: 'kask',
+        dateFrom: '12 - 12 - 12',
+        dateTo: '3214-124',
+        note: 'halla',
+        name: 'josad',
+        email: 'asd@as.se',
+        currentRole: 'hall',
+        password: 'xxxx',
+        passwordConfirm: 'xxxxx'
       }
     }
   }
@@ -56,6 +61,35 @@ export default class AddReferences extends Component {
         ]
       }
     })
+  }
+  getObjectArray(array) {
+    return array.reduce((current, next) => {
+      return { ...current, [next]: false }
+    }, {})
+  }
+
+  toDatabase() {
+    const details = this.state.referenceDetails
+    const body = {
+      message: details.note,
+      place: details.workplace,
+      referenceEmail: details.referentEmail,
+      referenceName: details.referentName,
+      referencePhone: details.referentPhoneNumber,
+      referenceRole: details.referentRole,
+      relationEnd: details.dateTo,
+      relationStart: details.dateFrom,
+      userResponsibility: details.responsibility,
+      userEmail: details.email,
+      userName: details.name,
+      userRole: details.role,
+      verified: false,
+      skills: this.getObjectArray(details.skills),
+      abilities: this.getObjectArray(details.abilities)
+    }
+    console.log(body)
+    post('api/references', JSON.stringify(body))
+    this.onContinue()
   }
 
   render() {
@@ -107,6 +141,25 @@ export default class AddReferences extends Component {
         referencePage = (
           <BoxFifth
             onBackward={() => this.onBackward()}
+            onContinue={() => this.toDatabase()}
+            onChange={this.onChange}
+            details={this.state.referenceDetails}
+          />
+        )
+        break
+      case 6:
+        referencePage = (
+          <BoxSixth
+            onBackward={() => this.onBackward()}
+            onContinue={() => this.onContinue()}
+            onChange={this.onChange}
+            details={this.state.referenceDetails}
+          />
+        )
+        break
+      case 7:
+        referencePage = (
+          <BoxSeventh
             onContinue={() => this.onContinue()}
             onChange={this.onChange}
             details={this.state.referenceDetails}
@@ -114,7 +167,16 @@ export default class AddReferences extends Component {
         )
         break
       default:
-        referencePage = <h1>END</h1>
+        referencePage = (
+          <div>
+            <BoxFirst
+              onBackward={() => this.onBackward()}
+              onContinue={() => this.onContinue()}
+              onChange={this.onChange}
+              details={this.state.referenceDetails}
+            />
+          </div>
+        )
     }
 
     return (

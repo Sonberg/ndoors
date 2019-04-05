@@ -53,7 +53,6 @@ export default class BoxSecond extends Component {
                 <Input
                   name="dateFrom"
                   label="YY-MM-DD"
-                  type="number"
                   value={this.props.details.dateFrom}
                   onChange={this.props.onChange}
                 />
@@ -64,7 +63,6 @@ export default class BoxSecond extends Component {
               <div className="col ">
                 <Input
                   name="dateTo"
-                  type="number"
                   label="YY-MM-DD"
                   value={this.props.details.dateTo}
                   onChange={this.props.onChange}

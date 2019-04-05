@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import AutoComplete from '../components/AutoComplete'
+import AutoComplete from './AutoComplete'
 import Input from './InputField'
 
-export default class Box extends Component {
+export default class BoxFirst extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -14,7 +14,7 @@ export default class Box extends Component {
           <div className="card-content text-center">
             <h3>Who's your reference?</h3>
           </div>
-          <form className="" style={{}}>
+          <form>
             <div>
               <div className="row">
                 <div className="col s6 offset-s1">

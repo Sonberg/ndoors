@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Box from '../components/Box'
+import BoxFirst from '../components/BoxFirst'
 import AutomComplete from '../components/AutoComplete'
 
 export default class AddReferences extends Component {
@@ -41,7 +41,7 @@ export default class AddReferences extends Component {
       case 1:
         referencePage = (
           <div>
-            <Box
+            <BoxFirst
               onBackward={() => this.onBackward()}
               onContinue={() => this.onContinue()}
               onChange={this.onChange}

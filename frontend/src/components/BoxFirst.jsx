@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AutoComplete from './AutoComplete'
 import Input from './InputField'
+import Button from './Button'
 
 export default class BoxFirst extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class BoxFirst extends Component {
                     value={this.props.details.referentRole}
                     onChange={this.props.onChange}
                     url="api/csv/professions"
-                    label="role"
+                    label="Role"
                   />
                 </div>
               </div>
@@ -57,12 +58,12 @@ export default class BoxFirst extends Component {
             </div>
           </form>
           <div className="row">
-            <button
-              className="col s2 offset-s9 waves-effect waves-light btn center-align"
+            <Button
+              className="col s2 offset-s9 btn-large"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

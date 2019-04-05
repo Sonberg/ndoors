@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Input from './InputField'
+import Button from './Button'
 
 export default class BoxFifth extends Component {
   constructor(props) {
@@ -76,18 +77,18 @@ export default class BoxFifth extends Component {
             </div>
           </form>
           <div className="row">
-            <button
-              className="col s2 offset-s1 waves-effect waves-light btn"
+            <Button
+              className="col s2 offset-s1 btn-large"
               onClick={() => this.props.onBackward()}
             >
               Back
-            </button>
-            <button
-              className="col s2 offset-s6 waves-effect waves-light btn center-align"
+            </Button>
+            <Button
+              className="col s2 offset-s6 btn-large"
               onClick={() => this.props.onContinue()}
             >
               Send
-            </button>
+            </Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Input from './InputField'
+import Button from './Button'
 
 class BoxSeventh extends Component {
   constructor(props) {
@@ -58,8 +59,8 @@ class BoxSeventh extends Component {
             </div>
           </form>
           <div className="row">
-            <button
-              className="col s2 offset-s9 waves-effect waves-light btn center-align"
+            <Button
+              className="col s2 offset-s9 btn-large"
               onClick={() => {
                 localStorage.setItem('user', this.props.details.name)
                 localStorage.setItem('email', this.props.details.email)
@@ -68,7 +69,7 @@ class BoxSeventh extends Component {
               }}
             >
               ENTER NDOORS
-            </button>
+            </Button>
           </div>
         </div>
       </div>

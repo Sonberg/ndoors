@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Input from './InputField'
+import Button from './Button'
 
 export default class BoxSixth extends Component {
   constructor(props) {
@@ -20,8 +20,8 @@ export default class BoxSixth extends Component {
           </div>
           <div className="col s11 offset-s1">
             <p style={{ fontSize: '18px' }}>
-              We’ve sent you an e-mail. When you’ve verified, your reference
-              request will be sent.
+              We’ve sent you an e-mail.
+              <br /> When you’ve verified, your reference request will be sent.
             </p>
           </div>
           <div className="row" style={{ marginTop: '0px' }}>
@@ -33,23 +33,17 @@ export default class BoxSixth extends Component {
             </p>
           </div>
           <div className="row">
-            <button
-              style={{
-                height: '24px',
-                lineHeight: '24px'
-              }}
-              className="waves-effect waves-light btn col s2 offset-s1"
-            >
+            <Button className="col s2 offset-s1 btn-small ">
               resend email
-            </button>
+            </Button>
           </div>
           <div className="row">
-            <button
-              className="col s2 offset-s9 waves-effect waves-light btn center-align"
+            <Button
+              className="col s2 offset-s9 btn-large"
               onClick={() => this.props.onContinue()}
             >
               GOT IT!
-            </button>
+            </Button>
           </div>
         </div>
       </div>

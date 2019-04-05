@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Input from './InputField'
+import Button from './Button'
 
 export default class BoxFourth extends Component {
   constructor(props) {
@@ -18,7 +19,9 @@ export default class BoxFourth extends Component {
               <div className="col s10 offset-s1 ">
                 <Input
                   name="note"
-                  label="Hi, [name] would you like to be my reference..."
+                  label={`Hi ${
+                    this.props.details.referentName
+                  }, would you like to be my reference...`}
                   value={this.props.details.note}
                   onChange={this.props.onChange}
                 />
@@ -26,18 +29,18 @@ export default class BoxFourth extends Component {
             </div>
           </form>
           <div className="row">
-            <button
-              className="col s2 offset-s1 waves-effect waves-light btn"
+            <Button
+              className="col s2 offset-s1 btn-large"
               onClick={() => this.props.onBackward()}
             >
               Back
-            </button>
-            <button
-              className="col s2 offset-s6 waves-effect waves-light btn center-align"
+            </Button>
+            <Button
+              className="col s2 offset-s6 btn-large"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

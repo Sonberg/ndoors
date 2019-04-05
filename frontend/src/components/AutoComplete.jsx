@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as M from 'materialize-css'
 
 import { Subject } from 'rxjs'
 import { debounceTime } from 'rxjs/operators'
@@ -42,11 +43,7 @@ export default class AutoComplete extends Component {
           onChange={this.onChange}
           id={this.props.name}
         />
-        <label
-          class="active"
-          style={{ textTransform: 'capitalize' }}
-          htmlFor={this.props.label}
-        >
+        <label class="active" htmlFor={this.props.label}>
           {this.props.label}
         </label>
         <div>{this.state.result.map(this.renderHit)}</div>
@@ -59,6 +56,7 @@ export default class AutoComplete extends Component {
   }
 
   componentDidMount() {
+    M.updateTextFields()
     this.subscription = this.onSearch$
       .pipe(debounceTime(200))
       .subscribe(this.search)

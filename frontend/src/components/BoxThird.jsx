@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import AutoComplete from './AutoComplete'
+import Button from './Button'
+import EmpowerAF from '../components/EmpowerAF'
 
 export default class BoxSecond extends Component {
   constructor(props) {
@@ -22,9 +24,11 @@ export default class BoxSecond extends Component {
     return (
       <div className="container">
         <div className="row card">
-          <div className="col s11 offset-s1">
+          <div className="col s8 offset-s1">
             <h3 style={{ fontSize: '32px' }}>List your competencies</h3>
           </div>
+          <EmpowerAF />
+
           <form>
             <div className="row">
               <div className="col s5 offset-s1 ">
@@ -49,18 +53,18 @@ export default class BoxSecond extends Component {
           </form>
 
           <div className="row">
-            <button
-              className="col s2 offset-s1 waves-effect waves-light btn"
+            <Button
+              className="col s2 offset-s1 btn-large"
               onClick={() => this.props.onBackward()}
             >
               Back
-            </button>
-            <button
-              className="col s2 offset-s6 waves-effect waves-light btn center-align"
+            </Button>
+            <Button
+              className="col s2 offset-s6 btn-large"
               onClick={() => this.props.onContinue()}
             >
               Continue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

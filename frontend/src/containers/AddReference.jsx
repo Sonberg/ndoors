@@ -14,25 +14,25 @@ export default class AddReferences extends Component {
     this.onChange = this.onChange.bind(this)
     this.saveToArray = this.saveToArray.bind(this)
     this.state = {
-      referenceState: 5,
+      referenceState: 1,
       referenceDetails: {
-        referentName: 'john',
-        referentRole: 'kin',
-        referentPhoneNumber: '123',
-        referentEmail: 'jo@as.se',
-        skills: ['asd', 'bo', 'greta'],
-        abilities: ['as', 'asd'],
-        role: 'bygg',
-        responsibility: 'as',
-        workplace: 'kask',
-        dateFrom: '12 - 12 - 12',
-        dateTo: '3214-124',
-        note: 'halla',
-        name: 'josad',
-        email: 'asd@as.se',
-        currentRole: 'hall',
-        password: 'xxxx',
-        passwordConfirm: 'xxxxx'
+        referentName: '',
+        referentRole: '',
+        referentPhoneNumber: '',
+        referentEmail: '',
+        skills: [],
+        abilities: [],
+        role: '',
+        responsibility: '',
+        workplace: '',
+        dateFrom: '',
+        dateTo: '',
+        note: '',
+        name: '',
+        email: '',
+        currentRole: '',
+        password: '',
+        passwordConfirm: ''
       }
     }
   }
@@ -87,7 +87,6 @@ export default class AddReferences extends Component {
       skills: this.getObjectArray(details.skills),
       abilities: this.getObjectArray(details.abilities)
     }
-    console.log(body)
     post('api/references', JSON.stringify(body))
     this.onContinue()
   }

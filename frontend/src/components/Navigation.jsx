@@ -41,7 +41,7 @@ class Navigation extends Component {
                   {localStorage.getItem('loggedIn') ? (
                     <Links />
                   ) : null}
-                  <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user') || "Logga ut"}</a></li>
+                  <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user')}</a></li>
                 </ul>
               </div>
             </div>

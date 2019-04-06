@@ -41,7 +41,11 @@ class Navigation extends Component {
                   {localStorage.getItem('loggedIn') ? (
                     <Links />
                   ) : null}
+<<<<<<< Updated upstream
                   <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user') || "Logga ut"}</a></li>
+=======
+                  <li><a href="/" onClick={this.logOut}>  Hi {localStorage.getItem('user')}!  </a></li>
+>>>>>>> Stashed changes
                 </ul>
               </div>
             </div>
@@ -64,8 +68,8 @@ export default withRouter(Navigation)
 const Links = () => (
   <React.Fragment>
     <li><a href="/">Overview</a></li>
-    <li><a href="/my-references">My references</a></li>
+    <li><a href="/overview">My references</a></li>
     <li><a href="/shared-references">Shared references</a></li>
-    <li><a href="/">People i've referenced</a></li>
+    <li><a href="/overview">People I've referenced</a></li>
   </React.Fragment>
 )

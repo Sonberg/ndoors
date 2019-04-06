@@ -6,6 +6,8 @@ import { debounceTime } from 'rxjs/operators'
 
 import styled from 'styled-components'
 
+import { get } from './../api';
+
 const Container = styled.div`
   width: 10rem;
   position: relative;
@@ -85,8 +87,7 @@ export default class AutoComplete extends Component {
   }
 
   async search(query) {
-    const response = await fetch(
-      `http://localhost:3001/${this.props.url}?q=${query}`
+    const response = await get(`${this.props.url}?q=${query}`
     )
     if (response.status !== 200) {
       return

@@ -296,6 +296,14 @@ export default class ApproveReference extends Component {
                                         To guarantee employers that you're who you say you are and help {this.state.userName} increase their chance of getting employed.
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <label className="col s10 offset-s1">Verify by</label>
+                                </div>
+                                <div className="row">
+                                    <img className="col s2 offset-s1" src="assets/images/bankid.png" style={{width: 100}}/>
+                                    <img className="col s2 circle" src="assets/images/linkedin.png" style={{width: 100}}/>
+                                    <img className="col s2" src="assets/images/github.png" style={{width: 100}}/>
+                                </div>
                             </div>
                         }
                         onBackward={() => this.onBackward()}
@@ -319,6 +327,35 @@ export default class ApproveReference extends Component {
                                         You've helped {this.state.userName} on their way to land a new job.
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col s2 offset-s1 circle" >
+                                        <i class="material-icons large" style={{color: '#BAD3c9', fontSize: '7rem', marginTop: '10px'}}>check_circle</i>
+                                    </div>
+                                    <div className="col s3 offset-s1" style={{borderRight: '1px solid #BAD3c9', height: '100px'}}>
+                                        <label className="row">Need a reference of your own?</label>
+                                        <div className="row">
+                                            <a
+                                                href="/add-reference"
+                                                className="col s11 waves-effect waves-light btn frontButton"
+                                                onClick={() => {}}
+                                            >
+                                                Add referent
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="col s4" style={{marginLeft: '15px', height: '100px'}}>
+                                        <label className="row">Do you want to get notified when {this.state.userName} gets employed?</label>
+                                        <div className="row">
+                                            <a
+                                                href="/"
+                                                className="col s11 waves-effect waves-light btn frontButton"
+                                                onClick={() => this.props.onBackward()}
+                                            >
+                                                Sign up
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         }
                     />
@@ -330,7 +367,7 @@ export default class ApproveReference extends Component {
                 break;
             }
             default: {
-                page = <h1>Loading...</h1>
+                page = (<div></div>)
             }
         }
         return (

@@ -64,8 +64,8 @@ export default withRouter(Navigation)
 const Links = () => (
   <React.Fragment>
     <li><a href="/">Overview</a></li>
-    <li><a href="/my-references">My references</a></li>
+    <li><a href="/overview">My references</a></li>
     <li><a href="/shared-references">Shared references</a></li>
-    <li><a href="/">People i've referenced</a></li>
+    <li><a href="/overview">People I've referenced</a></li>
   </React.Fragment>
 )

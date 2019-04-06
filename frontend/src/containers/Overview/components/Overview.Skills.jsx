@@ -36,9 +36,9 @@ const badgeStyle = {
     marginBottom: '1em',
     fontWeight: '600',
     borderRadius: 100,
-    background: '#fd9f96',
+    background: '#ffebe8',
     fontSize: 13,
-    color: 'white',
+    color: '#333333',
     justifyContent: 'space-between'
 }
 

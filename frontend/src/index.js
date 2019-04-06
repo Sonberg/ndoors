@@ -21,7 +21,7 @@ const routing = (
         <Route exact path="/overview" component={Overview} />
         <Route path="/add-reference" component={AddReference} />
         <Route path="/my-reference" component={MyReferences} />
-        <Route path="/shared-reference" component={SharedReferences} />
+        <Route path="/shared-references" component={SharedReferences} />
         <Route path="/approve-reference" component={ApproveReference} />
     </Router>
 )

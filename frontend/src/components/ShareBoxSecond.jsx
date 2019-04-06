@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { SmallPinkButton } from './../styles/styledComponents'
+import Button from './Button'
 
 export default class SharedBoxSecond extends Component {
     constructor(props) {
@@ -40,19 +41,19 @@ export default class SharedBoxSecond extends Component {
                         </div>
                     </div>
                     <div className="row" style={{ padding: '20px 10px' }}>
-                        <button
+                        <Button
                             className="col s2 offset-s1 waves-effect waves-light btn"
                             style={{ backgroundColor: '#97b2b0' }}
                             onClick={() => this.props.onBackward()}
                         >
                             Back
-            </button>
-                        <button
+                        </Button>
+                        <Button
                             className="col s2 offset-s6 waves-effect waves-light btn center-align"
                             onClick={() => this.props.onContinue()}
                         >
                             Continue
-            </button>
+                        </Button>
                     </div>
                 </div>
             </div>

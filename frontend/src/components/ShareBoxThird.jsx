@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Input from './InputField'
 import { BigButton } from './../styles/styledComponents'
+import Button from './Button'
+import { withRouter } from 'react-router'
 
-export default class SharedBoxThird extends Component {
+class SharedBoxThird extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -44,22 +46,24 @@ export default class SharedBoxThird extends Component {
                         </div>
                     </div>
                     <div className="row" style={{ padding: '20px 10px' }}>
-                        <button
+                        <Button
                             className="col s2 offset-s1 waves-effect waves-light btn"
                             style={{ backgroundColor: "#97b2b0" }}
                             onClick={() => this.props.onBackward()}
                         >
                             Back
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             className="col s2 offset-s6 waves-effect waves-light btn center-align"
-                            onClick={() => this.props.onContinue()}
+                            onClick={() => { this.props.history.push('/') }}
                         >
                             Continue
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(SharedBoxThird)

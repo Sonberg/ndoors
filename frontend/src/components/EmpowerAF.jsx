@@ -11,6 +11,5 @@ export default () => (
     <div style={{ marginRight: '1em' }}>
         <p style={style}>Empowered by</p>
         <img src="assets/images/logo_AF.png" style={{ width: 140 }} />
-        <p style={style}>API</p>
     </div>
 )

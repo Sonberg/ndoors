@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
 import { BigButton, Title, PinkHighligt, PinkUnderline } from './../styles/styledComponents'
+import Typed from 'react-typed';
 
 const HomeWrapper = styled.section`
     background-color: #F2F6F6;
@@ -76,7 +77,19 @@ export default class Home extends Component {
                         <div class="row" style={{ height: '100px', margin: 'auto' }}>
                             <div class="col s6" style={{ textAlign: 'left', padding: '10% 0' }}>
                                 <Title style={{ color: '#fff' }}>
-                                    Get social proof < br /> on your <PinkHighligt>abilities.</PinkHighligt>
+                                    Get social proof < br /> on your
+                                    <PinkHighligt style={{ marginLeft: '1rem' }}>
+                                        <Typed
+                                            strings={[
+                                                ' skills.',
+                                                ' abilities.',
+                                                ' experiences.',
+                                                ' achievements.']}
+                                            typeSpeed={40}
+                                            backSpeed={50}
+                                            loop >
+                                        </Typed>
+                                    </PinkHighligt>
                                 </Title>
                                 <Link to='/add-reference'>
                                     <BigButton color={'#000'} bgColor={'#F2F6F6'}> Add Reference </BigButton>

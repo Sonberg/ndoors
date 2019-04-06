@@ -13,6 +13,7 @@ export default class AddReferences extends Component {
     super(props)
     this.onChange = this.onChange.bind(this)
     this.saveToArray = this.saveToArray.bind(this)
+    this.saveReference = this.saveReference.bind(this)
     this.sendSms = this.sendSms.bind(this)
     this.state = {
       referenceState: 1,
@@ -29,8 +30,8 @@ export default class AddReferences extends Component {
         dateFrom: '',
         dateTo: '',
         note: '',
-        name: '',
-        email: '',
+        name: localStorage.getItem('user') || '',
+        email: localStorage.getItem('email') || '',
         currentRole: '',
         password: '',
         passwordConfirm: ''
@@ -69,9 +70,17 @@ export default class AddReferences extends Component {
     }, {})
   }
 
-  async toDatabase() {
+  loggedIn() {
+    if (localStorage.getItem('loggedIn')) {
+      const body = this.getBody()
+      this.saveReference(body)
+      this.props.history.push('/')
+    } else this.onContinue()
+  }
+
+  getBody() {
     const details = this.state.referenceDetails
-    const body = {
+    return {
       message: details.note,
       place: details.workplace,
       referenceEmail: details.referentEmail,
@@ -88,12 +97,18 @@ export default class AddReferences extends Component {
       skills: this.getObjectArray(details.skills),
       abilities: this.getObjectArray(details.abilities)
     }
+  }
+  toDatabase() {
+    const body = this.getBody()
+    this.saveReference(body)
+    this.onContinue()
+  }
 
+  async saveReference(body) {
     const response = await post('api/references', JSON.stringify(body))
     const json = await response.json()
 
     this.sendSms(json)
-    this.onContinue()
   }
 
   sendSms(data) {
@@ -143,7 +158,7 @@ export default class AddReferences extends Component {
         referencePage = (
           <BoxFourth
             onBackward={() => this.onBackward()}
-            onContinue={() => this.onContinue()}
+            onContinue={() => this.loggedIn()}
             onChange={this.onChange}
             details={this.state.referenceDetails}
           />

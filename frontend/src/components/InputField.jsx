@@ -16,9 +16,7 @@ export default class Input extends Component {
           value={value}
           onChange={onChange}
         />
-        <label class="active" htmlFor={name}>
-          {label}
-        </label>
+        <label htmlFor={name}>{label}</label>
       </div>
     )
   }

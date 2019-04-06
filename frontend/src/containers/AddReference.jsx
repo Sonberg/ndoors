@@ -28,8 +28,8 @@ export default class AddReferences extends Component {
         dateFrom: '',
         dateTo: '',
         note: '',
-        name: '',
-        email: '',
+        name: localStorage.getItem('user') || '',
+        email: localStorage.getItem('email') || '',
         currentRole: '',
         password: '',
         passwordConfirm: ''
@@ -68,9 +68,18 @@ export default class AddReferences extends Component {
     }, {})
   }
 
-  toDatabase() {
+  loggedIn() {
+    if (localStorage.getItem('loggedIn')) {
+      const body = this.getBody()
+      console.log(body)
+      post('api/references', JSON.stringify(body))
+      this.props.history.push('/')
+    } else this.onContinue()
+  }
+
+  getBody() {
     const details = this.state.referenceDetails
-    const body = {
+    return {
       message: details.note,
       place: details.workplace,
       referenceEmail: details.referentEmail,
@@ -87,6 +96,9 @@ export default class AddReferences extends Component {
       skills: this.getObjectArray(details.skills),
       abilities: this.getObjectArray(details.abilities)
     }
+  }
+  toDatabase() {
+    const body = this.getBody()
     post('api/references', JSON.stringify(body))
     this.onContinue()
   }
@@ -130,7 +142,7 @@ export default class AddReferences extends Component {
         referencePage = (
           <BoxFourth
             onBackward={() => this.onBackward()}
-            onContinue={() => this.onContinue()}
+            onContinue={() => this.loggedIn()}
             onChange={this.onChange}
             details={this.state.referenceDetails}
           />

@@ -43,9 +43,7 @@ export default class AutoComplete extends Component {
           onChange={this.onChange}
           id={this.props.name}
         />
-        <label class="active" htmlFor={this.props.label}>
-          {this.props.label}
-        </label>
+        <label htmlFor={this.props.label}>{this.props.label}</label>
         <div>{this.state.result.map(this.renderHit)}</div>
       </div>
     )

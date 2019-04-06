@@ -3,7 +3,8 @@ import React from 'react'
 const style = {
     fontWeight: 'bolder',
     fontSize: 11,
-    margin: '.25em 0'
+    margin: '.25em 0',
+    textAlign: 'right'
 }
 
 export default () => (

@@ -5,6 +5,7 @@ import OverviewSuggestions from './components/Overview.Suggestions'
 import ReferenceRequest from './components/ReferenceRequest'
 import Button from '../../components/Button';
 import { get } from '../../api';
+import { Link } from 'react-router-dom'
 
 const sectionHeader = {
     fontWeight: '600',
@@ -29,16 +30,16 @@ export default class Overview extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
+            <div className="container" style={{ width: '80%' }}>
+                <div className="row" >
                     <div className="col s12" style={{ marginBottom: '2em' }}>
                         <OverviewUser />
                     </div>
-                    <div className="col s12 m6">
+                    <div className="col s7 " style={{ paddingRight: '2em', borderRight: '1px solid #353535', }}>
 
-                        <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'start' }}>
-                            <Button children="Share references" style={{ marginRight: '1em' }} />
-                            <Button as="a" href="/add-reference">Add references</Button>
+                        <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'space-between' }}>
+                            <Link to="/shared-references" style={{ width: '100%' }} ><Button children="Share references" /></Link>
+                            <Button as="a" href="/add-reference" style={{ width: '50%' }}> Add references</Button>
                         </div>
 
 
@@ -46,7 +47,7 @@ export default class Overview extends Component {
                         {this.state.result.map(x => <ReferenceRequest {...x} />)}
 
                     </div>
-                    <div className="col s12 m6" style={{ paddingLeft: '1.5em' }}>
+                    <div className="col s5 " style={{ paddingLeft: '1.5em' }}>
                         <OverviewSkills />
                         <div style={{ marginLeft: '0.75em' }}>
                             <OverviewSuggestions />

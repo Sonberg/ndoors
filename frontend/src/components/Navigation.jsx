@@ -3,7 +3,6 @@ import { withRouter } from 'react-router'
 import * as M from 'materialize-css'
 
 class Navigation extends Component {
-
   constructor(props) {
     super(props)
 
@@ -11,17 +10,16 @@ class Navigation extends Component {
   }
 
   logOut() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('user')
+    localStorage.removeItem('loggedIn')
     this.props.history.push('/')
   }
 
-
   componentDidMount() {
     document.addEventListener('DOMContentLoaded', () => {
-      var elems = document.querySelectorAll('.sidenav');
-      M.Sidenav.init(elems);
-    });
+      var elems = document.querySelectorAll('.sidenav')
+      M.Sidenav.init(elems)
+    })
   }
 
   render() {
@@ -35,17 +33,19 @@ class Navigation extends Component {
           <div className="nav-wrapper">
             <div className="row">
               <div className="col s12">
-                <a href="/" className="brand-logo">ndoors</a>
-                <a data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                <a href="/" className="brand-logo">
+                  ndoors
+                </a>
+                <a data-target="mobile-demo" className="sidenav-trigger">
+                  <i className="material-icons">menu</i>
+                </a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  {localStorage.getItem('loggedIn') ? (
-                    <Links />
-                  ) : null}
-<<<<<<< Updated upstream
-                  <li><a href="/" onClick={this.logOut}>{localStorage.getItem('user') || "Logga ut"}</a></li>
-=======
-                  <li><a href="/" onClick={this.logOut}>  Hi {localStorage.getItem('user')}!  </a></li>
->>>>>>> Stashed changes
+                  {localStorage.getItem('loggedIn') ? <Links /> : null}
+                  <li>
+                    <a href="/" onClick={this.logOut}>
+                      {localStorage.getItem('user') || 'Logga ut'}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -64,12 +64,19 @@ class Navigation extends Component {
 
 export default withRouter(Navigation)
 
-
 const Links = () => (
   <React.Fragment>
-    <li><a href="/">Overview</a></li>
-    <li><a href="/overview">My references</a></li>
-    <li><a href="/shared-references">Shared references</a></li>
-    <li><a href="/overview">People I've referenced</a></li>
+    <li>
+      <a href="/">Overview</a>
+    </li>
+    <li>
+      <a href="/overview">My references</a>
+    </li>
+    <li>
+      <a href="/shared-references">Shared references</a>
+    </li>
+    <li>
+      <a href="/overview">People I've referenced</a>
+    </li>
   </React.Fragment>
 )

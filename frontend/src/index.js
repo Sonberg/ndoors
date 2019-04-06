@@ -15,19 +15,15 @@ import 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
 
 const routing = (
-    <Router>
-        <Navigation />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/overview" component={Overview} />
-        <Route path="/add-reference" component={AddReference} />
-        <Route path="/my-reference" component={MyReferences} />
-<<<<<<< Updated upstream
-        <Route path="/shared-reference" component={SharedReferences} />
-        <Route path="/approve-reference" component={ApproveReference} />
-=======
-        <Route path="/shared-references" component={SharedReferences} />
->>>>>>> Stashed changes
-    </Router>
+  <Router>
+    <Navigation />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/overview" component={Overview} />
+    <Route path="/add-reference" component={AddReference} />
+    <Route path="/my-reference" component={MyReferences} />
+    <Route path="/shared-references" component={SharedReferences} />
+    <Route path="/approve-reference" component={ApproveReference} />
+  </Router>
 )
 
 ReactDOM.render(routing, document.getElementById('root'))

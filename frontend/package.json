@@ -16,6 +16,7 @@
     "start": "react-scripts start",
     "publishheroku": "cd ../ && git subtree push --prefix frontend ndoors-app master || true",
     "build": "react-scripts build",
+    "publish": "REACT_APP_API_URL=https://ndoors-api.herokuapp.com npm run build && aws s3 sync build/ s3://ndoor",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -30,7 +30,7 @@ export default class SharedBoxFirst extends Component {
                         <p>If you’ve saved a group of references you can choose it below. <br />Or create a new one for future purposes.</p>
                     </div>
                     <div>
-                        <div className="row">
+                        <div className="row" style={{ marginBottom: '0' }}>
                             <div className="col s3 offset-s1">
                                 <SmallPinkButton style={{ backgroundColor: this.state.setButtonColor }} onClick={this.selectAllButtons.bind(this)}>All my references</SmallPinkButton>
                             </div>
@@ -47,7 +47,7 @@ export default class SharedBoxFirst extends Component {
                                 <button onClick={this.showGroup.bind(this)} style={{ borderRadius: '50%', width: '25px', height: '25px', margin: 'auto' }}>+</button>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row" style={{ marginBottom: '0' }}>
                             <div className="col s3 offset-s1">
                                 <SmallPinkButton style={{ backgroundColor: this.state.setButtonColor }}>E-commerce</SmallPinkButton>
                             </div>
@@ -64,9 +64,10 @@ export default class SharedBoxFirst extends Component {
                             </div>}
                         </div>
                     </div>
-                    <div className="row" style={{ padding: '20px 15px' }}>
+                    <div className="row" style={{ marginBottom: '0', padding: '20px 10px' }}>
                         <button
                             className="col s2 offset-s1 waves-effect waves-light btn"
+                            style={{ backgroundColor: "#97b2b0" }}
                             onClick={() => this.props.onBackward()}
                         >
                             Back

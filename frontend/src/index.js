@@ -6,6 +6,7 @@ import Home from './containers/Home.jsx'
 import AddReference from './containers/AddReference'
 import MyReferences from './containers/MyReferences'
 import SharedReferences from './containers/SharedReferences'
+import ApproveReference from './containers/ApproveReference'
 import Overview from './containers/Overview/index'
 import * as serviceWorker from './serviceWorker'
 
@@ -14,14 +15,15 @@ import 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
 
 const routing = (
-    <Router>
-        <Navigation />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/overview" component={Overview} />
-        <Route path="/add-reference" component={AddReference} />
-        <Route path="/my-reference" component={MyReferences} />
-        <Route path="/shared-reference" component={SharedReferences} />
-    </Router>
+  <Router>
+    <Navigation />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/overview" component={Overview} />
+    <Route path="/add-reference" component={AddReference} />
+    <Route path="/my-reference" component={MyReferences} />
+    <Route path="/shared-references" component={SharedReferences} />
+    <Route path="/approve-reference" component={ApproveReference} />
+  </Router>
 )
 
 ReactDOM.render(routing, document.getElementById('root'))

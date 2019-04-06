@@ -41,16 +41,17 @@ export const SmallPinkButton = styled.button`
     border: none;
     border-radius: 25px;
     font-size: 1rem;
-    height: 40px;
+    height: 50px;
     margin-top: 32px;
     margin-right: 30px;
+    padding: 0 10%;
     outline: none;
-    text-align: center;
+    text-align: left;
     width: 90%;
     box-shadow: 0px 3px 5px rgba(88, 88, 88, 0.25);
     
-    :visited, :active {
+    :visited, :active, :focus {
         color: #000;
-        background-color: #FFF8F7 !important;
+        background-color: #e0cfcc !important;
     }
 `;

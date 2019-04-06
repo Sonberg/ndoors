@@ -43,11 +43,11 @@ export default class ReferenceRequest extends Component {
                     <div className="card-content" style={{ paddingBottom: '0.5em' }}>
                         <div className="row">
 
-                            <div className="col s10">
+                            <div className="col s9">
                                 <h5 children={referenceName} />
                                 <p children={message} />
                             </div>
-                            <div className="col s2" style={{ textAlign: 'right' }}>
+                            <div className="col s3" style={{ textAlign: 'right' }}>
                                 <div style={{ background: 'rgb(230, 230, 230)', height: 80, width: 80 }} className="circle responsive-img" />
                                 <div><small children={referenceEmail} /></div>
                                 <div><small children={referencePhone} /></div>

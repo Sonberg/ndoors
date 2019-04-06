@@ -15,8 +15,8 @@ export default class ApproveReference extends Component {
         this.pushNote = this.pushNote.bind(this);
         this.getReferenceData(values.key).then(result => {
             this.setState(result);
-            (this.state.status === "Found") ?
-                this.setState({ pageStep: (this.state.verified) ? 6 : 0 }) :
+            (result.status === "Found") ?
+                this.setState({ pageStep: (result.verified) ? 6 : 0 }) :
                 this.setState({ pageStep: 55 });
         });
     }

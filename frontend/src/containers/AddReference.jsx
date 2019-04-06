@@ -71,7 +71,6 @@ export default class AddReferences extends Component {
   loggedIn() {
     if (localStorage.getItem('loggedIn')) {
       const body = this.getBody()
-      console.log(body)
       post('api/references', JSON.stringify(body))
       this.props.history.push('/')
     } else this.onContinue()

@@ -29,6 +29,7 @@ export default class Overview extends Component {
     }
 
     render() {
+        console.log(this.state.result)
         return (
             <div className="container" style={{ width: '80%' }}>
                 <div className="row" >
@@ -38,13 +39,17 @@ export default class Overview extends Component {
                     <div className="col s7 " style={{ paddingRight: '2em', borderRight: '1px solid #353535', }}>
 
                         <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'space-between' }}>
-                            <Link to="/shared-references" style={{ width: '100%' }} ><Button children="Share references" /></Link>
+                            {this.state.result[0] == [] ?
+                                <Link to="/add-reference" style={{ width: '100%' }} ><Button children="Share references" />
+                                </Link>
+                                : <Link to="/shared-references" style={{ width: '100%' }} ><Button children="Share references" />
+                                </Link>
+                            }
                             <Button as="a" href="/add-reference" style={{ width: '50%' }}> Add references</Button>
                         </div>
 
-
                         <h5 children="Requested references" style={sectionHeader} />
-                        {this.state.result.map(x => <ReferenceRequest {...x} />)}
+                        {this.state.result.map((x, index) => <ReferenceRequest key={index} {...x} />)}
 
                     </div>
                     <div className="col s5 " style={{ paddingLeft: '1.5em' }}>

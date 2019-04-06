@@ -6,8 +6,17 @@ import Button from './Button'
 class BoxSeventh extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+
+    this.confirm = this.confirm.bind(this)
   }
+
+  confirm() {
+    localStorage.setItem('user', this.props.details.name)
+    localStorage.setItem('email', this.props.details.email)
+    localStorage.setItem('loggedIn', true)
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <div className="container">
@@ -61,12 +70,7 @@ class BoxSeventh extends Component {
           <div className="row">
             <Button
               className="col s2 offset-s9 btn-large"
-              onClick={() => {
-                localStorage.setItem('user', this.props.details.name)
-                localStorage.setItem('email', this.props.details.email)
-                localStorage.setItem('loggedIn', true)
-                this.props.history.push('/')
-              }}
+              onClick={this.confirm}
             >
               ENTER NDOORS
             </Button>

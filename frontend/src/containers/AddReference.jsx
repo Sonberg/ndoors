@@ -13,6 +13,7 @@ export default class AddReferences extends Component {
     super(props)
     this.onChange = this.onChange.bind(this)
     this.saveToArray = this.saveToArray.bind(this)
+    this.sendSms = this.sendSms.bind(this)
     this.state = {
       referenceState: 1,
       referenceDetails: {
@@ -68,7 +69,7 @@ export default class AddReferences extends Component {
     }, {})
   }
 
-  toDatabase() {
+  async toDatabase() {
     const details = this.state.referenceDetails
     const body = {
       message: details.note,
@@ -87,8 +88,20 @@ export default class AddReferences extends Component {
       skills: this.getObjectArray(details.skills),
       abilities: this.getObjectArray(details.abilities)
     }
-    post('api/references', JSON.stringify(body))
+
+    const response = await post('api/references', JSON.stringify(body))
+    const json = await response.json()
+
+    this.sendSms(json)
     this.onContinue()
+  }
+
+  sendSms(data) {
+    const referenceUrl = `http://ndoor.s3-website.eu-north-1.amazonaws.com/approve-reference?key=${data.id}`;
+    const message = `Hi ${data.referenceName}, ${data.userName} has asked you to be his/hers reference. Verify here: ${referenceUrl}`;
+    const body = JSON.stringify({ message });
+    const url = `api/sms/${data.referencePhone}`
+    post(url, body);
   }
 
   render() {

@@ -35,7 +35,7 @@ export default class Overview extends Component {
                     <div className="col s12" style={{ marginBottom: '2em' }}>
                         <OverviewUser />
                     </div>
-                    <div className="col s7 " style={{ paddingRight: '2em', borderRight: '1px solid #353535', }}>
+                    <div className="col s7 " style={{ paddingRight: '2em', borderRight: '1px solid rgb(222, 222, 222)', }}>
 
                         <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'space-between' }}>
                             <Link to="/shared-references" style={{ width: '100%' }} ><Button children="Share references" /></Link>

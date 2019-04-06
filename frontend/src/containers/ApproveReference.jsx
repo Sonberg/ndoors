@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import Box from '../components/Box';
+import { get, post } from './../api';
 
 export default class ApproveReference extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class ApproveReference extends Component {
     }
 
     async getReferenceData(key) {
-        return fetch(`http://localhost:3001/api/verify-reference/${key}`)
+        return get(`api/verify-reference/${key}`)
             .then(response => response.json())
             .then(response => {
                 return response;
@@ -38,9 +39,7 @@ export default class ApproveReference extends Component {
     }
 
     async updateVerifyField(verify) {
-        return fetch(`http://localhost:3001/api/verify-reference/${this.state.id}/verified/${verify}`, {
-            method: 'POST'
-        }).then(response => {
+        return post(`api/verify-reference/${this.state.id}/verified/${verify}`, {}).then(response => {
             this.setState({ verified: verify })
         })
     }
@@ -74,30 +73,12 @@ export default class ApproveReference extends Component {
     }
 
     pushSkillsAndAbilities() {
-        fetch(`http://localhost:3001/api/verify-reference/${this.state.id}/skills`, {
-            method: 'POST',
-            body: JSON.stringify(this.state.skills),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        fetch(`http://localhost:3001/api/verify-reference/${this.state.id}/abilities`, {
-            method: 'POST',
-            body: JSON.stringify(this.state.abilities),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        post(`api/verify-reference/${this.state.id}/skills`, JSON.stringify(this.state.skills));
+        post(`api/verify-reference/${this.state.id}/abilities`, JSON.stringify(this.state.abilities))
     }
 
     pushNote() {
-        fetch(`http://localhost:3001/api/verify-reference/${this.state.id}/note`, {
-            method: 'POST',
-            body: JSON.stringify({'note': this.state.textAreaValue}),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        post(`api/verify-reference/${this.state.id}/note`, JSON.stringify({'note': this.state.textAreaValue}));
     }
 
     render() {

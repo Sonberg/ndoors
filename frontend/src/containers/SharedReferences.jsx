@@ -3,6 +3,7 @@ import ShareBoxFirst from '../components/ShareBoxFirst'
 import ShareBoxSecond from '../components/ShareBoxSecond'
 import ShareBoxThird from '../components/ShareBoxThird'
 import { Link } from 'react-router-dom'
+import { get } from './../api';
 
 export default class SharedReferences extends Component {
     constructor(props) {
@@ -24,15 +25,15 @@ export default class SharedReferences extends Component {
         })
     }
 
-    async getReferenceData(key) {
-        if (key !== '') {
-            return fetch(`http://localhost:3001/api/shared-references/${key}`)
-                .then(response => response.json())
-                .then(response => {
-                    return response
-                })
-        }
+  async getReferenceData(key) {
+    if (key !== '') {
+        return get(`api/shared-references/${key}`)
+        .then(response => response.json())
+        .then(response => {
+            return response
+        })
     }
+  }
 
     onContinue() {
         this.setState({ referenceState: this.state.referenceState + 1 })

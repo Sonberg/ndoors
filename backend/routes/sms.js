@@ -8,10 +8,10 @@ routes.get('/:phone', async (req, res) => {
   res.send('hello')
 })
 
-routes.post('/:phone/:message', async function(req, res) {
+routes.post('/:phone/:message*?', async function (req, res) {
   const phone = req.params.phone.replace('0', '+46')
   console.log(phone)
-  sendSms(phone, req.params.message, response => {
+  sendSms(phone, req.body.message || req.params.message, response => {
     res.status(response.status === 'created' ? 200 : 400).end()
   })
 })

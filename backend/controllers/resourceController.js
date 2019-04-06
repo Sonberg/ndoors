@@ -24,8 +24,12 @@ module.exports = function (collection) {
             });
         },
         post: async function (req, res) {
-            await firestore.collection(collection).add(req.body);
-            res.status(200).send();
+            const snap = await firestore.collection(collection).add(req.body);
+
+            res.json({
+                id: snap.id,
+                ...req.body
+            });
         },
         put: async function (req, res) {
             await firestore.collection(collection).doc(req.params.id).set(req.body);

@@ -1,0 +1,92 @@
+import React, { Component } from 'react'
+import AutoComplete from '../../../components/AutoComplete'
+import Input from '../../../components/InputField'
+import Button from '../../../components/Button'
+
+export default class BoxSecond extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  render() {
+    return (
+      <div className="container">
+        <div className="row card">
+          <div className="col s11 offset-s1">
+            <h3 style={{ fontSize: '32px' }}>Describe your relation</h3>
+          </div>
+          <form>
+            <div className="row">
+              <div className="col s5 offset-s1 " style={{}}>
+                <Input
+                  name="workplace"
+                  label="We worked together at"
+                  value={this.props.details.workplace}
+                  onChange={this.props.onChange}
+                />
+              </div>
+              <div className="col s5">
+                <Input
+                  name="responsibility"
+                  label="My main responsibility was"
+                  value={this.props.details.responsibility}
+                  onChange={this.props.onChange}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s5 offset-s1">
+                <AutoComplete
+                  value={this.props.details.role}
+                  onChange={this.props.onChange}
+                  url="api/csv/professions"
+                  label="My role was"
+                />
+              </div>
+            </div>
+            <div className="row" style={{ marginBottom: '0' }}>
+              <div className="col s1 offset-s1">From</div>{' '}
+              <div className="col s1 offset-s4">To</div>
+            </div>
+            <div className="row valign-wrapper">
+              <i className="material-icons col s1 offset-s1">date_range</i>
+              <div className="col">
+                <Input
+                  name="dateFrom"
+                  label="YY-MM-DD"
+                  value={this.props.details.dateFrom}
+                  onChange={this.props.onChange}
+                />
+              </div>
+              <i className="material-icons col s1 offset-s1" style={{}}>
+                date_range
+              </i>
+              <div className="col ">
+                <Input
+                  name="dateTo"
+                  label="YY-MM-DD"
+                  value={this.props.details.dateTo}
+                  onChange={this.props.onChange}
+                />
+              </div>
+            </div>
+          </form>
+          <div className="row">
+            <Button
+              className="col s2 offset-s1 btn-large"
+              onClick={() => this.props.onBackward()}
+            >
+              Back
+            </Button>
+            <Button
+              className="col s2 offset-s6 btn-large"
+              onClick={() => this.props.onContinue()}
+            >
+              Continue
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}

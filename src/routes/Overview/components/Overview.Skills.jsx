@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import EmpowerAF from './../../../components/EmpowerAF'
+import { get } from '../../../api';
 
 const sectionHeader = {
     fontWeight: '600',
@@ -7,7 +8,25 @@ const sectionHeader = {
 }
 
 export default class OverviewSkills extends Component {
+
+    state = {
+        user: null
+    }
+
+    async componentDidMount() {
+        const response = await get(`api/users?email=${localStorage.getItem('email')}`);
+        const users = await response.json();
+
+        this.setState({ user: users[0] });
+
+    }
+
     render() {
+
+        if (!this.state.user) {
+            return null;
+        }
+
         return (
             <div style={{ marginTop: '1em' }}>
                 <div style={{

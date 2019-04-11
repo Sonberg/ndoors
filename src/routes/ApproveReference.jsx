@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Box from '../components/Box';
-import { get, post } from './../api';
+import { get, post, patch } from './../api';
 
 export default class ApproveReference extends Component {
     constructor(props) {
@@ -13,19 +13,20 @@ export default class ApproveReference extends Component {
         this.pushSkillsAndAbilities = this.pushSkillsAndAbilities.bind(this);
         this.pushNote = this.pushNote.bind(this);
         this.getReferenceData(this.state.id).then(result => {
-            this.setState(result);
-            (result.status === "Found") ?
+            this.setState(result || {});
+            result ?
                 this.setState({ pageStep: (result.verified) ? 6 : 0 }) :
                 this.setState({ pageStep: 55 });
         });
     }
 
     async getReferenceData(key) {
-        return get(`api/verify-reference/${key}`)
-            .then(response => response.json())
-            .then(response => {
-                return response;
-            })
+        const response = await get(`api/references/${key}`);
+        if (response.status === 404) {
+            return null;
+        }
+
+        return response.json();
     }
 
     onBackward() {
@@ -36,9 +37,10 @@ export default class ApproveReference extends Component {
         this.setState({ pageStep: this.state.pageStep + 1 });
     }
 
-    async updateVerifyField(verify) {
-        return post(`api/verify-reference/${this.state.id}/verified/${verify}`, {}).then(() => {
-            this.setState({ verified: verify })
+    updateVerifyField(verify) {
+        const state = { verified: verify };
+        return patch(`api/references/${this.state.id}`, state).then(() => {
+            this.setState(state)
         })
     }
 
@@ -71,12 +73,12 @@ export default class ApproveReference extends Component {
     }
 
     pushSkillsAndAbilities() {
-        post(`api/verify-reference/${this.state.id}/skills`, JSON.stringify(this.state.skills));
-        post(`api/verify-reference/${this.state.id}/abilities`, JSON.stringify(this.state.abilities))
+        patch(`api/references/${this.state.id}`, { skills: this.state.skills });
+        patch(`api/references/${this.state.id}`, { abilities: this.state.abilities })
     }
 
     pushNote() {
-        post(`api/verify-reference/${this.state.id}/note`, JSON.stringify({ 'note': this.state.textAreaValue }));
+        patch(`api/references/${this.state.id}`, { note: this.state.textAreaValue });
     }
 
     render() {
@@ -308,7 +310,7 @@ export default class ApproveReference extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col s2 offset-s1 circle" >
-                                        <i class="material-icons large" style={{ color: '#BAD3c9', fontSize: '7rem', marginTop: '10px' }}>check_circle</i>
+                                        <i className="material-icons large" style={{ color: '#BAD3c9', fontSize: '7rem', marginTop: '10px' }}>check_circle</i>
                                     </div>
                                     <div className="col s3 offset-s1" style={{ borderRight: '1px solid #BAD3c9', height: '100px' }}>
                                         <label className="row">Need a reference of your own?</label>

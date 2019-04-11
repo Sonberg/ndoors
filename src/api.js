@@ -8,7 +8,16 @@ export const post = (endpoint, body) =>
         headers: {
             'Content-Type': 'application/json'
         },
-        body: typeof (body) === 'object' ? JSON.stringify(body) : body
+        body: normilizeBody(body)
+    })
+
+export const patch = (endpoint, body) =>
+    fetch(`${baseUrl}/${endpoint}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: normilizeBody(body)
     })
 
 
@@ -16,3 +25,6 @@ export const remove = (endpoint) =>
     fetch(`${baseUrl}/${endpoint}`, {
         method: 'DELETE'
     })
+
+
+const normilizeBody = body => typeof (body) === 'object' ? JSON.stringify(body) : body

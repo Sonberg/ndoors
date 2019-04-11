@@ -4,21 +4,7 @@ import * as M from 'materialize-css'
 import { Subject } from 'rxjs'
 import { debounceTime } from 'rxjs/operators'
 
-import styled from 'styled-components'
-
 import { get } from './../api';
-
-const Container = styled.div`
-  width: 10rem;
-  position: relative;
-`
-
-const ResultContainer = styled.div`
-position: absolut;
-top: 0;
-left: 0,
-right: 0;
-`
 
 export default class AutoComplete extends Component {
   constructor(props) {

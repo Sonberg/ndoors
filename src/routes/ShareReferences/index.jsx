@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ShareBoxFirst from './components/ShareBoxFirst'
 import ShareBoxSecond from './components/ShareBoxSecond'
 import ShareBoxThird from './components/ShareBoxThird'
-import { get } from './../../api';
+import { get } from '../../api';
 
 export default class SharedReferences extends Component {
     constructor(props) {
@@ -23,10 +23,14 @@ export default class SharedReferences extends Component {
         this.setState({ userReferenceList: data });
     }
 
-    async getReferenceData(key) {
+    async getReferenceData(email) {
         try {
-            const response = await get(`api/references/${key}`)
-            return response.json();
+            const response = await get(`api/references?userEmail=${email}`)
+            if (response.status === 404) {
+                return null;
+            }
+
+            return await response.json();
         } catch (err) {
             return null;
         }

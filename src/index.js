@@ -6,7 +6,7 @@ import Home from './routes/Home.jsx'
 import AddReference from './routes/AddReference/index'
 import MyReferences from './routes/MyReferences'
 import ShareReferences from './routes/ShareReferences/index'
-import ApproveReference from './routes/ApproveReference'
+import ApproveReference from './routes/ApproveReference/index.jsx'
 import Overview from './routes/Overview/index'
 import * as serviceWorker from './serviceWorker'
 

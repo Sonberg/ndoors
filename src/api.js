@@ -1,30 +1,70 @@
 const baseUrl = process.env.REACT_APP_API_URL
+const token = () => localStorage.getItem('token')
+const refreshToken = () => localStorage.getItem('refreshToken')
 
 export const url = baseUrl;
-export const get = endpoint => fetch(`${baseUrl}/${endpoint}`)
-export const post = (endpoint, body) =>
-    fetch(`${baseUrl}/${endpoint}`, {
+
+export const get = async endpoint => {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: headers()
+    });
+
+    return handleResponse(response);
+}
+
+export const post = async (endpoint, body) => {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        credentials: 'include',
+        headers: headers(),
         body: normilizeBody(body)
-    })
+    });
+    return handleResponse(response);
+}
 
-export const patch = (endpoint, body) =>
-    fetch(`${baseUrl}/${endpoint}`, {
+export const patch = async (endpoint, body) => {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
         method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        credentials: 'include',
+        headers: headers(),
         body: normilizeBody(body)
-    })
+    });
+    return handleResponse(response);
+}
 
 
-export const remove = (endpoint) =>
-    fetch(`${baseUrl}/${endpoint}`, {
+export const remove = async endpoint => {
+    const response = await fetch(`${baseUrl}/${endpoint}`, {
+        headers: headers(),
+        credentials: 'include',
         method: 'DELETE'
-    })
+    });
+    return handleResponse(response);
+}
 
+const handleResponse = async response => {
+    try {
+        if (response.status === 401) {
+            // Refresh token
+        }
+
+        const content = await response.text();
+
+        if (!content) {
+            return content;
+        }
+
+        return JSON.parse(content);
+    } catch (error) {
+        return null;
+    }
+}
 
 const normilizeBody = body => typeof (body) === 'object' ? JSON.stringify(body) : body
+const headers = () => ({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token()}`
+
+})

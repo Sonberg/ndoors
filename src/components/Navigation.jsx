@@ -1,32 +1,31 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+import { compose, bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import * as M from 'materialize-css'
 import Link from './Link';
+import { actionCreators } from '../store/Auth';
 
 class Navigation extends Component {
-  constructor(props) {
-    super(props)
 
-    this.logOut = this.logOut.bind(this)
-  }
-
-  logOut() {
-    localStorage.removeItem('user')
-    localStorage.removeItem('loggedIn')
-    this.props.history.push('/')
-  }
+  state = {}
 
   componentDidMount() {
-    document.addEventListener('DOMContentLoaded', () => {
-      var elems = document.querySelectorAll('.sidenav')
-      M.Sidenav.init(elems)
-    })
+    document.addEventListener('DOMContentLoaded', () => M.Sidenav.init(document.querySelectorAll('.sidenav')))
+  }
+
+  static getDerivedStateFromProps(props) {
+    if (props.isAuthenticated && !props.user) {
+      props.loadUser();
+    }
+    return {};
   }
 
   render() {
     const navBarStyling = {
       backgroundColor: '#6C9F9B'
     }
+    const { user, isAuthenticated } = this.props;
 
     return (
       <React.Fragment>
@@ -41,10 +40,10 @@ class Navigation extends Component {
                   <i className="material-icons">menu</i>
                 </a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  {localStorage.getItem('loggedIn') ? <Links /> : null}
+                  {isAuthenticated ? <Links /> : null}
                   <li>
                     <Link to="/" onClick={this.logOut}>
-                      {localStorage.getItem('user') || 'Logga ut'}
+                      {user && user.name || 'Logga ut'}
                     </Link>
                   </li>
                 </ul>
@@ -53,7 +52,7 @@ class Navigation extends Component {
           </div>
         </nav>
 
-        {localStorage.getItem('loggedIn') ? (
+        {isAuthenticated ? (
           <ul className="sidenav" id="mobile-menu">
             <Links />
           </ul>
@@ -63,7 +62,12 @@ class Navigation extends Component {
   }
 }
 
-export default withRouter(Navigation)
+const withConnect = connect(
+  state => state.auth,
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)
+
+export default compose(withRouter, withConnect)(Navigation)
 
 const Links = () => (
   <React.Fragment>

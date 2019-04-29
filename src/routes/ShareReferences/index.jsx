@@ -69,8 +69,8 @@ export default class SharedReferences extends Component {
                 referencePage = (
                     <div>
                         <ShareBoxFirst
-                            onBackward={() => this.onBackward()}
-                            onContinue={() => this.onContinue()}
+                            onBackward={this.onBackward}
+                            onContinue={this.onContinue}
                             onChange={this.onChange}
                             details={this.state.referenceDetails}
                         />
@@ -80,8 +80,8 @@ export default class SharedReferences extends Component {
             case 2:
                 referencePage = (
                     <ShareBoxSecond
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onContinue()}
+                        onBackward={this.onBackward}
+                        onContinue={this.onContinue}
                         onChange={this.onChange}
                         details={this.state.userReferenceList}
                     />
@@ -90,8 +90,8 @@ export default class SharedReferences extends Component {
             case 3:
                 referencePage = (
                     <ShareBoxThird
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onContinue()}
+                        onBackward={this.onBackward}
+                        onContinue={this.onContinue}
                         onSelect={this.saveToArray}
                         details={this.state.referenceDetails}
                     />

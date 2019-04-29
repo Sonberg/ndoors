@@ -69,13 +69,13 @@ export default class SharedBoxFirst extends Component {
                         <Button
                             className="col s2 offset-s1 waves-effect waves-light btn"
                             style={{ backgroundColor: "#97b2b0" }}
-                            onClick={() => this.props.onBackward()}
+                            onClick={this.props.onBackward}
                         >
                             Back
                         </Button>
                         <Button
                             className="col s2 offset-s6 waves-effect waves-light btn center-align"
-                            onClick={() => this.props.onContinue()}
+                            onClick={this.props.onContinue}
                         >
                             Continue
                         </Button>

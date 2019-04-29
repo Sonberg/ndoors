@@ -14,11 +14,7 @@ export default class OverviewSkills extends Component {
     }
 
     async componentDidMount() {
-        const response = await get(`api/users?email=${localStorage.getItem('email')}`);
-        const users = await response.json();
-
-        this.setState({ user: users[0] });
-
+        this.setState({ user: await get(`api/users/profile`) });
     }
 
     render() {

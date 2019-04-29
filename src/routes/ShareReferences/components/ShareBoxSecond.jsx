@@ -3,10 +3,6 @@ import { SmallPinkButton } from '../../../styles/styledComponents'
 import Button from '../../../components/Button'
 
 export default class SharedBoxSecond extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
 
     render() {
         return (
@@ -21,7 +17,7 @@ export default class SharedBoxSecond extends Component {
                     </div>
                     <div>
                         <div className="row" style={{ padding: '0 10%' }}>
-                            {this.props.details.map((ref, index) => (
+                            {this.props.details && this.props.details.map((ref, index) => (
                                 <div key={index} className="col s4" style={{ padding: '0' }}>
                                     <SmallPinkButton style={{ display: 'inline-flex' }}>
                                         <div
@@ -44,13 +40,13 @@ export default class SharedBoxSecond extends Component {
                         <Button
                             className="col s2 offset-s1 waves-effect waves-light btn"
                             style={{ backgroundColor: '#97b2b0' }}
-                            onClick={() => this.props.onBackward()}
+                            onClick={this.props.onBackward}
                         >
                             Back
                         </Button>
                         <Button
                             className="col s2 offset-s6 waves-effect waves-light btn center-align"
-                            onClick={() => this.props.onContinue()}
+                            onClick={this.props.onContinue}
                         >
                             Continue
                         </Button>

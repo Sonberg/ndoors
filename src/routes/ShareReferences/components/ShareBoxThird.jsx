@@ -5,10 +5,6 @@ import Button from '../../../components/Button'
 import { withRouter } from 'react-router'
 
 class SharedBoxThird extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
     render() {
         return (
             <div className="container">
@@ -49,7 +45,7 @@ class SharedBoxThird extends Component {
                         <Button
                             className="col s2 offset-s1 waves-effect waves-light btn"
                             style={{ backgroundColor: "#97b2b0" }}
-                            onClick={() => this.props.onBackward()}
+                            onClick={this.props.onBackward}
                         >
                             Back
                         </Button>

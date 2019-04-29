@@ -20,9 +20,7 @@ export default class Overview extends Component {
     async componentDidMount() {
         try {
             const response = await get(`api/references?userEmail=${localStorage.getItem('email')}`);
-            const json = await response.json();
-
-            this.setState({ result: json });
+            this.setState({ result: response || [] });
         } catch {
 
         }

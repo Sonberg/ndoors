@@ -3,26 +3,26 @@ import OverviewUser from './components/Overview.User'
 import OverviewSkills from './components/Overview.Skills'
 import OverviewSuggestions from './components/Overview.Suggestions'
 import Button from '../../components/Button';
-import { get } from '../../api';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import OverviewReference from './components/Overview.Reference';
+import { actionCreators } from '../../store/References';
 
 const sectionHeader = {
     fontWeight: '600',
     color: '#333'
 }
 
-export default class Overview extends Component {
-    state = {
-        result: []
-    }
+class Overview extends Component {
 
-    async componentDidMount() {
-        // load created references
+    componentDidMount() {
+        this.props.loadCreated();
     }
 
     render() {
-        console.log(this.state.result)
+        const { references } = this.props;
+
         return (
             <div className="container" style={{ width: '80%' }}>
                 <div className="row" >
@@ -32,7 +32,7 @@ export default class Overview extends Component {
                     <div className="col s7 " style={{ paddingRight: '2em', borderRight: '1px solid rgb(222, 222, 222)', }}>
 
                         <div style={{ padding: '1em 0', display: 'flex', justifyContent: 'space-between' }}>
-                            {this.state.result[0] == [] ?
+                            {references.length === 0 ?
                                 <Link to="/add-reference" style={{ width: '100%' }} ><Button children="Share references" />
                                 </Link>
                                 : <Link to="/shared-references" style={{ width: '100%' }} ><Button children="Share references" />
@@ -42,7 +42,7 @@ export default class Overview extends Component {
                         </div>
 
                         <h5 children="Requested references" style={sectionHeader} />
-                        {this.state.result.map((x, index) => <OverviewReference key={index} {...x} />)}
+                        {references.map((x, index) => <OverviewReference key={index} {...x} />)}
 
                     </div>
                     <div className="col s5 " style={{ paddingLeft: '1.5em' }}>
@@ -56,3 +56,10 @@ export default class Overview extends Component {
         )
     }
 }
+
+export default connect(
+    state => ({
+        references: state.references.recived
+    }),
+    dispatch => bindActionCreators(actionCreators, dispatch)
+)(Overview)

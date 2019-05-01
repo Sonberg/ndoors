@@ -9,7 +9,7 @@ const setAuthenticated = 'SET_AUTHENTICATED';
 
 const initialState = {
     user: null,
-    isAuthenticated: Cookies.get('connect.sid') != null
+    isAuthenticated: true
 }
 
 

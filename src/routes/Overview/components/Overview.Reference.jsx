@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Badge from '../../../components/Badge';
-import { post, remove } from '../../../api';
+import * as Api from '../../../api';
 import { SkillBadge } from './Overview.Skills'
 import Button from '../../../components/Button';
 
@@ -19,16 +19,16 @@ export default class OverviewReference extends Component {
 
     async sendReminder() {
         const data = this.props;
-        const referenceUrl = `http://ndoor.s3-website.eu-north-1.amazonaws.com/approve-reference?key=${data.id}`;
+        const referenceUrl = `${Api.url}/approve-reference?key=${data.id}`;
         const message = `Hi ${data.referenceName}, ${data.userName} has asked you to be his/hers reference. Verify here: ${referenceUrl}`;
         const body = JSON.stringify({ message });
         const url = `api/sms/${data.referencePhone}`
 
-        post(url, body);
+        Api.post(url, body);
     }
 
     async remove() {
-        await remove(`api/references/${this.props.id}`);
+        await Api.remove(`api/references/${this.props.id}`);
         this.setState({ removed: true });
     }
 

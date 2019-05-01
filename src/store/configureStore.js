@@ -1,6 +1,12 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import {
+  applyMiddleware,
+  combineReducers,
+  compose,
+  createStore
+} from 'redux';
 import thunk from 'redux-thunk';
 import * as Auth from './Auth';
+import * as References from './References'
 
 
 export default function configureStore(initialState) {
@@ -8,6 +14,7 @@ export default function configureStore(initialState) {
   // Reucers
   const reducers = {
     auth: Auth.reducer,
+    references: References.reducer
   };
 
   const middleware = [

@@ -12,15 +12,15 @@ const initialState = {
 
 
 export const actionCreators = {
-    loadCreated: email => async dispatch => {
-        const response = await get(`api/references?userEmail=${email}`);
+    loadCreated: () => async dispatch => {
+        const response = await get(`api/references/created`);
         dispatch({
             type: setCreated,
             payload: response
         });
     },
-    loadRecived: email => async dispatch => {
-        const response = await get(`api/references?referentEmail=${email}`);
+    loadRecived: () => async dispatch => {
+        const response = await get(`api/references/recived`);
         dispatch({
             type: setRecived,
             payload: response

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import OverviewUserStats from './Overview.User.Stats'
 
 const styles = {
@@ -19,7 +20,7 @@ const smallText = {
     fontWeight: 500
 }
 
-export default () => (
+const OverviewUser = ({ user }) => (
     <div className="card" style={{ marginTop: '3em' }}>
         <div className="row card-content" style={{ margin: 0 }}>
             <div className="col">
@@ -29,13 +30,13 @@ export default () => (
                     </div>
                     <div className="col">
                         <h5 style={{ whiteSpace: 'nowrap' }}>
-                            {localStorage.getItem('user')}
+                            {user && user.name}
                             <span style={styles}>
                                 <i className="tiny material-icons">check</i>
                             </span>
                         </h5>
                         <p style={{ margin: '0 0 0.5em', color: '#9d9d9e' }} children="Truckförare" />
-                        <p style={{ margin: '0 0 0em', fontSize: 13 }} children={localStorage.getItem('email')} />
+                        <p style={{ margin: '0 0 0em', fontSize: 13 }} children={user && user.email} />
                         <p style={{ margin: '0 0 0.5em', fontSize: 13 }} children="" />
                     </div>
                 </div>
@@ -60,3 +61,7 @@ export default () => (
         </div>
     </div>
 )
+
+export default connect(
+    state => state.auth
+)(OverviewUser)

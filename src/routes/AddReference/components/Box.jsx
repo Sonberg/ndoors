@@ -3,11 +3,27 @@ import AutoComplete from "../../../components/AutoComplete"
 import Input from "../../../components/InputField"
 import Button from "../../../components/Button"
 
-export default class BoxFirst extends Component {
+export default class Box extends Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
+  generateInputs() {
+    let designArray = [2, 1]
+    let inputArray = ["Input", "Input", "Autocomplete"]
+    let k = 0
+    let row = true
+    let input = ""
+    for (let i = 0; i < inputArray.length; i++) {
+      row = false
+      component = inputArray[i]
+      if (designArray[k] == i - 1) {
+        k = k + 1 //new row
+        row = true
+      }
+    }
+  }
+
   render() {
     return (
       <div className="container">

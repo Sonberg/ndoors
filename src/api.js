@@ -1,6 +1,4 @@
 const baseUrl = process.env.REACT_APP_API_URL
-const token = () => localStorage.getItem('token')
-const refreshToken = () => localStorage.getItem('refreshToken')
 
 export const url = baseUrl;
 
@@ -46,8 +44,8 @@ export const remove = async endpoint => {
 
 const handleResponse = async response => {
     try {
-        if (response.status === 401) {
-            // Refresh token
+        if (response.status >= 400) {
+            return null;
         }
 
         const content = await response.text();
@@ -64,7 +62,5 @@ const handleResponse = async response => {
 
 const normilizeBody = body => typeof (body) === 'object' ? JSON.stringify(body) : body
 const headers = () => ({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token()}`
-
+    'Content-Type': 'application/json'
 })

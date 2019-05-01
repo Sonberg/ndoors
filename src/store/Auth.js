@@ -1,3 +1,4 @@
+import Cookies from 'browser-cookies'
 import {
     get,
     post
@@ -8,12 +9,12 @@ const setAuthenticated = 'SET_AUTHENTICATED';
 
 const initialState = {
     user: null,
-    isAuthenticated: false
+    isAuthenticated: Cookies.get('connect.sid') != null
 }
 
 
 export const actionCreators = {
-    init: async dispatch => {
+    init: () => async dispatch => {
         const response = await get('api/auth/authenticated');
         const isAuthenticated = response && response.isAuthenticated;
 
@@ -22,28 +23,36 @@ export const actionCreators = {
             payload: isAuthenticated
         });
 
-        if (isAuthenticated) {
-            const user = await get(`api/users/profile`);
-            dispatch({
-                type: setUser,
-                payload: user
-            });
+        if (!isAuthenticated) {
+            return;
         }
+
+        const user = await get(`api/users/profile`);
+        dispatch({
+            type: setUser,
+            payload: user
+        });
 
     },
     logout: () => dispatch => {
+        post('api/auth/logout');
+
+        // Set authenticated false
         dispatch({
             type: setAuthenticated,
             payload: false
         });
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
-    },
-    loadUser: () => async dispatch => {
-        const response = await get(`api/users/profile`);
+
+        // Clear user
         dispatch({
             type: setUser,
-            payload: response
+            payload: null
+        });
+    },
+    loadUser: () => async dispatch => {
+        dispatch({
+            type: setUser,
+            payload: await get(`api/users/profile`)
         });
     }
 };

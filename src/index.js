@@ -5,10 +5,12 @@ import { Route, BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 import configureStore from './store/configureStore';
 import Navigation from './components/Navigation'
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 // Routes
 import Home from './routes/Home.jsx'
+import Login from './routes/Login.jsx'
 import AddReference from './routes/AddReference/index'
 import MyReferences from './routes/MyReferences'
 import ShareReferences from './routes/ShareReferences/index'
@@ -23,17 +25,18 @@ import { actionCreators } from './store/Auth';
 const initialState = window.initialReduxState;
 const store = configureStore(initialState);
 
-actionCreators.init(store.dispatch);
+actionCreators.init()(store.dispatch);
 
 const routing = (
   <Provider store={store}>
     <Router>
       <Navigation />
       <Route exact path="/" component={Home} />
-      <Route exact path="/overview" component={Overview} />
+      <Route exact path="/login" component={Login}/>
+      <ProtectedRoute exact path="/overview" component={Overview} />
       <Route path="/add-reference" component={AddReference} />
-      <Route path="/my-reference" component={MyReferences} />
-      <Route path="/share-references" component={ShareReferences} />
+      <ProtectedRoute path="/my-reference" component={MyReferences} />
+      <ProtectedRoute path="/share-references" component={ShareReferences} />
       <Route path="/approve-reference/:id" component={ApproveReference} />
     </Router>
   </Provider>

@@ -18,12 +18,7 @@ export default class Overview extends Component {
     }
 
     async componentDidMount() {
-        try {
-            const response = await get(`api/references?userEmail=${localStorage.getItem('email')}`);
-            this.setState({ result: response || [] });
-        } catch {
-
-        }
+        // load created references
     }
 
     render() {

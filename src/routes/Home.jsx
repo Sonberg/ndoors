@@ -4,6 +4,7 @@ import { ColoredRow } from '../components/ColoredRow'
 import styled from 'styled-components'
 import { BigButton, Title, PinkHighligt, PinkUnderline } from './../styles/styledComponents'
 import Typed from 'react-typed';
+import { connect } from 'react-redux';
 
 const HomeWrapper = styled.section`
     background-color: #F2F6F6;
@@ -50,22 +51,14 @@ const Footer = styled.div`
     background-color: #6C9F9B;
 `;
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {}
         this.logIn = this.logIn.bind(this)
     }
-    componentDidMount() {
-        if (localStorage.getItem('loggedIn')) {
-            this.props.history.push('/overview');
-        }
-    }
 
     logIn() {
-        localStorage.setItem('loggedIn', true);
-        localStorage.setItem('user', 'evaterry');
-        localStorage.setItem('email', 'email@email.com');
         this.props.history.push('/overview')
     }
 
@@ -184,3 +177,7 @@ export default class Home extends Component {
         )
     }
 }
+
+export default connect(
+    state => state.auth
+)(Home)

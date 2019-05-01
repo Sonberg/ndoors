@@ -2,27 +2,27 @@ import {
     get
 } from '../api';
 
-const setRecived = 'SET_USER';
-const setCreated = 'SET_AUTHENTICATED';
+const setRecived = 'SET_RECIVED';
+const setCreated = 'SET_CREATED';
 
 const initialState = {
-    user: null,
-    isAuthenticated: false
+    recived: [],
+    created: []
 }
 
 
 export const actionCreators = {
-    loadCreated: () => async dispatch => {
-        const response = await get(`api/users/profile`);
+    loadCreated: email => async dispatch => {
+        const response = await get(`api/references?userEmail=${email}`);
         dispatch({
-            type: setUser,
+            type: setCreated,
             payload: response
         });
     },
-    loadRecived: () => async dispatch => {
-        const response = await get(`api/users/profile`);
+    loadRecived: email => async dispatch => {
+        const response = await get(`api/references?referentEmail=${email}`);
         dispatch({
-            type: setUser,
+            type: setRecived,
             payload: response
         });
     }
@@ -31,17 +31,17 @@ export const actionCreators = {
 export const reducer = (state, action) => {
     state = state || initialState;
 
-    if (action.type === setUser) {
+    if (action.type === setCreated) {
         return {
             ...state,
-            user: action.payload
+            created: action.payload
         }
     }
 
-    if (action.type == setAuthenticated) {
+    if (action.type == setRecived) {
         return {
             ...state,
-            isAuthenticated: action.payload
+            recived: action.payload
         }
     }
 

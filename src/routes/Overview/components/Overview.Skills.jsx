@@ -13,10 +13,6 @@ export default class OverviewSkills extends Component {
         user: null
     }
 
-    async componentDidMount() {
-        this.setState({ user: await get(`api/users/profile`) });
-    }
-
     render() {
 
         if (!this.state.user) {

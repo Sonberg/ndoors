@@ -26,7 +26,7 @@ const OverviewUser = ({ user }) => (
             <div className="col">
                 <div className="row" style={{ marginBottom: 0 }}>
                     <div className="col hide-on-med-and-down">
-                        <img className="circle responsive-img" style={{ height: 118, width: 118, backgroundColor: '#e6e6e6' }} src="assets/images/profile.png" />
+                        <img className="circle responsive-img" style={{ height: 118, width: 118, backgroundColor: '#e6e6e6' }} src={user && user.image} />
                     </div>
                     <div className="col">
                         <h5 style={{ whiteSpace: 'nowrap' }}>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import EmpowerAF from './../../../components/EmpowerAF'
-import { get } from '../../../api';
 
 const sectionHeader = {
     fontWeight: '600',
@@ -27,7 +25,6 @@ export default class OverviewSkills extends Component {
                     marginBottom: '1em'
                 }}>
                     <h5 children="Skills/abilities" style={sectionHeader} />
-                    <EmpowerAF />
                 </div>
                 <div className="row">
                     <SkillBadge text="Tryckförare" number="5" />

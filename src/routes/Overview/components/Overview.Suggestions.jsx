@@ -1,5 +1,4 @@
 import React from 'react'
-import EmpowerAF from './../../../components/EmpowerAF'
 import Button from './../../../components/Button'
 
 const sectionHeader = {
@@ -18,7 +17,6 @@ export default () => (
                     marginBottom: '1em'
                 }}>
                     <h5 children="Suggested Jobs" style={sectionHeader} />
-                    <EmpowerAF />
                 </div>
                 <p style={{ color: 'rgb(157, 157, 158)' }}>Based on your skills</p>
                 <div className="row">

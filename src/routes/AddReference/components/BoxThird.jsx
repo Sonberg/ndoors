@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import AutoComplete from '../../../components/AutoComplete'
 import Button from '../../../components/Button'
-import EmpowerAF from '../../../components/EmpowerAF'
 
 export default class BoxSecond extends Component {
   constructor(props) {
@@ -27,7 +26,6 @@ export default class BoxSecond extends Component {
           <div className="col s8 offset-s1">
             <h3 style={{ fontSize: '32px' }}>List your competencies</h3>
           </div>
-          <EmpowerAF />
 
           <form>
             <div className="row">

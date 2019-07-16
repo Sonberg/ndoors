@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 
-const Link = ({ to, as, history, staticContext, ...props }) => {
-    const Component = as || 'a'
+const Link = ({ to, component, history, staticContext, ...props }) => {
+    const C = component || 'a'
 
-    return <Component {...props} onClick={() => history.push(to)} />
+    return <C {...props} onClick={() => history.push(to)} />
 }
 
 export default withRouter(Link)

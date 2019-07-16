@@ -66,14 +66,14 @@ class OAuthProvider extends Component {
     }
 
     render() {
-        if (this.props.isAuthenticated) {
-            return <Redirect to="/" />
-        }
+        const { component, className, children } = this.props;
+        const C = component || 'div'
 
         return (
-            <div onClick={this.authenticate}>
-                {this.props.children}
-            </div>
+            <C
+                onClick={this.authenticate}
+                className={className}
+                children={children} />
         )
     }
 }

@@ -10,7 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 // Routes
 import Home from './routes/Home.jsx'
-import Login from './routes/Login.jsx'
+import Auth from './routes/Auth'
 import AddReference from './routes/AddReference/index'
 import MyReferences from './routes/MyReferences'
 import ShareReferences from './routes/ShareReferences/index'
@@ -32,7 +32,7 @@ const routing = (
     <Router>
       <Navigation />
       <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login}/>
+      <Route path="/auth" component={Auth} />
       <ProtectedRoute exact path="/overview" component={Overview} />
       <Route path="/add-reference" component={AddReference} />
       <ProtectedRoute path="/my-reference" component={MyReferences} />

@@ -31,7 +31,7 @@ class Navigation extends Component {
                   {isAuthenticated ? <Links /> : null}
                   <li>
                     {isAuthenticated ? (<button onClick={logout} children={user && user.name} />) : null}
-                    {!isAuthenticated ? (<Link to="/login" children="Logga in" />) : null}
+                    {!isAuthenticated ? (<Link to="/auth" children="Registrera dig" />) : null}
                   </li>
                 </ul>
               </div>

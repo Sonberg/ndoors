@@ -26,7 +26,7 @@ const Auth = ({ match, isAuthenticated }) => {
           <Card title="Redan medlem?">
             <Card.Body>
               <Card.Title children="Redan medlem?" />
-              <Card.Text children={<Login />} />
+              <Login />
             </Card.Body>
           </Card>
         </Col>

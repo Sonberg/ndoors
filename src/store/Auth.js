@@ -1,4 +1,3 @@
-import Cookies from 'browser-cookies'
 import {
     get,
     post

@@ -18,8 +18,8 @@ import ApproveReference from './routes/ApproveReference/index.jsx'
 import Overview from './routes/Overview/index'
 
 import './index.scss'
-import 'materialize-css'
-import 'materialize-css/dist/css/materialize.min.css'
+// import 'materialize-css'
+// import 'materialize-css/dist/css/materialize.min.css'
 import { actionCreators } from './store/Auth';
 
 const initialState = window.initialReduxState;

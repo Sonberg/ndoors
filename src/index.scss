@@ -26,6 +26,12 @@ body {
   height: 100%;
   color: rgb(53, 53, 53);
 }
+
+.disabled-button{
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .approveForm{
   label {
     text-transform: uppercase;

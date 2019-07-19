@@ -1,17 +1,39 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Form } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default ({ index, currentIndex, setIndex, title, children }) => {
+
+
+export default ({ index, currentIndex, setIndex, total, title, children: C }) => {
     const shouldDisplayContent = index === currentIndex;
+    const shouldDisablePrev = index === 0;
+    const shouldDisableNext = index + 1 == total;
     const onClick = () => setIndex(index);
+    const onClickPrev = () => {
+        if (shouldDisablePrev) {
+            return
+        }
+        setIndex(index - 1)
+    };
+    const onClickNext = () => {
+        if (shouldDisableNext) {
+            return
+        }
+        setIndex(index + 1)
+    };
     const Content = () => (
         <Row className="border-top">
             <Col className="p-3">
-                {children}
+                <C />
             </Col>
-            <Col sm="auto" className="d-flex align-items-center">
-                pil
-        </Col>
+            <Col sm="auto" className="p-3">
+                <Row className={`mb-3 ${shouldDisablePrev ? "disabled-button" : null}`}>
+                    <FontAwesomeIcon icon="chevron-circle-up" size="2x" onClick={onClickPrev} />
+                </Row>
+                <Row className={`${shouldDisableNext ? "disabled-button" : null}`}>
+                    <FontAwesomeIcon icon="chevron-circle-down" size="2x" onClick={onClickNext} />
+                </Row>
+            </Col>
         </Row>
     );
 
@@ -23,7 +45,7 @@ export default ({ index, currentIndex, setIndex, title, children }) => {
                         {title}
                     </Col>
                 </Row>
-                    {shouldDisplayContent ? <Content /> : null}
+                {shouldDisplayContent ? <Content /> : null}
             </Col>
         </Row>
     )

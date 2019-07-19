@@ -7,6 +7,9 @@ import * as serviceWorker from './serviceWorker'
 import configureStore from './store/configureStore';
 import Navigation from './components/Navigation'
 import ProtectedRoute from './components/ProtectedRoute';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
 
 
 // Routes
@@ -21,6 +24,8 @@ import Overview from './routes/Overview/index'
 import './index.scss'
 // import 'materialize-css'
 // import 'materialize-css/dist/css/materialize.min.css'
+
+library.add(fas)
 
 const initialState = window.initialReduxState;
 const store = configureStore(initialState);

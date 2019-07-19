@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Badge from '../../../components/Badge';
 import * as Api from '../../../api';
-import { SkillBadge } from './Overview.Skills'
 import Button from '../../../components/Button';
 
 export default class OverviewReference extends Component {
@@ -57,7 +56,7 @@ export default class OverviewReference extends Component {
                             </div>
                         </div>
                         <div className="row" style={{ margin: '1em 0 0' }}>
-                            {skills && Object.keys(skills).map(s => <SkillBadge key={s} verified={skills[s]} text={s} style={{ paddingLeft: 0 }} />)}
+
                         </div>
                     </div>
                     <div className="card-action">

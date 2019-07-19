@@ -1,17 +1,11 @@
 import React from 'react'
+import { Button } from 'react-bootstrap';
+import { withRouter } from 'react-router'
 
-
-export default ({ as, style, invert, ...props }) => {
-    const Tag = as || 'button'
+export default withRouter(({ as, style, history, to, invert, ...props }) => {
+    const onNavigate = () => history.push(to);
 
     return (
-        <Tag className="waves-effect waves-light btn-large " style={{
-            ...style, ...{
-                backgroundColor: invert ? 'white' : 'rgb(108, 159, 155)',
-                color: invert ? 'rgb(108, 159, 155)' : 'white',
-                boxShadow: 'none',
-                borderRadius: 8
-            }
-        }} {...props} />
+        <Button as={as} onClick={onNavigate} {...props} />
     )
-}
+});

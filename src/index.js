@@ -25,8 +25,8 @@ import './index.scss'
 const initialState = window.initialReduxState;
 const store = configureStore(initialState);
 const routing = (
-  <AuthProvider>
-    <Provider store={store}>
+  <Provider store={store}>
+    <AuthProvider>
       <Router>
         <Navigation />
         <Route exact path="/" component={Home} />
@@ -37,8 +37,8 @@ const routing = (
         <ProtectedRoute path="/share-references" component={ShareReferences} />
         <Route path="/approve-reference/:id" component={ApproveReference} />
       </Router>
-    </Provider>
-  </AuthProvider>
+    </AuthProvider>
+  </Provider>
 )
 
 ReactDOM.render(routing, document.getElementById('root'))

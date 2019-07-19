@@ -11,7 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Routes
 import Home from './routes/Home.jsx'
 import Auth from './routes/Auth'
-import AddReference from './routes/AddReference/index'
+import AddReference from './routes/AddReference2/index'
 import MyReferences from './routes/MyReferences'
 import ShareReferences from './routes/ShareReferences/index'
 import ApproveReference from './routes/ApproveReference/index.jsx'

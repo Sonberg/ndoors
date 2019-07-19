@@ -1,48 +1,44 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, Button, Form, Card } from 'react-bootstrap';
-import Link from '../../components/Link';
-import { post } from '../../api';
+import { Button } from 'react-bootstrap';
+import { Form, Field } from 'react-final-form'
+import { Redirect } from 'react-router-dom'
+import { useAuth } from '../../context/auth';
+import FormInput from '../../components/Form.Input';
 
 const successLogin = {
     email: "per.sonberg@gmail.com",
     password: "hej1"
 };
 
-export default () => {
-    const [data, setData] = useState({});
+export default ({ history }) => {
     const [error, setError] = useState(null);
+    const auth = useAuth();
 
-    const onSubmit = async (event) => {
-        if (event && event.preventDefault) {
-            event.preventDefault()
-        }
-
-        const response = await post('api/auth/login', { ...successLogin, ...data });
-
-        if (response) {
-            window.location = window.location;
-        } else {
-            setError("Fel e-post eller lösenord")
-        }
+    const validate = ({ email, password }) => {
+        console.log(auth);
+        
+        return email && password ? null : { email: true, password: true };
     }
 
-    const onChange = ({ target: { name, value } }) => {
-        setData({ [name]: value });
+    const onSubmit = async (values) => {
+        const response = await auth.login({ ...successLogin, ...values });
+
+        if (!response) {
+            setError("Fel e-post eller lösenord")
+            return;
+        }
+        history.push('/')
     }
 
     return (
-        <Form onSubmit={onSubmit}>
-            <Form.Group>
-                <Form.Control type="email" name="email" placeholder="Epost" onChange={onChange} />
-            </Form.Group>
-
-            <Form.Group>
-                <Form.Control type="password" name="password" placeholder="Lösenord" onChange={onChange} />
-            </Form.Group>
-            <div className="mb-3">
-                <strong children={error} className="text-danger" />
-            </div>
-            <Button variant="primary" onClick={onSubmit} children="Logga in" />
-        </Form>
-    )
+        <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, invalid }) => (
+            <form onSubmit={handleSubmit}>
+                <Field component={FormInput} name="email" autoComplete="email" type="email" placeholder="Email" />
+                <Field component={FormInput} name="password" autoComplete="current-password" type="password" placeholder="Password" />
+                <div className="mb-3">
+                    <small children={error} className="text-danger" />
+                </div>
+                <Button variant="primary" type="submit" children="Sign in" className="mt-3" disabled={invalid} />
+            </form>)} />
+    );
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './context/auth';
 import * as serviceWorker from './serviceWorker'
 import configureStore from './store/configureStore';
 import Navigation from './components/Navigation'
@@ -20,26 +21,24 @@ import Overview from './routes/Overview/index'
 import './index.scss'
 // import 'materialize-css'
 // import 'materialize-css/dist/css/materialize.min.css'
-import { actionCreators } from './store/Auth';
 
 const initialState = window.initialReduxState;
 const store = configureStore(initialState);
-
-actionCreators.init()(store.dispatch);
-
 const routing = (
-  <Provider store={store}>
-    <Router>
-      <Navigation />
-      <Route exact path="/" component={Home} />
-      <Route path="/auth" component={Auth} />
-      <ProtectedRoute exact path="/overview" component={Overview} />
-      <Route path="/add-reference" component={AddReference} />
-      <ProtectedRoute path="/my-reference" component={MyReferences} />
-      <ProtectedRoute path="/share-references" component={ShareReferences} />
-      <Route path="/approve-reference/:id" component={ApproveReference} />
-    </Router>
-  </Provider>
+  <AuthProvider>
+    <Provider store={store}>
+      <Router>
+        <Navigation />
+        <Route exact path="/" component={Home} />
+        <Route path="/auth" component={Auth} />
+        <ProtectedRoute exact path="/overview" component={Overview} />
+        <Route path="/add-reference" component={AddReference} />
+        <ProtectedRoute path="/my-reference" component={MyReferences} />
+        <ProtectedRoute path="/share-references" component={ShareReferences} />
+        <Route path="/approve-reference/:id" component={ApproveReference} />
+      </Router>
+    </Provider>
+  </AuthProvider>
 )
 
 ReactDOM.render(routing, document.getElementById('root'))

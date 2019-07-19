@@ -1,7 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import BootstrapForm from 'react-bootstrap/Form';
-import Link from '../../components/Link';
+import { Button } from 'react-bootstrap';
 import { Form, Field } from 'react-final-form'
 import FormInput from '../../components/Form.Input';
 
@@ -41,7 +39,7 @@ export default () => {
         <Field component={FormInput} name="email" autoComplete="email" type="email" placeholder="Epost" />
         <Field component={FormInput} name="password" autoComplete="new-password" type="password" placeholder="Lösenord" />
         <Field component={FormInput} name="repeatPassword" type="password" autoComplete="new-password" placeholder="Upprepa lösenord" />
-        <Button variant="primary" type="submit" children="Registrera" />
+        <Button variant="primary" type="submit" children="Sign up" className="mt-3" />
       </form>)} />
   )
 }

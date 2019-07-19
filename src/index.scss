@@ -1,7 +1,6 @@
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
-@import "./styles/navigation.scss";
 
 $theme-colors: (
   primary: #313a45,
@@ -12,10 +11,13 @@ $theme-colors: (
 
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "./styles/navigation.scss";
+@import "./styles/input.scss";
+@import "./styles/typography.scss";
 
 #root, body, html {
   min-height: 100vh;
-  background-color: #f2f6f6;
+  background-color: #fff;
 }
 
 body {

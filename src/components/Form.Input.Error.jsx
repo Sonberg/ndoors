@@ -9,6 +9,6 @@ export default ({ submitFailed, ...meta }) => {
     return null;
   }
 
-  return <div className="text-danger" style={{ fontSize: '0.9em' }} children={meta.error} />;
+  return <small className="text-danger my-1" children={meta.error} />;
 
 }

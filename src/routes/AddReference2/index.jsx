@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Step from './components/Step';
 import WhoIsYourReference from './components/Form.Who';
+import DescribeYourRelation from './components/Form.Describe';
+import ListYourCompetences from './components/Form.ListCompetences';
+import LeavePersonalNote from './components/Form.LeaveNote';
+
 
 export default () => {
 
     const Steps = 
     [{title: 'Who is your reference?', children: WhoIsYourReference}, 
-    {title: 'Describe your relation', children: MyComponentTwo},
-    {title: 'List your competencies', children: MyComponent},
-    {title: 'Leave a personal note', children: MyComponent}]
+    {title: 'Describe your relation', children: DescribeYourRelation},
+    {title: 'List your competencies', children: ListYourCompetences},
+    {title: 'Leave a personal note', children: LeavePersonalNote}]
 
     const [currentIndex, setIndex] = useState(0);
 
@@ -19,16 +23,3 @@ export default () => {
         </Container>
     )
 }
-
-const MyComponent = () => (
-    <div>
-        <p>Hejsan</p>
-    </div>
-)
-
-
-const MyComponentTwo = () => (
-    <div>
-        <p>Hejsand 2</p>
-    </div>
-)

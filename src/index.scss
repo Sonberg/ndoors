@@ -4,35 +4,36 @@
 
 $theme-colors: (
   primary: #313a45,
-  secondary: #6C9F9B,
-  pink: #FEA097,
+  secondary: #6c9f9b,
+  secondary-light: #f2f6f6,
+  pink: #fea097
 );
-
-
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "./styles/navigation.scss";
 @import "./styles/input.scss";
 @import "./styles/typography.scss";
 
-#root, body, html {
+#root,
+body,
+html {
   min-height: 100vh;
   background-color: #fff;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 100vw;
   height: 100%;
   color: rgb(53, 53, 53);
 }
 
-.disabled-button{
+.disabled-button {
   opacity: 0.3;
   pointer-events: none;
 }
 
-.approveForm{
+.approveForm {
   label {
     text-transform: uppercase;
     + * {
@@ -50,29 +51,29 @@ body {
   }
 
   .backButton {
-    color: #313A45;
+    color: #313a45;
     background: #d4e2e1;
     &:hover {
-      background: #98BBB9;
+      background: #98bbb9;
     }
   }
 
   .frontButton {
     background: #6c9f9b;
     &:hover {
-      background: #98BBB9;
+      background: #98bbb9;
     }
   }
   .checkiContainer .checkie {
     margin-right: 20px;
   }
   .checkie.col {
-    background: #FFF8F7;
+    background: #fff8f7;
     border-radius: 16px;
     box-shadow: 0 1px 1px #d6d6d6;
 
     label {
-      color: rgba(0,0,0,0.87);
+      color: rgba(0, 0, 0, 0.87);
     }
   }
 }

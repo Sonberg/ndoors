@@ -6,7 +6,7 @@ export default () => (
   <Container fluid className="bg-primary py-5" style={{ height: '70vh' }}>
     <Container>
       <Row className="d-flex align-items-center">
-        <Col>
+        <Col md="6">
           <h1 style={{ color: '#fff' }}>
             Get social proof < br /> on your
                                     <span className="ml-2">
@@ -23,7 +23,7 @@ export default () => (
             </span>
           </h1>
         </Col>
-        <Col>
+        <Col className="d-none d-md-block" md="6">
           <img style={{ width: '90%', height: 'auto' }} src='assets/images/saturn.svg' />
         </Col>
       </Row>

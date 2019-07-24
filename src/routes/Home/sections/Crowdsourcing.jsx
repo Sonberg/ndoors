@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColoredRow } from '../../../components/ColoredRow';
+import ColoredRow from '../../../components/ColoredRow';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export default () => (

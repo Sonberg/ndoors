@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router'
 
-export default withRouter(({ as, style, history, to, invert, ...props }) => {
+export default withRouter(({ as, style, history, to, invert, staticContext: _, ...props }) => {
     const onNavigate = () => history.push(to);
 
     return (

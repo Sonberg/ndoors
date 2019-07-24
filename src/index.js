@@ -17,7 +17,7 @@ import Home from './routes/Home.jsx'
 import Auth from './routes/Auth'
 import AddReference from './routes/AddReference2/index'
 import MyReferences from './routes/MyReferences'
-import ShareReferences from './routes/ShareReferences/index'
+import ShareReferences from './routes/ShareReferences2/index'
 import ApproveReference from './routes/ApproveReference/index.jsx'
 import Overview from './routes/Overview/index'
 

@@ -6,12 +6,11 @@ import { useAuth } from '../context/auth';
 
 export default () => {
   const { user, logout, isAuthenticated } = useAuth();
-  
+
   const AuthenticatedLinks = () => (
     <Nav className="ml-auto align-items-center">
-      <Link className='nav-link' to={'/overview'}>Overview</Link>
-      <Link className='nav-link' to={'/my-reference'}>My references</Link>
-      <Link className='nav-link' to={'/share-references'}>My Shared Links</Link>
+      <Link className='nav-link' to='/overview'>Overview</Link>
+      <Link className='nav-link' to='/share-references'>Shared references</Link>
       <Link className='nav-link'>People I've referenced</Link>
       <Image
         src={user && user.image}

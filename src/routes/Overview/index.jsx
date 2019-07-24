@@ -55,7 +55,7 @@ const Overview = ({ loadCreated }) => {
 
 const Tab = ({ value, label, color }) => (
     <Col>
-        <div className={`text-center shadow-sm py-4 rounded`} style={{ border: `1px solid ${color ? color : 'none'}` }}>
+        <div className={`text-center shadow-sm py-4 rounded border`} style={{ border: `1px solid ${color ? color : 'none'}` }}>
             <span className="h1" children={value} />
             <div className="d-none d-md-block">
                 <small children={label} />
@@ -67,7 +67,7 @@ const Tab = ({ value, label, color }) => (
 const TabContent = ({ }) => (
     <Row className="">
         <Col>
-            <div className="rounded shadow-sm p-4 mb-3 d-flex">
+            <div className="rounded shadow-sm p-4 mb-3 d-flex border">
                 <Col className="h6 mb-0">
                     Hanna Lundell
                 </Col>

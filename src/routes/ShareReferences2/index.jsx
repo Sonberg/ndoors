@@ -1,13 +1,16 @@
 import React from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
 import LinkButton from '../../components/Button';
-import StepSelect from './steps/Step.Select.jsx';
 import StepContainer from '../../components/Step.Container';
+
+import StepSelect from './steps/Step.Select.jsx';
+import StepOptions from './steps/Step.Options.jsx';
 
 export default () => {
 
   const Steps = [
-    { title: 'Select references', children: <StepSelect />, validate: StepSelect.validate }
+    { title: 'Select references', children: <StepSelect />, validate: StepSelect.validate },
+    { title: 'Share options', children: <StepOptions />, validate: StepOptions.validate }
   ]
 
   const onSubmit = async (values) => {

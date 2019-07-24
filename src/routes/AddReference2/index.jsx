@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import LinkButton from '../../components/Button';
 import Step from './components/Step';
 import { Form } from 'react-final-form';
 import { isEmpty } from 'lodash';
@@ -56,7 +57,7 @@ export default () => {
                     </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                            <Button size="lg" className="mr-3">Cancel</Button>
+                            <LinkButton to="/overview" size="lg" className="mr-3">Cancel</LinkButton>
                             <Button variant="secondary" size="lg" type="submit" disabled={!dirty}>Submit request</Button>
                         </Col>
                     </Row>

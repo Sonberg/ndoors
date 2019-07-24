@@ -13,7 +13,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 
 
 // Routes
-import Home from './routes/Home.jsx'
+import Home from './routes/Home/index'
 import Auth from './routes/Auth'
 import AddReference from './routes/AddReference2/index'
 import MyReferences from './routes/MyReferences'

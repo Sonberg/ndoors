@@ -10,7 +10,7 @@ export default () => {
   const AuthenticatedLinks = () => (
     <Nav className="ml-auto align-items-center">
       <Link className='nav-link' to='/overview'>Overview</Link>
-      <Link className='nav-link' to='/share-references'>Shared references</Link>
+      <Link className='nav-link' to='/share-references'>Share references</Link>
       <Link className='nav-link'>People I've referenced</Link>
       <Image
         src={user && user.image}

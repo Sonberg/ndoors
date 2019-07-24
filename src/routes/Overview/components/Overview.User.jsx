@@ -9,10 +9,10 @@ export default () => {
     return (
         <>
             <Row className="align-items-center mt-5 pb-3">
-                <Col>
+                <Col sm="12" md="5">
                     <h1 children={user && user.name} />
                 </Col>
-                <Col sm="7">
+                <Col className="d-none d-md-block" md="7">
                     <Row>
                         <Col>
                             <OverviewUserStats title="References verified" value="84%" />

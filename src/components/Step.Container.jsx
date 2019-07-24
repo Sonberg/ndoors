@@ -22,7 +22,7 @@ export default ({ steps, onSubmit, children }) => {
   return (
     <Container className="mt-5">
       <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, dirty, values, submitFailed }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="mx-3">
           <Row>
             <Col>
               {steps.map((step, index) => renderStep({

@@ -21,14 +21,14 @@ const Overview = ({ loadCreated }) => {
             <Row>
                 <Col sm="12" lg="8">
                     <Row className="my-4">
-                        <Col>
-                            <Link as="div" to="/add-reference" className="rounded p-4 h5 mb-0 bg-secondary-light">
-                                <FontAwesomeIcon icon="plus-circle" className="mr-2" /> Request reference
+                        <Col xs="12" md="6">
+                            <Link as="div" to="/add-reference" className="rounded p-3 d-flex h5 mb-3 mb-md-0 bg-secondary-light ">
+                                <FontAwesomeIcon icon="plus-circle" className="mr-2 d-none d-md-flex" /> Request reference
                             </Link>
                         </Col>
-                        <Col>
-                            <Link as="div" className="rounded p-4 h5 mb-0 bg-secondary-light">
-                                <FontAwesomeIcon icon="plus-circle" className="mr-2" /> Submit reference
+                        <Col xs="12" md="6">
+                            <Link as="div" className="rounded p-3 h5 mb-0 d-flex bg-secondary-light">
+                                <FontAwesomeIcon icon="plus-circle" className="mr-2 d-none d-md-flex" /> Submit reference
                             </Link>
                         </Col>
                     </Row>
@@ -57,7 +57,7 @@ const Tab = ({ value, label, color }) => (
     <Col>
         <div className={`text-center shadow-sm py-4 rounded`} style={{ border: `1px solid ${color ? color : 'none'}` }}>
             <span className="h1" children={value} />
-            <div>
+            <div className="d-none d-md-block">
                 <small children={label} />
             </div>
         </div>

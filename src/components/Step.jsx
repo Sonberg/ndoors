@@ -60,7 +60,7 @@ const Content = ({ shouldDisableNext, shouldDisablePrev, shouldDisplayContent, o
         <Col className="p-3">
             {children}
         </Col>
-        <Col xs="auto" className="my-3 mr-3 d-flex flex-column justify-content-around">
+        <Col xs="auto" className="d-none d-md-flex my-3 mr-3 flex-column justify-content-around">
             <div className={`shadow-sm border cursor-pointer ${shouldDisablePrev ? "disabled-button" : ''}`} style={badgeStyle}>
                 <FontAwesomeIcon icon="chevron-up" onClick={onClickPrev} />
             </div>

@@ -1,23 +1,37 @@
-import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import React from 'react'
+import { Row, Col } from 'react-bootstrap';
 import { Form, Field } from 'react-final-form';
 import FormInput from '../../../components/Form.Input';
 
-export default ({}) => {
-    const validate = ({}) => {
+const form = () => (
+    <Row>
+        <Col sm="12" md="6">
+            <Field component={FormInput} name="companyName" type="text" label="The company you worked at" />
+            <Field component={FormInput} name="jobTitle" type="text" label="Your Job title" />
+        </Col>
+        <Col sm="12" md="6">
+            <Field component={FormInput} name="mainResponsibilty" type="text" label="Your main responsibilities" />
+            <Row>
+                <Col>
+                    <Field component={FormInput} label="From" name="fromDate" type="date" />
+                </Col>
+                <Col>
+                    <Field component={FormInput} label="To" name="toDate" type="date" />
+                </Col>
+            </Row>
+        </Col>
+    </Row>
+);
+
+form.validate = ({ companyName }) => {
+    const error = {}
+
+    if (!companyName) {
+        error.companyName = 'Company is required'
     }
 
-    const onSubmit = async (values) => {
-    }
+    return error;
 
-    return (
-        <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, invalid }) => (
-            <form onSubmit={handleSubmit}>
-                <Field component={FormInput} name="company_name" type="text" placeholder="The company you worked at" />
-                <Field component={FormInput} name="job_title" type="text" placeholder="Your Job title" />
-                <Field component={FormInput} name="main_responsibilty" type="text" placeholder="Your main responsibilities" />
-                <Field component={FormInput} name="from_date" type="date" placeholder="From Date" />
-                <Field component={FormInput} name="to_date" type="date" placeholder="To Date" />
-            </form>)} />
-    );
-}
+};
+
+export default form;

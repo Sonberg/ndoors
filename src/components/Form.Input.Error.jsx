@@ -1,14 +1,14 @@
 import React from 'react'
-export default ({ submitFailed, ...meta }) => {
+export default ({ submitFailed, error }) => {
 
   if (!submitFailed) {
     return null;
   }
 
-  if (!meta.error) {
+  if (!error) {
     return null;
   }
 
-  return <small className="text-danger my-1" children={meta.error} />;
+  return <small className="text-danger my-1" children={error} />;
 
 }

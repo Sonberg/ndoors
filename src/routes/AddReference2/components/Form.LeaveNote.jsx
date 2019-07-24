@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import { Form, Field } from 'react-final-form';
 import FormInput from '../../../components/Form.Input';
 
-export default ({}) => {
-    const validate = ({}) => {
-    }
+const form = () => (
+    <Row>
+        <Col>
+            <Field
+                component={FormInput}
+                name="note"
+                as="textarea"
+                label="Leave personal note" />
+        </Col>
+    </Row>
+);
 
-    const onSubmit = async (values) => {
-    }
+form.validate = () => ({});
 
-    return (
-        <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, invalid }) => (
-            <form onSubmit={handleSubmit}>
-                <Field component={FormInput} name="email" type="text-area" as="textarea" rows="3"  placeholder="Leave personal note" />
-            </form>)} />
-    );
-}
+export default form;

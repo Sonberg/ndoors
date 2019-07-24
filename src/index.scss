@@ -5,7 +5,7 @@
 $theme-colors: (
   primary: #313a45,
   secondary: #6c9f9b,
-  secondary-light: #f2f6f6,
+  secondary-light: #bad3c9,
   pink: #fea097
 );
 
@@ -33,47 +33,6 @@ body {
   pointer-events: none;
 }
 
-.approveForm {
-  label {
-    text-transform: uppercase;
-    + * {
-      margin-top: 0;
-    }
-  }
-  .col .row {
-    padding: 0 0.75rem;
-  }
-  h6 {
-    font-weight: bold;
-  }
-  .subtitle {
-    font-size: 1.2rem;
-  }
-
-  .backButton {
-    color: #313a45;
-    background: #d4e2e1;
-    &:hover {
-      background: #98bbb9;
-    }
-  }
-
-  .frontButton {
-    background: #6c9f9b;
-    &:hover {
-      background: #98bbb9;
-    }
-  }
-  .checkiContainer .checkie {
-    margin-right: 20px;
-  }
-  .checkie.col {
-    background: #fff8f7;
-    border-radius: 16px;
-    box-shadow: 0 1px 1px #d6d6d6;
-
-    label {
-      color: rgba(0, 0, 0, 0.87);
-    }
-  }
+.cursor-pointer {
+  cursor: pointer;
 }

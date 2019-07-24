@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import OverviewUser from './components/Overview.User'
+import Link from '../../components/Link'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../../store/References';
@@ -21,14 +22,14 @@ const Overview = ({ loadCreated }) => {
                 <Col sm="12" lg="8">
                     <Row className="my-4">
                         <Col>
-                            <div className="rounded p-4 h5 mb-0 bg-secondary-light">
+                            <Link as="div" to="/add-reference" className="rounded p-4 h5 mb-0 bg-secondary-light">
                                 <FontAwesomeIcon icon="plus-circle" className="mr-2" /> Request reference
-                            </div>
+                            </Link>
                         </Col>
                         <Col>
-                            <div className="rounded p-4 h5 mb-0 bg-secondary-light">
+                            <Link as="div" className="rounded p-4 h5 mb-0 bg-secondary-light">
                                 <FontAwesomeIcon icon="plus-circle" className="mr-2" /> Submit reference
-                            </div>
+                            </Link>
                         </Col>
                     </Row>
                     <Row className="mb-5">

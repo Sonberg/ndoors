@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
-import { Form, Field } from 'react-final-form';
+import React from 'react'
+import { Row, Col } from 'react-bootstrap';
+import { Field } from 'react-final-form';
 import FormInput from '../../../components/Form.Input';
 
-export default ({}) => {
-    const validate = ({}) => {
-    }
+const form = () => (
+    <Row>
+        <Col>
+            <Field
+                component={FormInput}
+                name="competences"
+                as="textarea"
+                type="text"
+                label="List Competences" />
+        </Col>
+    </Row>
+);
 
-    const onSubmit = async (values) => {
-    }
+form.validate = () => ({});
 
-    return (
-        <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, invalid }) => (
-            <form onSubmit={handleSubmit}>
-                <Field component={FormInput} name="list_competences" type="text" placeholder="List Competences" />
-            </form>)} />
-    );
-}
+export default form;

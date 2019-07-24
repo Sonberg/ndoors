@@ -22,8 +22,6 @@ import ApproveReference from './routes/ApproveReference/index.jsx'
 import Overview from './routes/Overview/index'
 
 import './index.scss'
-// import 'materialize-css'
-// import 'materialize-css/dist/css/materialize.min.css'
 
 library.add(fas)
 

@@ -1,22 +1,46 @@
-import React, { useState } from 'react'
-import { Button } from 'react-bootstrap';
-import { Form, Field } from 'react-final-form';
+import React from 'react'
+import { Row, Col } from 'react-bootstrap';
+import { Field } from 'react-final-form';
 import FormInput from '../../../components/Form.Input';
 
-export default ({ }) => {
-    const validate = ({ }) => {
+const form = () => (
+    <Row>
+        <Col xs="12">
+            <p>Give us some information about your referee.</p>
+        </Col>
+        <Col sm="12" md="6">
+            <Field component={FormInput} name="firstName" type="text" label="First name" />
+            <Field component={FormInput} name="lastName" type="text" label="Last name" />
+        </Col>
+        <Col sm="12" md="6">
+            <Field component={FormInput} name="email" type="text" label="Email" />
+            <Field component={FormInput} name="phoneNumber" label="Phone" />
+        </Col>
+    </Row>
+);
+
+form.validate = ({
+    firstName,
+    lastName,
+    email,
+    phoneNumber }) => {
+
+    const error = {}
+
+    if (!firstName) {
+        error.firstName = 'First name is required'
     }
 
-    const onSubmit = async (values) => {
+    if (!lastName) {
+        error.lastName = 'Last name is required'
     }
 
-    return (
-        <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, invalid }) => (
-            <form onSubmit={handleSubmit}>
-                <Field component={FormInput} name="r_fname" type="text" placeholder="First name of the referent" />
-                <Field component={FormInput} name="r_lname" type="text" placeholder="Last name of the referent" />
-                <Field component={FormInput} name="email" type="text" placeholder="Email of the referent" />
-                <Field component={FormInput} name="phonenumber" type="phonenumber" placeholder="Phone number of the referent" />
-            </form>)} />
-    );
-}
+    if (!email && !phoneNumber) {
+        error.email = 'Phone number or email is required'
+        error.phoneNumber = 'Phone number or email is required'
+    }
+
+    return error;
+};
+
+export default form;

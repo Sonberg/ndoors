@@ -44,14 +44,10 @@ export const remove = async endpoint => {
 
 const handleResponse = async response => {
     try {
-        if (response.status >= 400) {
-            return null;
-        }
-
         const content = await response.text();
 
         if (!content) {
-            return content;
+            return null;
         }
 
         return JSON.parse(content);

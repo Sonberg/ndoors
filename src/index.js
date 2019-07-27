@@ -35,7 +35,7 @@ const routing = (
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <ProtectedRoute exact path="/overview" component={Overview} />
-        <Route path="/add-reference" component={AddReference} />
+        <ProtectedRoute path="/add-reference" component={AddReference} />
         <ProtectedRoute path="/my-reference" component={MyReferences} />
         <ProtectedRoute path="/share-references" component={ShareReferences} />
         <Route path="/approve-reference/:id" component={ApproveReference} />

@@ -1,14 +1,14 @@
 import React from 'react'
-export default ({ submitFailed, error }) => {
+export default ({ submitFailed, error, submitError }) => {
 
   if (!submitFailed) {
     return null;
   }
 
-  if (!error) {
+  if (!error && !submitError) {
     return null;
   }
 
-  return <small className="text-danger my-1" children={error} />;
+  return <small className="text-danger my-1" children={error || submitError} />;
 
 }

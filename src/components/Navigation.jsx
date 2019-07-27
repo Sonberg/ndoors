@@ -12,11 +12,7 @@ export default () => {
       <Link className='nav-link' to='/overview'>Overview</Link>
       <Link className='nav-link' to='/share-references'>Share references</Link>
       <Link className='nav-link'>People I've referenced</Link>
-      <Image
-        src={user && user.image}
-        style={{ height: '32px', width: '32px', borderWidth: '2px !important' }}
-        className="rounded-circle border border-white"
-        onClick={logout} />
+      <Badge />
     </Nav>
   )
 
@@ -28,6 +24,23 @@ export default () => {
       <Link className='nav-link'>Language</Link>
     </Nav>
   )
+
+  const Badge = () => {
+    if (!user) {
+      return null;
+    }
+
+    if (user.image) {
+      return (<Image
+        src={user && user.image}
+        style={{ height: '32px', width: '32px', borderWidth: '2px !important' }}
+        className="rounded-circle border border-white"
+        onClick={logout} />);
+    }
+
+    return <small children={user.name || null} className="text-white" />
+  }
+
 
   return (
     <Navbar bg="primary" expand="lg" variant='dark'>

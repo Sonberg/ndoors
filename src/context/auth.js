@@ -25,19 +25,22 @@ function AuthProvider(props) {
       return;
     }
 
-    const response = await get('api/auth/authenticated');
+    try {
+      const response = await get('api/auth/authenticated');
+      
+      if (!response) {
+        throw new Error();
+      }
 
-    if (!response) {
+      setUser(response.user);
+      setVerified(true);
+      setIsAuthenticated(response.isAuthenticated);
+    } catch (error) {
+
       setIsAuthenticated(false);
       setVerified(true);
       setUser(null);
-      return;
     }
-
-
-    setIsAuthenticated(response.isAuthenticated);
-    setUser(response.user);
-    setVerified(true);
   }
 
   const login = async ({ email, password }) => {

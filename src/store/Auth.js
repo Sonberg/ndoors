@@ -66,7 +66,7 @@ export const reducer = (state, action) => {
         }
     }
 
-    if (action.type == setAuthenticated) {
+    if (action.type === setAuthenticated) {
         return {
             ...state,
             isAuthenticated: action.payload

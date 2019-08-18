@@ -10,13 +10,13 @@ const form = () => (
             <Field component={FormInput} name="jobTitle" type="text" label="Your Job title" />
         </Col>
         <Col sm="12" md="6">
-            <Field component={FormInput} name="mainResponsibilty" type="text" label="Your main responsibilities" />
+            {/* <Field component={FormInput} name="mainResponsibilty" type="text" label="Your main responsibilities" /> */}
             <Row>
                 <Col>
-                    <Field component={FormInput} label="From" name="fromDate" type="date" />
+                    <Field component={FormInput} label="From" name="startDate" type="date" />
                 </Col>
                 <Col>
-                    <Field component={FormInput} label="To" name="toDate" type="date" />
+                    <Field component={FormInput} label="To" name="endDate" type="date" />
                 </Col>
             </Row>
         </Col>
@@ -27,7 +27,7 @@ form.validate = ({ companyName }) => {
     const error = {}
 
     if (!companyName) {
-        error.companyName = 'Company is required'
+        error.companyName = 'Company name is required'
     }
 
     return error;

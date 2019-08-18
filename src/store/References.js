@@ -13,18 +13,18 @@ const initialState = {
 
 export const actionCreators = {
     loadCreated: () => async dispatch => {
-        const response = await get(`api/references/created`);
-        dispatch({
-            type: setCreated,
-            payload: response
-        });
+        // const response = await get(`api/references/created`);
+        // dispatch({
+        //     type: setCreated,
+        //     payload: response
+        // });
     },
     loadRecived: () => async dispatch => {
-        const response = await get(`api/references/recived`);
-        dispatch({
-            type: setRecived,
-            payload: response
-        });
+        // const response = await get(`api/references/recived`);
+        // dispatch({
+        //     type: setRecived,
+        //     payload: response
+        // });
     }
 };
 

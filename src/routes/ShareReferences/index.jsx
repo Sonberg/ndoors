@@ -1,116 +1,35 @@
-import React, { Component } from 'react'
-import ShareBoxFirst from './components/ShareBoxFirst'
-import ShareBoxSecond from './components/ShareBoxSecond'
-import ShareBoxThird from './components/ShareBoxThird'
-import { get } from '../../api';
+import React from 'react'
+import { Row, Col, Button } from 'react-bootstrap'
+import LinkButton from '../../components/Button';
+import StepContainer from '../../components/Step.Container';
 
-export default class SharedReferences extends Component {
-    constructor(props) {
-        super(props)
-        this.onChange = this.onChange.bind(this)
-        this.saveToArray = this.saveToArray.bind(this)
-        this.state = {
-            referenceState: 1,
-            referenceDetails: {
-                newGroupName: ''
-            },
-            userReferenceList: []
-        }
-    }
+import StepSelect from './steps/Step.Select.jsx';
+import StepOptions from './steps/Step.Options.jsx';
+import useFetch from '../../hooks/useFetch';
+import { useAuth } from '../../context/auth';
 
-    async componentDidMount() {
-        const data = await this.getReferenceData(localStorage.getItem('email'));
-        this.setState({ userReferenceList: data });
-    }
+export default () => {
+  const { user } = useAuth();
+  const references = useFetch(`api/references?filter[userId]=${user && user.id}&include=createdBy`);
 
-    async getReferenceData(email) {
-        try {
-            const response = await get(`api/references?userEmail=${email}`)
-            if (response.status === 404) {
-                return null;
-            }
 
-            return await response.json();
-        } catch (err) {
-            return null;
-        }
-    }
+  const Steps = [
+    { title: 'Select references', children: <StepSelect references={references.response || []} />, validate: StepSelect.validate },
+    { title: 'Share options', children: <StepOptions />, validate: StepOptions.validate }
+  ]
 
-    onContinue() {
-        this.setState({ referenceState: this.state.referenceState + 1 })
-    }
-    onBackward() {
-        this.setState({ referenceState: this.state.referenceState - 1 })
-    }
-    onChange({ target }) {
-        this.setState({
-            referenceDetails: {
-                ...this.state.referenceDetails,
-                [target.id]: target.value
-            }
-        })
-    }
+  const onSubmit = async (values) => {
+    console.log(values);
+  }
 
-    saveToArray({ target }) {
-        this.setState({
-            referenceDetails: {
-                ...this.state.referenceDetails,
-                [target.id]: [
-                    ...(this.state.referenceDetails[target.id] || []),
-                    target.value
-                ]
-            }
-        })
-    }
-    render() {
-        let referencePage
-        switch (this.state.referenceState) {
-            case 1:
-                referencePage = (
-                    <div>
-                        <ShareBoxFirst
-                            onBackward={this.onBackward}
-                            onContinue={this.onContinue}
-                            onChange={this.onChange}
-                            details={this.state.referenceDetails}
-                        />
-                    </div>
-                )
-                break
-            case 2:
-                referencePage = (
-                    <ShareBoxSecond
-                        onBackward={this.onBackward}
-                        onContinue={this.onContinue}
-                        onChange={this.onChange}
-                        details={this.state.userReferenceList}
-                    />
-                )
-                break
-            case 3:
-                referencePage = (
-                    <ShareBoxThird
-                        onBackward={this.onBackward}
-                        onContinue={this.onContinue}
-                        onSelect={this.saveToArray}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            default:
-                referencePage = <h1>END</h1>
-        }
-
-        return (
-            <div
-                style={{
-                    marginTop: '100px',
-                    height: '100vh',
-                    backgroundImage: `url('assets/images/BGK.svg')`
-                }}
-            >
-                {referencePage}
-            </div>
-        )
-    }
+  return (
+    <StepContainer steps={Steps} onSubmit={onSubmit}>
+      <Row>
+        <Col className="d-flex justify-content-center">
+          <LinkButton to="/overview" size="lg" className="mr-3">Cancel</LinkButton>
+          <Button variant="secondary" size="lg" disabled={!references.response || !references.response.length} type="submit">Create link</Button>
+        </Col>
+      </Row>
+    </StepContainer >
+  )
 }

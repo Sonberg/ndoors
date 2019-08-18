@@ -6,13 +6,15 @@ $theme-colors: (
   primary: #313a45,
   secondary: #6c9f9b,
   secondary-light: #bad3c9,
-  pink: #fea097
+  pink: #fea097,
+  pink-light: #fff8f7
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "./styles/navigation.scss";
 @import "./styles/input.scss";
 @import "./styles/typography.scss";
+@import "./styles/button.scss";
 
 #root,
 body,

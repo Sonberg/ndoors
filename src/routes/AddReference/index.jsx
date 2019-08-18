@@ -1,221 +1,80 @@
-import React, { Component } from 'react'
-import BoxFirst from './components/BoxFirst'
-import BoxSecond from './components/BoxSecond'
-import BoxThird from './components/BoxThird'
-import BoxFourth from './components/BoxFourth'
-import BoxFifth from './components/BoxFifth'
-import BoxSixth from './components/BoxSixth'
-import BoxSeventh from './components/BoxSeventh'
-import { post, url } from '../../api'
+import React, { useState } from 'react'
+import { Row, Col, Button, Spinner } from 'react-bootstrap'
+import LinkButton from '../../components/Button';
 
-export default class AddReferences extends Component {
-    constructor(props) {
-        super(props)
-        this.onChange = this.onChange.bind(this)
-        this.saveToArray = this.saveToArray.bind(this)
-        this.saveReference = this.saveReference.bind(this)
-        this.sendSms = this.sendSms.bind(this)
-        this.state = {
-            referenceState: 1,
-            referenceDetails: {
-                referentName: '',
-                referentRole: '',
-                referentPhoneNumber: '',
-                referentEmail: '',
-                skills: [],
-                abilities: [],
-                role: '',
-                responsibility: '',
-                workplace: '',
-                dateFrom: '',
-                dateTo: '',
-                note: '',
-                name: localStorage.getItem('user') || '',
-                email: localStorage.getItem('email') || '',
-                currentRole: '',
-                password: '',
-                passwordConfirm: ''
-            }
-        }
-    }
-    onContinue() {
-        this.setState({ referenceState: this.state.referenceState + 1 })
-    }
-    onBackward() {
-        this.setState({ referenceState: this.state.referenceState - 1 })
-    }
-    onChange({ target }) {
-        this.setState({
-            referenceDetails: {
-                ...this.state.referenceDetails,
-                [target.id]: target.value
-            }
-        })
-    }
+import StepWho from './steps/Step.Who';
+import StepDescribe from './steps/Step.Describe';
+import StepListCompetences from './steps/Step.ListCompetences';
+import StepLeaveNote from './steps/Step.LeaveNote';
+import StepContainer from '../../components/Step.Container';
+import { post, get } from '../../api';
+import useFetch from '../../hooks/useFetch';
 
-    saveToArray({ target }) {
-        this.setState({
-            referenceDetails: {
-                ...this.state.referenceDetails,
-                [target.id]: [
-                    ...(this.state.referenceDetails[target.id] || []),
-                    target.value
-                ]
-            }
-        })
-    }
-    getObjectArray(array) {
-        return array.reduce((current, next) => {
-            return { ...current, [next]: false }
-        }, {})
-    }
+export default ({ history }) => {
 
-    loggedIn() {
-        if (localStorage.getItem('loggedIn')) {
-            const body = this.getBody()
-            this.saveReference(body)
-            this.props.history.push('/')
-        } else this.onContinue()
-    }
+    const [loading, setLoading] = useState(false);
+    const fetchSkills = useFetch('api/skills');
 
-    getBody() {
-        const details = this.state.referenceDetails
-        return {
-            message: details.note,
-            place: details.workplace,
-            referenceEmail: details.referentEmail,
-            referenceName: details.referentName,
-            referencePhone: details.referentPhoneNumber,
-            referenceRole: details.referentRole,
-            relationEnd: details.dateTo,
-            relationStart: details.dateFrom,
-            userResponsibility: details.responsibility,
-            userEmail: details.email,
-            userName: details.name,
-            userRole: details.role,
-            verified: false,
-            skills: this.getObjectArray(details.skills),
-            abilities: this.getObjectArray(details.abilities)
-        }
-    }
-    toDatabase() {
-        const body = this.getBody()
-        this.saveReference(body)
-        this.onContinue()
-    }
+    const Steps = [
+        { title: 'Who is your reference?', children: <StepWho />, validate: StepWho.validate },
+        { title: 'Describe your relation', children: <StepDescribe />, validate: StepDescribe.validate },
+        { title: 'List your competences & abilities', children: <StepListCompetences />, validate: StepListCompetences.validate },
+        { title: 'Leave a personal note', children: <StepLeaveNote />, validate: StepLeaveNote.validate }
+    ]
 
-    async saveReference(body) {
-        const response = await post('api/references', JSON.stringify(body))
-        const json = await response.json()
-
-        this.sendSms(json)
-    }
-
-    sendSms(data) {
-        const referenceUrl = `${url}/approve-reference/${data.id}`;
-        const message = `Hi ${data.referenceName}, ${data.userName} has asked you to be his/hers reference. Verify here: ${referenceUrl}`;
-        const body = JSON.stringify({ message });
-        const url = `api/sms/${data.referencePhone}`
-        post(url, body);
-    }
-
-    render() {
-        let referencePage
-        switch (this.state.referenceState) {
-            case 1:
-                referencePage = (
-                    <div>
-                        <BoxFirst
-                            onBackward={() => this.onBackward()}
-                            onContinue={() => this.onContinue()}
-                            onChange={this.onChange}
-                            details={this.state.referenceDetails}
-                        />
-                    </div>
-                )
-                break
-            case 2:
-                referencePage = (
-                    <BoxSecond
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onContinue()}
-                        onChange={this.onChange}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            case 3:
-                referencePage = (
-                    <BoxThird
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onContinue()}
-                        onSelect={this.saveToArray}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            case 4:
-                referencePage = (
-                    <BoxFourth
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.loggedIn()}
-                        onChange={this.onChange}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            case 5:
-                referencePage = (
-                    <BoxFifth
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.toDatabase()}
-                        onChange={this.onChange}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            case 6:
-                referencePage = (
-                    <BoxSixth
-                        onBackward={() => this.onBackward()}
-                        onContinue={() => this.onContinue()}
-                        onChange={this.onChange}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            case 7:
-                referencePage = (
-                    <BoxSeventh
-                        onContinue={() => this.onContinue()}
-                        onChange={this.onChange}
-                        details={this.state.referenceDetails}
-                    />
-                )
-                break
-            default:
-                referencePage = (
-                    <div>
-                        <BoxFirst
-                            onBackward={() => this.onBackward()}
-                            onContinue={() => this.onContinue()}
-                            onChange={this.onChange}
-                            details={this.state.referenceDetails}
-                        />
-                    </div>
-                )
+    const getUserIdAsync = async ({ email, firstName, lastName }) => {
+        const users = await get(`api/users?filter[email]=${email}`);
+        if (users && users[0]) {
+            return users[0].id;
         }
 
-        return (
-            <div
-                style={{
-                    marginTop: '100px',
-                    height: '100vh',
-                    backgroundImage: `url(${'ssets/images/BGK.svg'})`
-                }}
-            >
-                {referencePage}
-            </div>
-        )
+        const createdUser = await post(`api/users?`, { email, firstName, lastName, type: 'user' });
+        return createdUser.id;
     }
+
+    const onSubmit = async ({ firstName, lastName, email, note, skills, ...values }) => {
+        setLoading(true);
+
+        // Create request
+        await post('api/requests', {
+            userId: await getUserIdAsync({ firstName, lastName, email }),
+            status: 'pending',
+            type: 'request',
+            note,
+            ...values
+        });
+
+        // Add skills
+        for (const skill of skills) {
+            if (skill.id) {
+                continue;
+            }
+
+            await post('api/skills', {
+                type: 'skill',
+                ...skill
+            });
+        }
+
+        setLoading(false);
+
+        history.push('/overview')
+    }
+
+    if (fetchSkills.loading) {
+        return null;
+    }
+
+    return (
+        <StepContainer initialValues={{ skills: fetchSkills.response || [] }} steps={Steps} onSubmit={onSubmit}>
+            <Row>
+                <Col className="d-flex justify-content-center">
+                    <LinkButton to="/overview" size="lg" className="mr-3" disabled={loading}>Cancel</LinkButton>
+                    <Button variant="secondary" size="lg" type="submit" disabled={loading}>
+                        {loading ? (<Spinner animation="border" />) : "Submit request"}
+                    </Button>
+                </Col>
+            </Row>
+        </StepContainer>
+    );
 }

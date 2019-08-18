@@ -11,7 +11,7 @@ export default () => {
     <Nav className="ml-auto align-items-center">
       <Link className='nav-link' to='/overview'>Overview</Link>
       <Link className='nav-link' to='/share-references'>Share references</Link>
-      <Link className='nav-link'>People I've referenced</Link>
+      <Link className='nav-link' to='/referenced'>People I've referenced</Link>
       <Badge />
     </Nav>
   )
@@ -38,7 +38,7 @@ export default () => {
         onClick={logout} />);
     }
 
-    return <small children={user.name || null} className="text-white" />
+    return <small onClick={logout} children={user.name || null} className="text-white" />
   }
 
 

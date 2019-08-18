@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { post, get } from "../api";
 
-const IS_AUTHENTICATED = 'isAuthenticated';
+const TOKEN = 'token';
 const AuthContext = React.createContext();
 
 function AuthProvider(props) {
-  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem(IS_AUTHENTICATED) || false)
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem(TOKEN) !== null)
   const [user, setUser] = useState(null)
   const [verified, setVerified] = useState(false)
 
+  const token = localStorage.getItem(TOKEN);
+
   useEffect(() => { askServer() }, [isAuthenticated]);
   useEffect(() => {
-    if (isAuthenticated) {
-      localStorage.setItem(IS_AUTHENTICATED, isAuthenticated === 'true');
+    if (!isAuthenticated) {
+      localStorage.removeItem(TOKEN);
       return;
     }
 
-    localStorage.removeItem(IS_AUTHENTICATED);
+    if (user && user.token) {
+      localStorage.setItem(TOKEN, user.token);
+    }
 
   }, [isAuthenticated]);
 
@@ -26,17 +30,21 @@ function AuthProvider(props) {
     }
 
     try {
-      const response = await get('api/auth/authenticated');
-      
+      if (!token) {
+        throw new Error();
+      }
+
+      const response = await get('api/users/me');
+
       if (!response) {
         throw new Error();
       }
 
-      setUser(response.user);
+      setUser(response);
       setVerified(true);
-      setIsAuthenticated(response.isAuthenticated);
-    } catch (error) {
+      setIsAuthenticated(true);
 
+    } catch (error) {
       setIsAuthenticated(false);
       setVerified(true);
       setUser(null);
@@ -44,28 +52,26 @@ function AuthProvider(props) {
   }
 
   const login = async ({ email, password }) => {
-    const response = await post('api/auth/login', { email, password });
+    const response = await post('api/users/token', {
+      email,
+      password
+    }, { serialize: false });
 
-    if (response.isAuthenticated === isAuthenticated) {
-      return;
-    }
-
-    if (!response || !response.isAuthenticated) {
+    if (!response) {
       setIsAuthenticated(false);
       setUser(null);
       return;
     }
 
-    setIsAuthenticated(response.isAuthenticated);
-    setUser(response.user);
+    setUser(response);
+    setIsAuthenticated(true);
     return true;
   }
 
   const register = () => { } // register the user
-  const logout = async () => {
-    await post('api/auth/logout');
-    setIsAuthenticated(false);
+  const logout = () => {
     setUser(null);
+    setIsAuthenticated(false);
   }
 
   return (

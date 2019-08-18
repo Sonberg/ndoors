@@ -9,12 +9,11 @@ const form = () => (
             <p>Give us some information about your referee.</p>
         </Col>
         <Col sm="12" md="6">
-            <Field component={FormInput} name="firstName" type="text" label="First name" />
-            <Field component={FormInput} name="lastName" type="text" label="Last name" />
+            <Field component={FormInput} name="firstName" type="text" label="Given name *" />
+            <Field component={FormInput} name="lastName" type="text" label="Surname *" />
         </Col>
         <Col sm="12" md="6">
             <Field component={FormInput} name="email" type="text" label="Email" />
-            <Field component={FormInput} name="phoneNumber" label="Phone" />
         </Col>
     </Row>
 );
@@ -22,22 +21,21 @@ const form = () => (
 form.validate = ({
     firstName,
     lastName,
-    email,
-    phoneNumber }) => {
+    email }) => {
 
     const error = {}
 
     if (!firstName) {
-        error.firstName = 'First name is required'
+        error.firstName = 'Given name is required'
     }
 
     if (!lastName) {
-        error.lastName = 'Last name is required'
+        error.lastName = 'Surname is required'
     }
 
-    if (!email && !phoneNumber) {
-        error.email = 'Phone number or email is required'
-        error.phoneNumber = 'Phone number or email is required'
+
+    if (!email) {
+        error.email = 'Email is required'
     }
 
     return error;

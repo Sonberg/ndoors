@@ -10,20 +10,7 @@ export default () => {
         <>
             <Row className="align-items-center mt-5 pb-3">
                 <Col sm="12" md="5">
-                    <h1 children={user && user.name} />
-                </Col>
-                <Col className="d-none d-md-block" md="7">
-                    <Row>
-                        <Col>
-                            <OverviewUserStats title="References verified" value="84%" />
-                        </Col>
-                        <Col>
-                            <OverviewUserStats title="Unique views" value="47%" />
-                        </Col>
-                        <Col>
-                            <OverviewUserStats title="People I've referenced" value="2" />
-                        </Col>
-                    </Row>
+                    <h1 children={user && user.displayName} />
                 </Col>
             </Row>
             <Row>

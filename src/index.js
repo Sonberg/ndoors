@@ -10,18 +10,20 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-
-
 // Routes
 import Home from './routes/Home/index'
 import Auth from './routes/Auth'
-import AddReference from './routes/AddReference2/index'
+import AddReference from './routes/AddReference/index'
 import MyReferences from './routes/MyReferences'
-import ShareReferences from './routes/ShareReferences2/index'
-import ApproveReference from './routes/ApproveReference/index.jsx'
+import ShareReferences from './routes/ShareReferences/index'
+
+import Request from './routes/Request/index.jsx'
+import RequestApprove from './routes/RequestApprove/index.jsx';
+
 import Overview from './routes/Overview/index'
 
 import './index.scss'
+import Referenced from './routes/Referenced';
 
 library.add(fas)
 
@@ -36,9 +38,10 @@ const routing = (
         <Route path="/auth" component={Auth} />
         <ProtectedRoute exact path="/overview" component={Overview} />
         <ProtectedRoute path="/add-reference" component={AddReference} />
-        <ProtectedRoute path="/my-reference" component={MyReferences} />
+        <ProtectedRoute path="/referenced" component={Referenced} />
         <ProtectedRoute path="/share-references" component={ShareReferences} />
-        <Route path="/approve-reference/:id" component={ApproveReference} />
+        <ProtectedRoute path="/requests/:request_id/approve" component={RequestApprove} />
+        <ProtectedRoute path="/requests/:request_id" component={Request} />
       </Router>
     </AuthProvider>
   </Provider>

@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Step from './Step';
 import { Form } from 'react-final-form';
+import arrayMutators from 'final-form-arrays'
 import { isEmpty, reduce, extend } from 'lodash';
 
-export default ({ steps, onSubmit, children }) => {
+export default ({ steps = [], onSubmit, initialValues = {}, children, title }) => {
 
   const validate = values => reduce([...steps.map(x => x.validate(values))], extend);
 
@@ -21,21 +22,26 @@ export default ({ steps, onSubmit, children }) => {
 
   return (
     <Container className="mt-5">
-      <Form onSubmit={onSubmit} validate={validate} render={({ handleSubmit, dirty, values, submitFailed }) => (
-        <form onSubmit={handleSubmit} className="mx-3">
-          <Row>
-            <Col>
-              {steps.map((step, index) => renderStep({
-                ...step,
-                index,
-                submitFailed,
-                isValid: isEmpty(step.validate(values))
-              }))}
-            </Col>
-          </Row>
-          {children}
-        </form >
-      )} />
+      <Form
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validate={validate}
+        mutators={arrayMutators}
+        render={({ handleSubmit, dirty, values, submitFailed }) => (
+          <form onSubmit={handleSubmit} className="mx-3">
+            <Row>
+              <Col>
+                {steps.map((step, index) => renderStep({
+                  ...step,
+                  index,
+                  submitFailed,
+                  isValid: isEmpty(step.validate(values))
+                }))}
+              </Col>
+            </Row>
+            {children}
+          </form >
+        )} />
     </Container >
   )
 }

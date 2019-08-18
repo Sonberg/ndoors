@@ -6,10 +6,16 @@ import { bindActionCreators } from 'redux'
 import { actionCreators } from '../../store/References';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import OverviewReferences from './components/Overview.References';
+import OverviewLinks from './components/Overview.Links';
+import OverviewSkills from './components/Overview.Skills';
+import { useAuth } from '../../context/auth';
 
 const Overview = ({ loadCreated }) => {
 
     useEffect(() => { loadCreated(); })
+
+    const { user } = useAuth();
 
     return (
         <Container>
@@ -32,52 +38,16 @@ const Overview = ({ loadCreated }) => {
                             </Link>
                         </Col>
                     </Row>
-                    <Row className="mb-5">
-                        <Tab value="26" color="#ffbab3" label="verified references" />
-                        <Tab value="16" label="pending references" />
-                        <Tab value="6" label="sent references" />
-                    </Row>
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
-                    <TabContent />
+                    {user && user.id ? (<OverviewReferences user={user} />) : null}
                 </Col>
                 <Col lg="4">
+                    <OverviewSkills />
+                    <OverviewLinks />
                 </Col>
             </Row>
         </Container>
     )
 }
-
-const Tab = ({ value, label, color }) => (
-    <Col>
-        <div className={`text-center shadow-sm py-4 rounded border`} style={{ border: `1px solid ${color ? color : 'none'}` }}>
-            <span className="h1" children={value} />
-            <div className="d-none d-md-block">
-                <small children={label} />
-            </div>
-        </div>
-    </Col>
-);
-
-const TabContent = ({ }) => (
-    <Row className="">
-        <Col>
-            <div className="rounded shadow-sm p-4 mb-3 d-flex border">
-                <Col className="h6 mb-0">
-                    Hanna Lundell
-                </Col>
-                <Col>CEO</Col>
-                <Col>Google</Col>
-                <Col sm="auto">Icon</Col>
-            </div>
-        </Col>
-    </Row>
-);
 
 export default connect(
     state => ({

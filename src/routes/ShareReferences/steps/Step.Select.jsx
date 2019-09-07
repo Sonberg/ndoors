@@ -21,6 +21,12 @@ const Empty = () => (
   <p className="m-0">You don't have any references to share</p>);
 
 
-form.validate = values => ({});
+form.validate = ({ references }) => {
+  if (!references || !references.length) {
+    return {
+      references: 'You have to select aleast one reference'
+    }
+  }
+};
 
 export default form

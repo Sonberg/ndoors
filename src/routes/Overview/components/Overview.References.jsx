@@ -7,7 +7,7 @@ import useFetch from '../../../hooks/useFetch';
 
 export default ({ user }) => {
 
-    const verifiedRequest = useFetch(`api/requests?filter[createdByUserId]=${user && user.id}&filter[status]=Accepted&include=user,reference.skillVerifications.skill`);
+    const verifiedRequest = useFetch(`api/requests?filter[createdByUserId]=${user && user.id}&filter[status]=Accepted&include=user,reference.verifications.skill`);
     const pendingRequest = useFetch(`api/requests?filter[createdByUserId]=${user && user.id}&filter[status]=Pending&include=user`);
     const recivedRequest = useFetch(`api/requests?filter[userId]=${user && user.id}&include=createdBy&filter[status]=Pending`);
 

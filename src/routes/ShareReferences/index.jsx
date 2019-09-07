@@ -23,7 +23,7 @@ export default () => {
   }
 
   return (
-    <StepContainer steps={Steps} onSubmit={onSubmit}>
+    <StepContainer steps={Steps} onSubmit={onSubmit} initialValues={{ neverExpires: true }} >
       <Row>
         <Col className="d-flex justify-content-center">
           <LinkButton to="/overview" size="lg" className="mr-3">Cancel</LinkButton>

@@ -48,7 +48,7 @@ const ItemContent = ({ note, status, reference }) => {
 
   switch (status) {
     case "Accepted":
-      const skills = reference.skillVerifications && reference.skillVerifications.map(x => x.skill);
+      const skills = reference.verifications && reference.verifications.map(x => x.skill);
 
       return (
         <Card.Body className="border-top">
@@ -93,7 +93,7 @@ const HandleRequestButton = ({ id, userId }) => {
 
   return (
     <Col xs="auto">
-      <Button to={`/requests/${id}/approve`} size="sm" variant="pink" children={<FontAwesomeIcon icon="chevron-right" />} />
+      <Button to={`/requests/${id}/approve`} size="sm" variant="secondary-light" children={<FontAwesomeIcon icon="chevron-right" />} />
     </Col>);
 }
 

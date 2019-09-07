@@ -16,6 +16,13 @@ $theme-colors: (
 @import "./styles/typography.scss";
 @import "./styles/button.scss";
 
+// Set checkbox color
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: theme-color("secondary");
+  background-color: theme-color("secondary");
+}
+
 #root,
 body,
 html {

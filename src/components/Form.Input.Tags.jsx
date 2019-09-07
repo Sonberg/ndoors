@@ -3,21 +3,22 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import Badge from './Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default ({ fields }) => {
+export default ({ fields: { value = [], ...fields }, placeholder, className, validateTag = (() => true) }) => {
   const [disabled, setDisabled] = useState(true);
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
   const removeTag = index => () => fields.remove(index);
   const addTag = (e) => {
-    if (e.keyCode && e.keyCode != 13) { return; }
+    if (e.keyCode && e.keyCode !== 13) { return; }
 
     e.stopPropagation();
     e.preventDefault();
 
-    if (!value) { return; }
+    if (!inputValue) { return; }
     if (disabled) { return; }
-    fields.push({ value });
-    setValue('');
+
+    fields.push({ value: inputValue });
+    setInputValue('');
   }
 
 
@@ -34,28 +35,34 @@ export default ({ fields }) => {
   };
 
   useEffect(() => {
-    if (!value) {
-      setDisabled(true);
-      return;
-    }
+    const conditions = [
+      // Value set
+      !inputValue,
 
-    setDisabled(fields.value.map(x => x.value.toLowerCase()).includes(value.toLowerCase()));
-  }, [value])
+      // Run validate function
+      validateTag && !validateTag(inputValue),
+
+      // Value already exists
+      value.map(x => x.value.toLowerCase()).includes(inputValue.toLowerCase())
+    ];
+
+    setDisabled(conditions.includes(true));
+  }, [inputValue])
 
   return (
-    <Row>
+    <Row className={className}>
       <Col xs="12">
         <div className="d-flex flex-wrap">
-          {fields.value.map(renderBadge)}
+          {value.map(renderBadge)}
         </div>
       </Col>
       <Col>
         <Form.Group className="mb-0">
           <Form.Control
-            value={value}
+            value={inputValue}
             onKeyDown={addTag}
-            onChange={({ target }) => setValue(target.value)}
-            placeholder="Leadership, C#, Javascript etc..." />
+            onChange={({ target }) => setInputValue(target.value)}
+            placeholder={placeholder} />
         </Form.Group>
       </Col>
       <Col xs="auto" className="pl-0">

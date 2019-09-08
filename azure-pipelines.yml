@@ -20,9 +20,7 @@ steps:
     npm run build
   displayName: 'npm install & build'
 
-- task: ArchiveFiles@2
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
-    rootFolderOrFile: ‘$(Build.SourcesDirectory)/dist’
-    archiveType: 'zip'
-    archiveFile: ‘$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip’
-    replaceExistingArchive: true
+    PathtoPublish: '$(build.artifactstagingdirectory)'

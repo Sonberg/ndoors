@@ -23,3 +23,13 @@ steps:
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (bb6a9b5c-7e2c-43c6-aea8-9a84ea9dd360)'
+    appType: 'webAppLinux'
+    WebAppName: 'web-prod-ndoors'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|9.4'
+    StartupCommand: 'serve -s build'

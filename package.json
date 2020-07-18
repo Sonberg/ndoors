@@ -11,7 +11,7 @@
     "final-form": "^4.18.2",
     "final-form-arrays": "^3.0.1",
     "jsona": "^1.5.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
